@@ -5,27 +5,20 @@ import style from './index.module.css'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Heading from '../../components/Heading/Heading'
-import Typography, {
-  TypographyTheme,
-} from '../../components/Typography/Typography'
 import Section from '../../components/Section/Section'
-import StandardImage from '../../components/StandardImage/StandardImage'
-import Button, { ButtonTheme } from '../../components/Button/Button'
-import GithubIcon from '../../components/GithubIcon/GithubIcon'
-import { AlphabetSize } from '../../@types/common'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 import RLink from '../../components/RLink/RLink'
 
 interface PageProps {}
 
 const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const openContactUs = () => {
-    dispatch({
-      type: 'OPEN_CONTACT_US',
-    })
-  }
+  // const openContactUs = () => {
+  //   dispatch({
+  //     type: 'OPEN_CONTACT_US',
+  //   })
+  // }
 
   return (
     <div className={style.root}>

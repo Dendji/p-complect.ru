@@ -7,7 +7,6 @@ import CloseButton from '../CloseButton/CloseButton'
 import ContactForm from '../ContactForm/ContactForm'
 import { InputTheme } from '../TextInput/TextInput'
 import { ButtonTheme } from '../Button/Button'
-import DbrainLogo from '../SVGs/DbrainLogo/DbrainLogo'
 import Popup from '../Popup/Popup'
 
 export enum FormType {
@@ -81,9 +80,7 @@ export default function ContactUs({
       <div className={style.root}>
         <Container>
           <div className={style.header}>
-            <div className={style.logo}>
-              <DbrainLogo />
-            </div>
+            <div className={style.logo}></div>
             <div className={style.close}>
               <CloseButton onClose={onClose} />
             </div>

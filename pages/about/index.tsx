@@ -11,7 +11,6 @@ import Typography, {
 import Section from '../../components/Section/Section'
 import StandardImage from '../../components/StandardImage/StandardImage'
 import Button, { ButtonTheme } from '../../components/Button/Button'
-import Leader from '../../components/Leader/Leader'
 import GithubIcon from '../../components/GithubIcon/GithubIcon'
 import { AlphabetSize } from '../../@types/common'
 import { useDispatch } from 'react-redux'
@@ -173,9 +172,7 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
                     },
                   ].map((l) => (
                     <Grid item xs={12} md={4}>
-                      <div className={style.leader}>
-                        <Leader {...l} />
-                      </div>
+                      <div className={style.leader}></div>
                     </Grid>
                   ))}
                 </Grid>
