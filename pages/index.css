@@ -1,0 +1,78 @@
+@import './fonts.css';
+
+body {
+  min-width: 300px;
+  font-variant-ligatures: none;
+  font-family: 'TT Norms', sans-serif;
+  font-variant: normal;
+  font-feature-settings: 'liga' off;
+  line-height: 1.25;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: antialiased;
+  -o-font-smoothing: antialiased;
+
+  background-color: var(--white);
+  --accent-color: var(--blue);
+  --light-gray: #eeeeee;
+  --dark-gray: #aaaaaa;
+  --gray: #dddddd;
+  --disabled: #aaaaaa;
+  --dark-blue: #002a5b;
+  --blue: #1356a8;
+  --red: #c60c31;
+  --dark-red: #870822;
+  --black: #111111;
+  --light-black: #444444;
+  --white: #fafafa;
+  --orange: #e08b09;
+  --dark-orange: #ae6300;
+  --header-height: 100px;
+}
+
+.page-transition-enter {
+  opacity: 0;
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+a {
+  border: 0;
+  text-decoration: none;
+}
+
+strong {
+  font-weight: 500;
+}
+
+.grecaptcha-badge {
+  visibility: hidden;
+  height: 0 !important;
+}
+
+@keyframes GradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

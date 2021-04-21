@@ -1,0 +1,23 @@
+.root {
+  position: relative;
+}
+
+.subheading {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  color: var(--white);
+  position: absolute;
+  top: -26px;
+}
+
+@media screen and (max-width: 600px) {
+  .subheading {
+    position: static;
+    margin-bottom: 16px;
+  }
+}

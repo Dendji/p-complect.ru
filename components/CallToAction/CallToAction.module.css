@@ -1,0 +1,21 @@
+.root {
+  color: var(--white);
+}
+
+.root .heading {
+  margin-bottom: 18px;
+}
+
+@media screen and (max-width: 600px) {
+  .heading {
+    margin-bottom: 24px;
+  }
+
+  .text {
+    margin-top: 0;
+    margin-bottom: 48px;
+  }
+  .root {
+    background-position: center center;
+  }
+}

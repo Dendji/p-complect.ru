@@ -1,0 +1,44 @@
+.plyr--full-ui input[type='range'] {
+  color: var(--white) !important;
+}
+
+.plyr__control--overlaid {
+  background: var(--blue) !important;
+}
+
+.plyr--video .plyr__control.plyr__tab-focus,
+.plyr--video .plyr__control:hover,
+.plyr--video .plyr__control[aria-expanded='true'] {
+  background: #002a5b !important;
+}
+
+.plyr__control.plyr__tab-focus {
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5) !important;
+}
+
+.plyr .plyr__video-wrapper {
+  background: transparent;
+}
+
+.plyr .plyr--video {
+  background: transparent;
+}
+
+.plyr .plyr video {
+  width: 101%;
+}
+
+.plyr.plyr--stopped .plyr__controls {
+  display: none !important;
+}
+
+.plyr__menu__container
+  .plyr__control[role='menuitemradio'][aria-checked='true']::before {
+  background: var(--blue) !important;
+}
+
+.plyr .plyr--video .plyr__controls {
+  background: var(--black);
+  padding-top: 0;
+  padding-bottom: 0;
+}

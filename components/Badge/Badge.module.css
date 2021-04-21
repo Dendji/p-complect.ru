@@ -1,0 +1,10 @@
+.root {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  display: inline-block;
+  color: var(--white);
+  padding: 6px 12px;
+  background: var(--dark-gray);
+  border-radius: 12px;
+}

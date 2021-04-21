@@ -1,0 +1,23 @@
+.root {
+  padding-top: 180px;
+}
+
+.intro {
+  margin-bottom: 64px;
+}
+
+.headliner {
+  margin-bottom: 48px;
+}
+.articles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px 32px;
+}
+
+@media (max-width: 600px) {
+  .articles {
+    gap: 24px 16px;
+    grid-template-columns: 1fr;
+  }
+}

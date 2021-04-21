@@ -1,0 +1,17 @@
+.root {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.dark {
+  background: var(--light-gray);
+}
+
+@media screen and (max-width: 600px) {
+  .root {
+    padding-top: 60px;
+    padding-bottom: 72px;
+  }
+}

@@ -1,0 +1,26 @@
+.dot {
+  background: #dddddd;
+  height: 12px;
+  width: 12px;
+  display: inline-block;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.dot:not(:last-child) {
+  margin-right: 16px;
+}
+
+.dot.active {
+  background: #aaaaaa;
+}
+
+.dot svg {
+  display: none;
+}
+
+.dots {
+  position: relative;
+  top: 40px;
+  width: 100%;
+}

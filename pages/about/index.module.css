@@ -1,0 +1,49 @@
+.toloka {
+  font-family: TT Norms Pro;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  /* identical to box height */
+
+  font-feature-settings: 'liga' off;
+
+  /* #111111 */
+
+  color: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.toloka .tolokaImage {
+  height: 48px;
+  width: 48px;
+  margin-right: 8px;
+}
+
+.leaders {
+  margin-bottom: 72px;
+}
+
+.root .intro {
+  padding-top: 224px;
+}
+
+@media screen and (max-width: 600px) {
+  .leadersSection {
+    text-align: center;
+  }
+  .leader {
+    margin-bottom: 24px;
+  }
+  .github {
+    margin-bottom: 24px;
+    display: block;
+  }
+
+  .root .intro {
+    padding-top: 120px;
+  }
+}

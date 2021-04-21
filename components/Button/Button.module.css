@@ -1,0 +1,146 @@
+.root {
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  -webkit-appearance: none;
+  border: none;
+  font-family: TT Norms;
+  font-style: normal;
+  font-weight: 500;
+  font-feature-settings: 'liga' off;
+  color: var(--black);
+  background: var(--white);
+  border-radius: 12px;
+  cursor: pointer;
+  display: inline-block;
+  transition: 0.3s ease all;
+  outline: none;
+  position: relative;
+}
+
+.root.withIcon {
+  padding-left: 64px;
+}
+
+.icon {
+  position: absolute;
+  left: 12px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.sizeL {
+  padding: 14px 24px;
+  border-radius: 24px;
+  font-size: 16px;
+}
+
+.blueGradient {
+  background: linear-gradient(250deg, #1356a8 0%, #139eef 100%);
+  color: var(--white);
+  transition: 0.3s ease all;
+  position: relative;
+  overflow: hidden;
+}
+
+.blueGradient:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.3em;
+  background: linear-gradient(0deg, #12498c 0%, #40b9ff 100%);
+  transition: opacity 0.3s ease-out;
+  z-index: 2;
+  opacity: 0;
+}
+
+.blueGradient span {
+  position: relative;
+  z-index: 3;
+}
+
+.blueGradient:hover:after {
+  opacity: 1;
+}
+/* 
+.blueGradient:hover {
+  background: linear-gradient(0, #1356a8 0%, #139eef 120%);
+} */
+
+.sizeM {
+  padding: 8px 24px;
+  border-radius: 24px;
+  font-size: 16px;
+}
+
+.sizeS {
+  padding: 5px 12px;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.white {
+  background: var(--white);
+  color: var(--black);
+}
+
+.blue {
+  background: var(--blue);
+  color: var(--white);
+}
+
+.blue:hover {
+  background: var(--dark-blue);
+}
+
+.white:hover {
+  background: var(--gray);
+}
+
+.black:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.black {
+  background: var(--black);
+  color: var(--white);
+}
+
+.blackOnWhite:hover {
+  background: var(--light-black);
+  color: var(--white);
+}
+
+.blackOnWhite {
+  background: var(--black);
+  color: var(--white);
+}
+
+.blue {
+  background: var(--blue);
+}
+
+.blue:hover {
+  background: var(--dark-blue);
+}
+
+.blue:disabled {
+  background: var(--disabled);
+}
+
+.link {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 36px;
+  color: var(--blue);
+}

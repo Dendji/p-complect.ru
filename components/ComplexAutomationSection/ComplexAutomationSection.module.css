@@ -1,0 +1,18 @@
+.root {
+}
+
+.items {
+  margin-top: 72px;
+}
+
+.text {
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.item {
+  display: grid;
+  grid-template-rows: 128px auto;
+  gap: 24px;
+  align-items: center;
+}

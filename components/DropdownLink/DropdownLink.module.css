@@ -1,0 +1,40 @@
+.root {
+  position: relative;
+  display: inline-block;
+  opacity: 1 !important;
+}
+
+.popup {
+  position: absolute;
+  left: 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  cursor: default;
+}
+.content {
+  padding-top: 16px;
+}
+
+.linkText {
+  margin-right: 6px;
+}
+
+.triangle {
+  transition: 0.2s ease-in-out transform;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #fff transparent transparent transparent;
+}
+
+.dark {
+  border-color: #000 transparent transparent transparent;
+}
+
+.triangleActive {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,28 @@
+.root {
+  font-size: inherit;
+  line-height: inherit;
+  text-align: left;
+}
+
+.red {
+  color: var(--accent-color);
+  font-family: 'RobotoMono', monospace;
+}
+
+.line {
+  white-space: nowrap;
+  text-align: left;
+  font-family: 'RobotoMono', monospace;
+}
+
+.withEars .line {
+  padding-left: 1.5em;
+}
+
+.withEars:before {
+  content: '{';
+}
+
+.withEars:after {
+  content: '}';
+}

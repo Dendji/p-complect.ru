@@ -1,0 +1,9 @@
+.subtitle {
+  color: var(--accent-color);
+  font-size: 10px;
+  line-height: 12px;
+  font-family: TT Norms;
+  font-style: normal;
+  font-weight: bold;
+  text-transform: uppercase;
+}

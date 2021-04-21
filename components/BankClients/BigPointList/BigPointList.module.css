@@ -1,0 +1,33 @@
+.root {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  font-feature-settings: 'liga' off;
+  color: var(--black);
+  list-style-type: none;
+}
+
+.li {
+  position: relative;
+  margin-bottom: 36px;
+  margin-left: 10px;
+}
+
+.circle {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background-color: var(--black);
+  display: block;
+  position: absolute;
+  left: -48px;
+  top: -8px;
+}
+
+@media screen and (max-width: 600px) {
+  .li {
+    margin-left: 10px;
+    margin-bottom: 18px;
+  }
+}

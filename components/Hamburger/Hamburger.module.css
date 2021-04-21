@@ -1,0 +1,113 @@
+.hamburger {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  cursor: pointer;
+  display: block;
+  margin-left: 12px;
+  margin-right: -12px;
+}
+
+.hamburger-line {
+  display: block;
+  background: var(--black);
+  width: 24px;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+.light .hamburger-line {
+  background: var(--white);
+}
+
+.hamburger-line:first-child {
+  transform: translate(-50%, 4px);
+}
+
+.hamburger-line:last-child {
+  transform: translate(-50%, -4px);
+}
+
+.hamburger:not(:hover),
+.hamburger:not(:hover) .hamburger-line {
+  animation-duration: 0s !important;
+}
+
+.enabled .hamburger-line:first-child {
+  animation: topLineOn 0.1s linear forwards;
+}
+.enabled .hamburger-line:last-child {
+  animation: bottomLineOn 0.1s linear forwards;
+}
+
+/* .disabled .hamburger-line:first-child {
+  animation: topLineOff 0.1s linear forwards;
+}
+
+.disabled .hamburger-line:last-child {
+  animation: topLineOff 0.1s linear forwards;
+} */
+
+@keyframes topLineOn {
+  0% {
+    transform: translate(-50%, -4px);
+  }
+
+  50% {
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+}
+
+@keyframes bottomLineOn {
+  0% {
+    transform: translate(-50%, 4px);
+  }
+
+  50% {
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    transform: translate(-50%, 0) rotate(-45deg);
+  }
+}
+
+@keyframes topLineOff {
+  0% {
+    transform: translate(-50%, 0) rotate(45deg);
+  }
+
+  50% {
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    transform: translate(-50%, -4px);
+  }
+}
+
+@keyframes bottomLineOff {
+  0% {
+    transform: translate(-50%, 0) rotate(-45deg);
+  }
+
+  50% {
+    transform: translate(-50%, 0);
+  }
+
+  100% {
+    transform: translate(-50%, 4px);
+  }
+}

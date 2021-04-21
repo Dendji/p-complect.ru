@@ -1,0 +1,12 @@
+.form {
+  width: 100%;
+}
+
+.failure {
+  color: var(--red);
+}
+
+.form .formField {
+  margin-bottom: 4px;
+  width: 100%;
+}

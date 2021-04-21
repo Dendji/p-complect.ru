@@ -1,0 +1,18 @@
+import React from 'react'
+
+export default function CrossIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 14 14"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M1.5 0L0 1.5L5.5 7L0 12.5L1.5 14L7 8.5L12.5 14L14 12.5L8.5 7L14 1.5L12.5 0L7 5.5L1.5 0Z"
+        fill="#AAAAAA"
+      />
+    </svg>
+  )
+}

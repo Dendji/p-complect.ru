@@ -1,0 +1,18 @@
+.root {
+  background-color: var(--dark-orange);
+  background-image: url('/images/OnboardingBG.svg');
+  background-size: auto 100%;
+  background-position: center center;
+  color: var(--white);
+}
+
+@media screen and (max-width: 600px) {
+  .root {
+    height: 400px !important;
+    padding-bottom: 36px;
+  }
+
+  .root br {
+    display: none;
+  }
+}

@@ -1,0 +1,22 @@
+.contact {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 28px;
+  color: #49494a;
+}
+.contact span {
+  margin-right: 8px;
+  color: #8e8e8e;
+}
+
+.blockTitle {
+  font-size: 24px;
+  line-height: 20px;
+  color: #8e8e8e;
+  margin-bottom: 32px;
+  font-weight: normal;
+}
+
+@media screen and (max-width: 600px) {
+}

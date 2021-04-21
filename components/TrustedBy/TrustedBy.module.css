@@ -1,0 +1,28 @@
+.root {
+  background: var(#e5e5e5);
+  padding-top: 90px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 32px;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+}
+
+.slide {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 32px;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.img {
+  max-width: 100%;
+}
+
+@media screen and (max-width: 960px) {
+  .root {
+    padding: 48px 0 80px;
+  }
+}
