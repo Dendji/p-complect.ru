@@ -107,25 +107,22 @@ export default function Layout({ children }: LayoutProps) {
           key="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <meta key="og:image" name="og:image" content={'/images/og-image.jpg'} />
+        {/* <meta key="og:image" name="og:image" content={'/images/og-image.jpg'} /> */}
         <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Dbrain.io" />
-        <meta property="og:title" content="Dbrain.io" />
-        <meta
-          property="og:description"
-          content="Переводим документы в цифровые данные"
-        />
+        <meta property="og:site_name" content="ПрофКомплектация" />
+        <meta property="og:title" content="ПрофКомплектация" />
+        <meta property="og:description" content="Строительные материалы" />
         <meta
           property="description"
           name="Description"
           key="description"
-          content="Автоматизируйте обработку документов с системой распознавания документов Dbrain"
+          content="АСтроительные материалы"
         />
         <meta
           name="Keywords"
           property="keywords"
           key="keywords"
-          content="система, распознавание, документы, система распознавания документов, dbrain, алгоритмы, OCR, распознавание текста, ИИ, роботизация, страхование, подключение клиентов, распознавание паспортов, распознавание водительских удостоверений, распознавание паспорта"
+          content="Строительные материалы"
         />
       </Head>
       <Navigation isOpen={isNavigation} onClose={closeNavigation} navs={Navs} />
