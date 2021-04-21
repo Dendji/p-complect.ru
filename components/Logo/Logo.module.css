@@ -1,0 +1,22 @@
+.root {
+  display: grid;
+  grid-template-columns: 48px auto;
+  gap: 16px;
+  align-items: center;
+  font-style: normal;
+
+  font-weight: normal;
+  color: #49494a;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.root strong {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.light.root {
+  color: #fff;
+}

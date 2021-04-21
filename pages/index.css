@@ -14,7 +14,7 @@ body {
   background-color: var(--white);
   --accent-color: var(--blue);
   --light-gray: #eeeeee;
-  --dark-gray: #aaaaaa;
+  --dark-gray: #555555;
   --gray: #dddddd;
   --disabled: #aaaaaa;
   --dark-blue: #002a5b;
@@ -24,8 +24,8 @@ body {
   --black: #111111;
   --light-black: #444444;
   --white: #fafafa;
-  --orange: #e08b09;
-  --dark-orange: #ae6300;
+  --orange: #faac3d;
+  --dark-orange: #e79116;
   --header-height: 100px;
 }
 
@@ -58,11 +58,6 @@ a {
 
 strong {
   font-weight: 500;
-}
-
-.grecaptcha-badge {
-  visibility: hidden;
-  height: 0 !important;
 }
 
 @keyframes GradientBackground {

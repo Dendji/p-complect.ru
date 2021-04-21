@@ -1,8 +1,12 @@
 .root {
   padding: 60px 0 68px;
   box-sizing: border-box;
-  background: var(--black);
-  color: var(--dark-gray);
+  background: #555;
+  color: #fff;
+}
+
+.logoContainer {
+  margin-bottom: 60px;
 }
 
 .navs {
@@ -14,7 +18,7 @@
 .link {
   font-size: 16px;
   line-height: 24px;
-  color: var(--dark-gray);
+  color: #fff;
 }
 
 .link:hover {

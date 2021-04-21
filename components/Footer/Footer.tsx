@@ -2,9 +2,9 @@ import React from 'react'
 import style from './Footer.module.css'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import Hidden from '@material-ui/core/Hidden'
 import Link from 'next/link'
 import { FooterNavs } from '../../utils/nav'
+import Logo from '../Logo/Logo'
 
 interface FooterProps {
   headingColor?: string
@@ -16,6 +16,13 @@ export default function Footer(props: FooterProps) {
       <Container>
         <Grid container justify="center">
           <Grid item xs={12} sm={12} md={4} lg={4}>
+            <div className={style.logoContainer}>
+              <Link href="/" as="/">
+                <a className={style.logo}>
+                  <Logo light />
+                </a>
+              </Link>
+            </div>
             <div className={style.navs}>
               {FooterNavs.map((nav) => (
                 <Link href={nav.href}>
@@ -27,7 +34,7 @@ export default function Footer(props: FooterProps) {
           <Grid item xs={12} sm={12} md={4} lg={4}>
             <div className={style.column}>
               <div className={style.navs}>
-                <a href="mailto:sales@dbrain.io" className={style.link}>
+                {/* <a href="mailto:sales@dbrain.io" className={style.link}>
                   hello@dbrain.io
                 </a>
                 <a
@@ -37,7 +44,7 @@ export default function Footer(props: FooterProps) {
                   rel="noreferrer"
                 >
                   Москва, ул. Б. Татарская, 35, с. 7-9
-                </a>
+                </a> */}
               </div>
 
               <div className={style.navs}>

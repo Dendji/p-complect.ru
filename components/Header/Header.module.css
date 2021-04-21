@@ -1,44 +1,71 @@
+.grid {
+  grid-template-columns: 300px 1fr 110px 150px 170px;
+  gap: 40px;
+  display: grid;
+}
+
+.hours {
+  font-style: normal;
+  font-weight: normal;
+  color: #49494a;
+  font-size: 12px;
+  line-height: 13px;
+}
+.headerBottom {
+  display: grid;
+  grid-template-columns: 254px auto;
+  gap: 24px;
+  align-items: center;
+}
+
+.hours span {
+  margin-right: 8px;
+  color: #8e8e8e;
+}
+
+.address {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: auto auto;
+}
+
+.call {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 4px;
+}
+
+.tel {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: bold;
+  color: #49494a;
+}
+
+.addressLink {
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #8e8e8e;
+}
+
+.hoursTitle {
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #8e8e8e;
+}
+
 .header {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   padding: 32px 0;
   z-index: 101;
   color: var(--black);
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   box-sizing: border-box;
-}
-
-.dropdownNav {
-  background: #111111;
-  border-radius: 12px;
-  display: flex;
-  flex-direction: column;
-  padding: 32px;
-  left: -32px;
-}
-
-.dropdownPopup {
-  left: -32px !important;
-  width: 260px;
-}
-
-.dropdownA {
-  color: #aaaaaa;
-  font-size: 16px;
-  line-height: 20px;
-  font-weight: 500;
-}
-
-.dropdownA:not(:last-child) {
-  margin-bottom: 16px;
-}
-
-.dropdownA:hover {
-  color: #fafafa;
 }
 
 .headerContainer {
@@ -49,14 +76,13 @@
   left: 0;
   top: 0;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
-.contactUs {
-  width: 100%;
+.mobile {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: space-between;
 }
 
 .fixed {
@@ -70,23 +96,19 @@
   height: 48px;
 }
 
+.nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 .link {
   margin-right: 24px;
   cursor: pointer;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
-  color: var(--black);
   transition: 0.3s ease all;
-}
-
-.light .link {
-  color: var(--white);
-}
-
-.light .activeLink {
-  color: var(--white);
-  opacity: 0.5;
+  font-size: 20px;
+  line-height: 24px;
+  color: #8e8e8e;
+  font-weight: 500;
 }
 
 .fixed .link {

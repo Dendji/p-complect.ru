@@ -1,0 +1,32 @@
+.root {
+  background: var(--orange);
+  box-shadow: -6px 5px 12px rgba(250, 172, 61, 0.21);
+  display: flex;
+  height: 56px;
+  padding: 0 56px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  border-radius: 10px;
+  color: #ffffff;
+  position: relative;
+  transition: 0.3s ease all;
+}
+
+.root:hover {
+  background-color: var(--dark-orange);
+}
+
+.arrow {
+  margin-left: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+.open .arrow {
+  transform: rotate(180deg);
+}

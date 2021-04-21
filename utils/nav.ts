@@ -6,32 +6,58 @@ export interface Nav {
 
 export const FooterNavs: Nav[] = [
   {
-    title: 'О нас',
-    href: '/about',
+    title: 'Теплоизоляция',
+    href: '/',
   },
-
   {
-    title: 'Статьи',
-    href: '/blog',
+    title: 'Гидроизоляция',
+    href: '/',
+  },
+  {
+    title: 'Пленки',
+    href: '/',
+  },
+  {
+    title: 'Огнезащита и техническая изоляция',
+    href: '/',
+  },
+  {
+    title: 'Монтажные пены',
+    href: '/',
+  },
+  {
+    title: 'Все товары',
+    href: '/',
   },
 ]
 
 export const Navs: Nav[] = [
   {
-    title: 'Решения',
-    href: '',
-    submenu: [],
+    title: 'Главная',
+    href: '/',
   },
   {
-    title: 'Статьи',
-    href: '/blog',
+    title: 'Производители',
+    href: '/proizvoditeli',
   },
   {
-    title: 'Вакансии',
-    href: 'https://jobs.dbrain.io/',
+    title: 'Доставка',
+    href: '/dostavka',
   },
   {
-    title: 'О нас',
+    title: 'Наши клиенты',
+    href: '/clients',
+  },
+  // {
+  //   title: 'Статьи',
+  //   href: '/blog',
+  // },
+  {
+    title: 'Контакты',
+    href: '/contact',
+  },
+  {
+    title: 'О компании',
     href: '/about',
   },
 ]
