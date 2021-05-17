@@ -18,13 +18,6 @@ if (
   })
 }
 
-const fontLinkCommon = {
-  rel: 'preload',
-  as: 'font',
-  type: 'font/woff2',
-  crossOrigin: 'anonymous',
-}
-
 class MyDocument extends Document {
   static async getInitialProps(ctx: any) {
     const initialProps = await Document.getInitialProps(ctx)
@@ -37,15 +30,19 @@ class MyDocument extends Document {
         <Head>
           <link rel="shortcut icon" type="image/png" href="/favicon.png" />
           <link
-            {...fontLinkCommon}
+            type="font/woff2"
+            as="font"
+            crossOrigin="anonymous"
             href="/TTNorms/ttnorms-regular-webfont.woff2"
           />
           <link
-            {...fontLinkCommon}
+            as="font"
+            crossOrigin="anonymous"
             href="/TTNorms/ttnorms-bold-webfont.woff2"
           />
           <link
-            {...fontLinkCommon}
+            as="font"
+            crossOrigin="anonymous"
             href="/TTNorms/ttnorms-medium-webfont.woff2"
           />
 
