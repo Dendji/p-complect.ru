@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
-import * as Sentry from '@sentry/browser'
 import { isProduction } from '../utils/utils'
 import YandexMetrika from '../components/YandexMetrika/YandexMetrika'
 

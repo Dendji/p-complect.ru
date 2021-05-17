@@ -7,8 +7,6 @@ import Container from '@material-ui/core/Container'
 import Heading from '../../components/Heading/Heading'
 import Article from '../../components/Article/Article'
 import Text, { TypographyTheme } from '../../components/Typography/Typography'
-import { getAllPostsForHome } from '../../api/api'
-import { Mapper } from '../../utils/mapper'
 
 export type IArticlePreview = Omit<
   IArticle,
