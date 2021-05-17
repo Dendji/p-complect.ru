@@ -1,49 +1,43 @@
-.toloka {
-  font-family: TT Norms Pro;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
-  /* identical to box height */
-
-  font-feature-settings: 'liga' off;
-
-  /* #111111 */
-
-  color: #111111;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex: 1;
+.grid {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 0;
 }
 
-.toloka .tolokaImage {
-  height: 48px;
-  width: 48px;
-  margin-right: 8px;
+.cardContent {
+  padding: 32px;
 }
 
-.leaders {
-  margin-bottom: 72px;
+.conceptionItem {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 64px 1fr;
 }
 
-.root .intro {
-  padding-top: 224px;
+.img {
+  background-size: cover;
 }
 
 @media screen and (max-width: 600px) {
-  .leadersSection {
-    text-align: center;
-  }
-  .leader {
-    margin-bottom: 24px;
-  }
-  .github {
-    margin-bottom: 24px;
-    display: block;
+  .grid {
+    padding: 10px;
+    gap: 32px;
   }
 
-  .root .intro {
-    padding-top: 120px;
+  .cardContent {
+    padding: 0;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .conceptionItem {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: 1fr;
+  }
+
+  .conceptionImage {
+    width: 64px;
   }
 }

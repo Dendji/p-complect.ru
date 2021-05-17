@@ -1,0 +1,45 @@
+.clientsGrid {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 32px;
+}
+
+.object {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 60px;
+}
+
+.cardContent {
+  padding: 32px;
+  padding-left: 0;
+}
+
+.slideImg {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 20px;
+}
+
+.objects {
+  display: grid;
+  grid-template-columns: auto;
+  gap: 32px;
+}
+
+@media screen and (max-width: 600px) {
+  .object {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .cardContent {
+    padding: 16px;
+  }
+  .clientsGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}

@@ -1,3 +1,4 @@
+import classnames from 'classnames'
 import React from 'react'
 import style from './Section.module.css'
 
@@ -21,7 +22,7 @@ export default function Section(props: SectionProps) {
   }
 
   return (
-    <div className={classNames.join(' ')} id={props.id}>
+    <div className={classnames(classNames)} id={props.id}>
       {props.children}
     </div>
   )

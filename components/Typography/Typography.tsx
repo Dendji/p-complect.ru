@@ -33,11 +33,11 @@ export default function Typography({
   }
 
   return (
-    <div
+    <p
       className={classnames(style.root, getClassByTheme(theme), className)}
       style={{ marginBottom: mb, fontSize: size }}
     >
       {children}
-    </div>
+    </p>
   )
 }

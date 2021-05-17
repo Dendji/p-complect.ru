@@ -3,10 +3,7 @@ import { CSSProperties } from 'react'
 import React from 'react'
 import classnames from 'classnames'
 
-export enum HeadingTheme {
-  Default = 'Default',
-  PageHeading = 'PageHeading',
-}
+export type HeadingTheme = 'default' | 'orange'
 export type HeadingSize = 'large' | 'big' | 'medium' | 'small'
 
 export interface HeadingProps {
@@ -46,7 +43,7 @@ export default function Heading({
         className,
         {
           [classes.noMt]: !!noMt,
-          [classes.pageHeading]: theme === HeadingTheme.PageHeading,
+          [classes.orange]: theme === 'orange',
           [classes.noMbMobile]: noMbMobile,
           [classes.center]: center,
         }

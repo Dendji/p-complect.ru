@@ -46,6 +46,15 @@
   overflow: hidden;
 }
 
+.orange {
+  background: var(--orange);
+  color: var(--white);
+}
+
+.orange:hover {
+  background: var(--dark-orange);
+}
+
 .blueGradient:after {
   position: absolute;
   content: '';

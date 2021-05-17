@@ -1,0 +1,32 @@
+.image {
+  max-width: 264px !important;
+  filter: drop-shadow(2px 3px 6px rgba(0, 0, 0, 0.25));
+  position: absolute;
+  right: -195px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.root {
+  height: 600px;
+  position: relative;
+}
+
+.left {
+  width: 40%;
+  background-image: url('/images/tn-bg.jpg');
+  background-size: cover;
+  position: absolute;
+  left: 0;
+  height: 100%;
+}
+
+@media screen and (max-width: 600px) {
+  .heading {
+    font-size: 32px;
+    line-height: 1.4;
+  }
+  .root {
+    height: auto;
+  }
+}

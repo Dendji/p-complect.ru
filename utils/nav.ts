@@ -45,8 +45,8 @@ export const Navs: Nav[] = [
     href: '/',
   },
   {
-    title: 'Наши клиенты',
-    href: '/',
+    title: 'Клиенты и объекты',
+    href: '/portfolio',
   },
   // {
   //   title: 'Статьи',
@@ -58,6 +58,6 @@ export const Navs: Nav[] = [
   },
   {
     title: 'О компании',
-    href: '/',
+    href: '/about',
   },
 ]

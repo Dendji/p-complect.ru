@@ -10,8 +10,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
-
-  background-color: var(--white);
   --accent-color: var(--blue);
   --light-gray: #eeeeee;
   --dark-gray: #555555;

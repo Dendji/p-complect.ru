@@ -1,0 +1,35 @@
+.text {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 48px;
+  color: #111111;
+  margin-bottom: 24px;
+}
+
+.person {
+  display: grid;
+  grid-template-columns: 72px auto;
+  gap: 16px;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.quote {
+  margin-bottom: 24px;
+}
+
+.name {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 32px;
+  color: #111111;
+}
+
+@media screen and (max-width: 600px) {
+  .text {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}

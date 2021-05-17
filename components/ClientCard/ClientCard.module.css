@@ -1,0 +1,36 @@
+.root {
+  background-size: cover;
+  position: relative;
+  height: 250px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    12.85deg,
+    #061d27 1.77%,
+    rgba(255, 255, 255, 0) 88.71%
+  );
+}
+
+.heading {
+  position: absolute;
+  bottom: 30px;
+  background: #faac3d;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  padding: 10px;
+  font-size: 18px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+}

@@ -22,6 +22,7 @@ export enum ButtonTheme {
   BlackOnWhite = 'BlackOnWhite',
   Blue = 'Blue',
   Link = 'Link',
+  Orange = 'Orange',
 }
 
 const getClassNameBySize = (size?: AlphabetSize): string => {
@@ -46,6 +47,8 @@ const getClassNameByTheme = (theme?: ButtonTheme): string => {
       return style.blackOnWhite
     case ButtonTheme.BlueGradient:
       return style.blueGradient
+    case ButtonTheme.Orange:
+      return style.orange
     case ButtonTheme.Link:
       return style.link
     case ButtonTheme.White:
