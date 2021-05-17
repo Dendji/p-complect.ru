@@ -87,11 +87,11 @@ const Blog: NextPage<PageProps> = ({ allPosts }: PageProps) => {
   )
 }
 
-export async function getStaticProps({ preview = false, previewData }: any) {
-  const allPosts = await getAllPostsForHome(previewData)
-  return {
-    props: { preview, allPosts: allPosts.map(Mapper.mapBlogPost) },
-  }
-}
+// export async function getStaticProps({ preview = false, previewData }: any) {
+//   const allPosts = await getAllPostsForHome(previewData)
+//   return {
+//     props: { preview, allPosts: allPosts.map(Mapper.mapBlogPost) },
+//   }
+// }
 
 export default Blog

@@ -113,10 +113,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const allPosts = await getAllPostsWithSlug()
-  return {
-    paths: allPosts?.map(({ node }: any) => `/blog/${node._meta.uid}`) || [],
-    fallback: false,
-  }
-}
+// export const getStaticPaths: GetStaticPaths = async () => {
+//   const allPosts = await getAllPostsWithSlug()
+//   return {
+//     paths: allPosts?.map(({ node }: any) => `/blog/${node._meta.uid}`) || [],
+//     fallback: false,
+//   }
+// }
