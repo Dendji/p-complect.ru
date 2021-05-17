@@ -9,8 +9,6 @@ import Typography from '../../components/Typography/Typography'
 import Section from '../../components/Section/Section'
 import StandardImage from '../../components/StandardImage/StandardImage'
 import RoundedCard from '../../components/RoundedCard/RoundedCard'
-import { useDispatch } from 'react-redux'
-import classnames from 'classnames'
 
 interface PageProps {}
 

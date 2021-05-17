@@ -24,8 +24,8 @@ export default function Footer(props: FooterProps) {
               </Link>
             </div>
             <div className={style.navs}>
-              {FooterNavs.map((nav) => (
-                <Link href={nav.href}>
+              {FooterNavs.map((nav, index) => (
+                <Link href={nav.href} key={index}>
                   <a className={style.link}>{nav.title}</a>
                 </Link>
               ))}

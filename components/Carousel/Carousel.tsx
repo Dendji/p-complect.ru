@@ -1,28 +1,25 @@
 import React from 'react'
 import classnames from 'classnames'
 import style from './Carousel.module.css'
-import Carousel, {
-  CarouselRenderControl,
-  CarouselSlideRenderControlProps,
-} from 'nuka-carousel'
+import Carousel, { CarouselSlideRenderControlProps } from 'nuka-carousel'
 
-const getDots = (
-  count: number,
-  goToSlide: (index: number) => void,
-  currentSlide: number
-) => {
-  const dots = []
-  for (let i = 0; i < count; i++) {
-    dots.push(
-      <div
-        className={classnames(style.dot, i === currentSlide && style.active)}
-        key={i}
-        onClick={() => goToSlide(i)}
-      ></div>
-    )
-  }
-  return dots
-}
+// const getDots = (
+//   count: number,
+//   goToSlide: (index: number) => void,
+//   currentSlide: number
+// ) => {
+//   const dots = []
+//   for (let i = 0; i < count; i++) {
+//     dots.push(
+//       <div
+//         className={classnames(style.dot, i === currentSlide && style.active)}
+//         key={i}
+//         onClick={() => goToSlide(i)}
+//       ></div>
+//     )
+//   }
+//   return dots
+// }
 
 export interface CarouselSlide {
   path: string
