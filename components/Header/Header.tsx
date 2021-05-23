@@ -16,6 +16,7 @@ import { Navs } from '../../utils/nav'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useTheme } from '@material-ui/core'
 import Hamburger from '../Hamburger/Hamburger'
+import { CatalogNavs } from '../../utils/catalog'
 
 export interface HeaderProps {
   isNavigation: boolean
@@ -189,6 +190,7 @@ export default function Header(props: HeaderProps) {
               <CatalogButton
                 buttonProps={{ onClick: () => setCatalog(!isCatalog) }}
                 isOpen={isCatalog}
+                navs={CatalogNavs}
               />
               <nav className={style.nav}>
                 {Navs.map((nav, index) => (

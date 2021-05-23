@@ -13,6 +13,11 @@
 .cardContent {
   padding: 32px;
   padding-left: 0;
+  padding-right: 0;
+}
+
+.content {
+  padding-right: 64px;
 }
 
 .slideImg {

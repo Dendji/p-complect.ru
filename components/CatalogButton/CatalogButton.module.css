@@ -3,9 +3,10 @@
   box-shadow: -6px 5px 12px rgba(250, 172, 61, 0.21);
   display: flex;
   height: 56px;
-  padding: 0 56px;
+  padding: 0 16px;
+  width: 100%;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   border: 0;
   outline: none;
   cursor: pointer;
@@ -16,6 +17,52 @@
   color: #ffffff;
   position: relative;
   transition: 0.3s ease all;
+}
+
+.container {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+}
+
+.text {
+  color: #8e8e8e;
+}
+
+.icon svg {
+  fill: #8e8e8e;
+}
+
+.link {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 20px;
+}
+
+.link:not(:last-child) {
+  margin-bottom: 24px;
+}
+.menu {
+  background-color: var(--light-gray);
+  padding: 32px;
+  width: 100%;
+  position: absolute;
+  top: 56px;
+  z-index: 10;
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+
+.link:hover .icon svg path {
+  fill: var(--orange) !important;
+}
+
+.link:hover .text {
+  color: var(--orange);
+}
+
+.hamburger {
+  transform: scale(0.4);
 }
 
 .root:hover {

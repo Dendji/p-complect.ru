@@ -2,6 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import style from './Carousel.module.css'
 import Carousel, { CarouselSlideRenderControlProps } from 'nuka-carousel'
+import SliderControl from '../SliderControl/SliderControl'
 
 // const getDots = (
 //   count: number,
@@ -34,52 +35,14 @@ export default function CustomizedCarousel({
 }: CustomizedCarouselProps) {
   const renderCenterLeftControls = (props: CarouselSlideRenderControlProps) => {
     return (
-      <div
-        className={classnames(style.control, style.left)}
-        onClick={props.previousSlide}
-      >
-        <svg
-          width="14"
-          height="23"
-          viewBox="0 0 14 23"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M12 21L2 11.5L12 2"
-            stroke="#8E8E8E"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </div>
+      <SliderControl onClick={props.previousSlide} className={style.left} />
     )
   }
   const renderCenterRightControls = (
     props: CarouselSlideRenderControlProps
   ) => {
     return (
-      <div
-        className={classnames(style.control, style.right)}
-        onClick={props.nextSlide}
-      >
-        <svg
-          width="14"
-          height="23"
-          viewBox="0 0 14 23"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M2 21L12 11.5L2 2"
-            stroke="#8E8E8E"
-            stroke-width="3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          />
-        </svg>
-      </div>
+      <SliderControl onClick={props.nextSlide} className={style.right} right />
     )
   }
   return (

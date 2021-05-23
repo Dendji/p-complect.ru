@@ -5,6 +5,7 @@ interface Props {
   image: string
   heading: string
 }
+
 export default function ClientCard({ heading, image }: Props) {
   return (
     <div className={style.root} style={{ backgroundImage: `url(${image})` }}>

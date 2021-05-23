@@ -6,55 +6,50 @@ import Container from '@material-ui/core/Container'
 import Heading from '../../components/Heading/Heading'
 import Typography from '../../components/Typography/Typography'
 import Section from '../../components/Section/Section'
-import RoundedCard from '../../components/RoundedCard/RoundedCard'
 import ClientCard from '../../components/ClientCard/ClientCard'
-import Carousel from '../../components/Carousel/Carousel'
+import Objects from '../../components/Objects/Objects'
 
 interface PageProps {}
 
-const clients = [
+const tabs = [
   {
     image: '/images/client1.jpg',
-    heading: 'Жилые коплексы',
+    text: 'Жилые коплексы',
+    value: 'live',
   },
   {
     image: '/images/client2.jpg',
-    heading: 'Торговые центры',
+    text: 'Торговые центры',
+    value: 'commercial',
   },
   {
     image: '/images/client3.jpg',
-    heading: 'Школы',
+    text: 'Школы',
+    value: 'school',
   },
   {
     image: '/images/client4.jpg',
-    heading: 'Детские сады',
+    text: 'Детские сады',
+    value: 'kindergarten',
   },
   {
     image: '/images/client5.jpg',
-    heading: 'Тендеры',
+    text: 'Тендеры',
+    value: 'tenders',
   },
 ]
 
 const objects = [
   {
-    images: ['/images/client1.jpg', '/images/client2.jpg'],
-    heading: 'Объект №1',
-    content: (
-      <>
-        <Typography>
-          Завершены работы по монтажу вентилируемого фасада по адресу г. Люберцы
-          Ул. Юбилейная 5а ЖЭУ №1
-        </Typography>
-        <Typography>
-          При монтаже вентилируемого фасада, использовали материалы: утепление
-          Baswool ВЕНТ ФАСАД т. 100 мм, керамогранит Эстима.
-        </Typography>
-      </>
-    ),
-  },
-  {
-    images: ['/images/client1.jpg', '/images/client2.jpg'],
-    heading: 'Объект №2',
+    category: 'live',
+    images: [
+      '/images/objects/IMG_4978.JPG',
+      '/images/objects/IMG_4979.JPG',
+      '/images/objects/IMG_5365.JPG',
+      '/images/objects/IMG_5366.JPG',
+      '/images/objects/IMG_5367.JPG',
+    ],
+    heading: 'г. Люберцы ул. Попова 19',
     content: (
       <>
         <Typography>
@@ -70,9 +65,26 @@ const objects = [
       </>
     ),
   },
+  {
+    category: 'tenders',
+    images: ['/images/objects/IMG_5348.jpeg', '/images/objects/IMG_5347.jpeg'],
+    heading: 'г. Люберцы Ул. Юбилейная 5а ЖЭУ №1',
+    content: (
+      <>
+        <Typography>
+          Завершены работы по монтажу вентилируемого фасада по адресу г. Люберцы
+          Ул. Юбилейная 5а ЖЭУ №1
+        </Typography>
+        <Typography>
+          При монтаже вентилируемого фасада, использовали материалы: утепление
+          Baswool ВЕНТ ФАСАД т. 100 мм, керамогранит Эстима.
+        </Typography>
+      </>
+    ),
+  },
 ]
 
-const About: NextPage<PageProps> = ({}: PageProps) => {
+const Portfolio: NextPage<PageProps> = ({}: PageProps) => {
   return (
     <>
       <Head>
@@ -86,41 +98,19 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
       </Head>
       <Section>
         <Container>
-          <Heading weight={2}>С кем мы работаем</Heading>
+          <Heading weight={2} noMt>
+            С кем мы работаем
+          </Heading>
           <div className={style.clientsGrid}>
-            {clients.map((item) => (
-              <ClientCard {...item} />
+            {tabs.map((item, index) => (
+              <ClientCard key={index} image={item.image} heading={item.text} />
             ))}
           </div>
         </Container>
       </Section>
-      <Section>
-        <Container>
-          <div className={style.objects}>
-            {objects.map((o) => (
-              <RoundedCard>
-                <div className={style.object}>
-                  <Carousel>
-                    <img
-                      src="/images/distributor.jpg"
-                      className={style.slideImg}
-                    ></img>
-                    <img src="/images/distributor.jpg"></img>
-                  </Carousel>
-                  <div className={style.cardContent}>
-                    <Heading weight={1} size="medium" theme="orange" noMt>
-                      {o.heading}
-                    </Heading>
-                    <div className={style.content}>{o.content}</div>
-                  </div>
-                </div>
-              </RoundedCard>
-            ))}
-          </div>
-        </Container>
-      </Section>
+      <Objects tabs={tabs} objects={objects} />
     </>
   )
 }
 
-export default About
+export default Portfolio

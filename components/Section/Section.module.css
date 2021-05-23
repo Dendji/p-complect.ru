@@ -9,6 +9,13 @@
   background: var(--light-gray);
 }
 
+@media screen and (max-width: 1200px) {
+  .root {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .root {
     padding-top: 60px;

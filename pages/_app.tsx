@@ -8,6 +8,8 @@ import { ThemeProvider } from '@material-ui/core'
 import App, { AppContext, AppProps } from 'next/app'
 import { useStore } from '../store/store'
 import { Provider } from 'react-redux'
+import 'swiper/swiper-bundle.css'
+import 'swiper/components/navigation/navigation.scss'
 
 export const theme = createMuiTheme({
   spacing: (factor) => [4, 8, 16, 36, 64][factor],

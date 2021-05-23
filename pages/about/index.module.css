@@ -19,6 +19,14 @@
 }
 
 @media screen and (max-width: 600px) {
+  .root .conceptionImage {
+    max-width: 100px;
+  }
+
+  .h2 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
   .grid {
     padding: 10px;
     gap: 32px;

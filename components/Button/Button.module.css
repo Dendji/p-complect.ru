@@ -49,10 +49,23 @@
 .orange {
   background: var(--orange);
   color: var(--white);
+  border: 2px solid transparent;
 }
 
 .orange:hover {
   background: var(--dark-orange);
+}
+
+.orangeBordered {
+  border-color: var(--orange);
+  color: var(--black);
+  border: 2px solid var(--orange);
+}
+
+.orangeBordered:hover {
+  background-color: var(--orange);
+  border-color: var(--dark-orange);
+  color: var(--white);
 }
 
 .blueGradient:after {

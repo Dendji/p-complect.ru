@@ -28,29 +28,19 @@
   width: 100%;
 }
 
-.control {
-  background-color: #f3f3f3;
-  opacity: 0.6;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  text-align: center;
-  cursor: pointer;
-  position: relative;
-  z-index: 5;
-  transition: 0.1s ease-in-out all;
-}
-
-.control.left {
+.left {
   transform: translateX(-50%);
 }
-.control.right {
-  transform: translateX(50%);
+
+.right {
+  transform: rotate(180deg) translateX(-50%) !important;
 }
 
-.control:hover {
-  opacity: 1;
+@media screen and (max-width: 600px) {
+  .left {
+    transform: translateX(10%);
+  }
+  .right {
+    transform: rotate(180deg) translateX(10%) !important;
+  }
 }
