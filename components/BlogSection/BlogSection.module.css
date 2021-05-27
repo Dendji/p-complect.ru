@@ -1,0 +1,17 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 54px;
+}
+
+.buttons {
+  text-align: right;
+  margin-top: 64px;
+}
+
+@media screen and (max-width: 600px) {
+  .buttons {
+    text-align: center;
+    margin-top: 24px;
+  }
+}

@@ -6,9 +6,60 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Section from '../components/Section/Section'
 import DistributorSection from '../components/DistributorSection/DistributorSection'
+import BrandsSection from '../components/BrandsSection/BrandsSection'
+import BlogSection from '../components/BlogSection/BlogSection'
+import AuthorizedSection from '../components/AuthorizedSection/AuthorizedSection'
+import FeedbackSection from '../components/FeedbackSection/FeedbackSection'
+import faker from 'faker'
 
 interface PageProps {}
 
+const articles = [
+  {
+    heading: 'Мастики как использовать',
+    description:
+      'Если вы сейчас ищете простой и надежный способ справиться с подобными проблемами, сделайте ремонт кровли битумной мастикой.',
+    img: '/images/blog/blog1.jpg',
+  },
+  {
+    heading: 'Монтаж теплоизоляции',
+    description:
+      'Если остались материалы от ремонта, их можно превратить в настольную игру — не скучную плоскую карту.',
+    img: '/images/blog/blog2.jpg',
+  },
+  {
+    heading: 'Труба зовет',
+    description: 'Что нужно знать о монтаже системы водоснабжения',
+    img: '/images/blog/blog3.jpg',
+  },
+]
+
+const reviews = [
+  {
+    img: faker.image.avatar(),
+    content:
+      'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Которое, которой своих? Продолжил реторический это ipsum курсивных, пустился заманивший буквенных одна встретил составитель щеке коварный рекламных рыбного страна всеми lorem своего напоивший! Языкового алфавит, по всей что грамматики образ моей!',
+    link: 'https://yandex.ru/maps/org/profkomplektatsiya/80970129270/',
+  },
+  {
+    img: faker.image.avatar(),
+    content:
+      'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Которое, которой своих? Продолжил реторический это ipsum курсивных, пустился заманивший буквенных одна встретил составитель щеке коварный рекламных рыбного страна всеми lorem своего напоивший! Языкового алфавит, по всей что грамматики образ моей!',
+    link: 'https://yandex.ru/maps/org/profkomplektatsiya/80970129270/',
+  },
+  {
+    img: faker.image.avatar(),
+    content:
+      'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Которое, которой своих? Продолжил реторический это ipsum курсивных, пустился заманивший буквенных одна встретил составитель щеке коварный рекламных рыбного страна всеми lorem своего напоивший! Языкового алфавит, по всей что грамматики образ моей!',
+    link: 'https://yandex.ru/maps/org/profkomplektatsiya/80970129270/',
+  },
+  {
+    img: faker.image.avatar(),
+    content:
+      'Далеко-далеко за словесными горами в стране гласных и согласных живут рыбные тексты. Которое, которой своих? Продолжил реторический это ipsum курсивных, пустился заманивший буквенных одна встретил составитель щеке коварный рекламных рыбного страна всеми lorem своего напоивший! Языкового алфавит, по всей что грамматики образ моей!',
+    link: 'https://yandex.ru/maps/org/profkomplektatsiya/80970129270/',
+  },
+]
 const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
   return (
     <div className={style.root}>
@@ -29,7 +80,11 @@ const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
           </Grid>
         </Container>
       </Section>
+      <FeedbackSection items={reviews} />
       <DistributorSection />
+      <BrandsSection />
+      <BlogSection items={articles} />
+      <AuthorizedSection />
     </div>
   )
 }

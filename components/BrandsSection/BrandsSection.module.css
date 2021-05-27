@@ -1,0 +1,16 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 54px;
+}
+
+@media screen and (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .heading {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+}

@@ -15,8 +15,20 @@
   margin-bottom: 40px;
 }
 
+.controls {
+  display: grid;
+  grid-template-columns: 60px 60px;
+  gap: 16px;
+}
 .quote {
   margin-bottom: 24px;
+}
+
+.avatar {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .name {

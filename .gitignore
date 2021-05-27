@@ -96,3 +96,6 @@ zsdoc/data
 .next
 out
 .env.local
+
+
+*.code-workspace
