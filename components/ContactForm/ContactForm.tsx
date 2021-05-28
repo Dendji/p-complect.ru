@@ -8,7 +8,6 @@ import Utils from '../../utils/utils'
 import InputMask from 'react-input-mask'
 import * as Sentry from '@sentry/browser'
 import ContactFormFooter from '../ContactFormFooter/ContactFormFooter'
-import { FormApi } from '../../api/formApi'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 export interface ContactFormProps {
@@ -55,21 +54,19 @@ export default function ContactForm(props: ContactFormProps) {
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true)
           try {
-            const res = await FormApi.sendForm(values)
-
-            if (res.status === 200) {
-              setSubmitError(false)
-              setSubmitted(true)
-              if (props.onSubmit) {
-                props.onSubmit()
-              }
-            } else {
-              setSubmitError(true)
-            }
-
-            if (res.data.status === 'failure') {
-              console.error(`ERRORS: ${res.data.errors}`)
-            }
+            // const res = await FormApi.sendForm(values)
+            // if (res.status === 200) {
+            //   setSubmitError(false)
+            //   setSubmitted(true)
+            //   if (props.onSubmit) {
+            //     props.onSubmit()
+            //   }
+            // } else {
+            //   setSubmitError(true)
+            // }
+            // if (res.data.status === 'failure') {
+            //   console.error(`ERRORS: ${res.data.errors}`)
+            // }
           } catch (e) {
             Sentry.captureException(`Form submit error ${JSON.stringify(e)}`)
             setSubmitError(true)
@@ -192,14 +189,6 @@ export default function ContactForm(props: ContactFormProps) {
                   isSubmitting={isSubmitting}
                   submitTheme={props.submitTheme}
                 />
-              )}
-              {isSubmitError && (
-                <Grid item className={style.formField}>
-                  <div className={style.failure}>
-                    Что-то пошло не так, пожалуйста, свяжитесь с нами –
-                    hello@dbrain.io :)
-                  </div>
-                </Grid>
               )}
             </Grid>
           </form>

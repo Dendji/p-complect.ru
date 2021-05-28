@@ -4,7 +4,6 @@ import React, { useLayoutEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import Opening from '../../components/HomePage/Opening/Opening'
-import HomeCaseSection from '../../components/HomeCaseSection/HomeCaseSection'
 import UnifiedSystemSection from '../../components/UnifiedSystemSection/UnifiedSystemSection'
 import style from './index.module.css'
 import CallToAction from '../../components/CallToAction/CallToAction'
@@ -41,12 +40,11 @@ const Home: NextPage<PageProps> = (props: PageProps) => {
           property="description"
           name="Description"
           key="description"
-          content="Dbrain ✅ позволяет распознавать паспорт РФ (и дргуих стран), водительские права, СТС и другие документы. Безопасное распознавание документов без передачи персональных данных. Автоматизируйте обработку документов"
+          content=""
         />
       </Head>
       <div className="home">
         <Opening onRequestDemo={openContactUs} />
-        <HomeCaseSection />
         <UnifiedSystemSection />
         <ComplexAutomationSection />
         <CallToAction className={style.form} />

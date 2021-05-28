@@ -44,16 +44,14 @@ const Blog: NextPage<PageProps> = ({ allPosts }: PageProps) => {
   return (
     <div className={style.root}>
       <Head>
-        <title>
-          Статьи Dbrain про распознавание паспорта и других видов документов
-        </title>
+        <title>Блог ПрофКомплектация</title>
         <meta
           property="description"
           name="Description"
           key="description"
-          content="Dbrain ✅ позволяет распознавать документы через API. Безопасное распознавание текста документа без передачи персональных данных. Автоматизируйте обработку документов"
+          content=""
         />
-        <meta property="og:title" content="Распознавание документов в Dbrain" />
+        <meta property="og:title" content="" />
         <meta property="og:type" content="page" />
       </Head>
       <Container>

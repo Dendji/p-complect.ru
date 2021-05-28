@@ -33,19 +33,7 @@ export default function Footer(props: FooterProps) {
           </Grid>
           <Grid item xs={12} sm={12} md={4} lg={4}>
             <div className={style.column}>
-              <div className={style.navs}>
-                {/* <a href="mailto:sales@dbrain.io" className={style.link}>
-                  hello@dbrain.io
-                </a>
-                <a
-                  href="https://yandex.ru/maps/-/CCUYF2sFwB"
-                  className={style.link}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  Москва, ул. Б. Татарская, 35, с. 7-9
-                </a> */}
-              </div>
+              <div className={style.navs}></div>
 
               <div className={style.navs}>
                 <Link href="/privacy-policy">

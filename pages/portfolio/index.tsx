@@ -93,7 +93,7 @@ const Portfolio: NextPage<PageProps> = ({}: PageProps) => {
           property="description"
           name="Description"
           key="description"
-          content="Dbrain ✅ позволяет распознать документы любого качества. ⭐ Безопасное распознавание документов без передачи персональных данных. ✅ Автоматизируйте обработку документов"
+          content=""
         />
       </Head>
       <Section>
