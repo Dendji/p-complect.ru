@@ -7,11 +7,9 @@ import Heading from '../Heading/Heading'
 import RoundedCard from '../RoundedCard/RoundedCard'
 import StandardImage from '../StandardImage/StandardImage'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SliderControl from '../SliderControl/SliderControl'
 import SwiperCore, { SwiperOptions } from 'swiper'
 import SwiperControls from '../SwiperControls/SwiperControls'
 import Button, { ButtonTheme } from '../Button/Button'
-import { AlphabetSize } from '../../@types/common'
 
 export interface IReview {
   img: string

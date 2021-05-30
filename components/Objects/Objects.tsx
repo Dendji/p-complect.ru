@@ -1,5 +1,5 @@
 import { Container, useMediaQuery, useTheme } from '@material-ui/core'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Button, { ButtonTheme } from '../Button/Button'
 import Heading from '../Heading/Heading'
 import RoundedCard from '../RoundedCard/RoundedCard'

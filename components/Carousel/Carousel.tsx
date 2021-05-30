@@ -1,5 +1,4 @@
 import React from 'react'
-import classnames from 'classnames'
 import style from './Carousel.module.css'
 import Carousel, { CarouselSlideRenderControlProps } from 'nuka-carousel'
 import SliderControl from '../SliderControl/SliderControl'

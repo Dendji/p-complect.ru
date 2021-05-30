@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import style from './Suggestions.module.css'
 import ProductCard, { IProduct } from '../ProductCard/ProductCard'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import SliderControl from '../SliderControl/SliderControl'
 import SwiperCore, { SwiperOptions } from 'swiper'
 import SwiperControls from '../SwiperControls/SwiperControls'
 

@@ -2,13 +2,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Slider from '@material-ui/core/Slider'
 import { withStyles } from '@material-ui/core/styles'
 import Tooltip from '@material-ui/core/Tooltip'
-import classnames from 'classnames'
-import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import Badge from '../Badge/Badge'
-import Heading from '../Heading/Heading'
-import Paragraph from '../Paragraph/Paragraph'
-import StandardImage from '../StandardImage/StandardImage'
 import style from './CatalogSidebar.module.css'
 import Button, { ButtonTheme } from '../Button/Button'
 import { AlphabetSize } from '../../@types/common'
@@ -70,7 +64,7 @@ const categories = [
 ]
 
 export default function CatalogSidebar({}: Props) {
-  const router = useRouter()
+  // const router = useRouter()
 
   const [price, setPrice] = useState<number | number[]>([5000, 80000])
   const [filterBy, setFilterBy] = useState<string[]>([])

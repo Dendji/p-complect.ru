@@ -3,7 +3,6 @@ import style from './AuthorizedSection.module.css'
 import Heading from '../Heading/Heading'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import Typography from '../Typography/Typography'
 import StandardImage from '../StandardImage/StandardImage'
 import Section from '../Section/Section'
 const items = [

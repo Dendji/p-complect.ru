@@ -1,12 +1,6 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
-import style from './index.module.css'
-import Container from '@material-ui/core/Container'
-import Heading from '../../components/Heading/Heading'
-import Section from '../../components/Section/Section'
-import ClientCard from '../../components/ClientCard/ClientCard'
-import Objects from '../../components/Objects/Objects'
 import Shipping from '../../components/Shipping/Shipping'
 
 interface PageProps {}

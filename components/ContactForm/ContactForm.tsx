@@ -19,8 +19,8 @@ export interface ContactFormProps {
 }
 
 export default function ContactForm(props: ContactFormProps) {
-  const [isSubmitError, setSubmitError] = useState<boolean>(false)
-  const [isSubmitted, setSubmitted] = useState<boolean>(false)
+  const [, setSubmitError] = useState<boolean>(false)
+  const [isSubmitted] = useState<boolean>(false)
 
   const FormSchema = Yup.object().shape({
     name: Yup.string().max(50, 'Слишком длинный'),

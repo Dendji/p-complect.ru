@@ -1,5 +1,5 @@
-import { Container, useMediaQuery, useTheme } from '@material-ui/core'
-import React, { useRef, useState } from 'react'
+import { Container } from '@material-ui/core'
+import React, { useState } from 'react'
 import Heading from '../Heading/Heading'
 import Section from '../Section/Section'
 import style from './Shipping.module.css'
@@ -19,10 +19,10 @@ interface Props {
   }[]
 }
 export default function Shipping({ items }: Props) {
-  const refGrid = useRef<HTMLDivElement | null>(null)
-  const theme = useTheme()
+  // const refGrid = useRef<HTMLDivElement | null>(null)
+  // const theme = useTheme()
 
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+  // const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null)
 
   const params: SwiperOptions = {

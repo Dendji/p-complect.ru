@@ -1,7 +1,6 @@
 import React from 'react'
 import style from './ProductCard.module.css'
 import StandardImage from '../StandardImage/StandardImage'
-import { theme } from '../../pages/_app'
 import Button, { ButtonTheme } from '../Button/Button'
 import RoundedCard from '../RoundedCard/RoundedCard'
 import classnames from 'classnames'

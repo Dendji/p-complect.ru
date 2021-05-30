@@ -1,7 +1,5 @@
-import Slide from '@material-ui/core/Slide'
 import Zoom from '@material-ui/core/Zoom'
 import classnames from 'classnames'
-import Link from 'next/link'
 import React from 'react'
 import style from './CatalogButton.module.css'
 import Hamburger from './Hamburger'

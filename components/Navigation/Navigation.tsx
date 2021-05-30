@@ -3,7 +3,7 @@ import style from './Navigation.module.css'
 import Link from 'next/link'
 import { Nav } from '../../utils/nav'
 import Drawer from '@material-ui/core/Drawer'
-import { createStyles, makeStyles, Theme, useTheme } from '@material-ui/core'
+import { createStyles, makeStyles, Theme } from '@material-ui/core'
 import AddressWidget from '../AddressWidget/AddressWidget'
 import HoursWidget from '../HoursWidget/HoursWidget'
 import CallWidget from '../CallWidget/CallWidget'
@@ -65,7 +65,7 @@ export default function Navigation({ isOpen, navs, onClose }: NavigationProps) {
   const container =
     typeof window !== 'undefined' ? () => window.document.body : undefined
   const classes = useStyles()
-  const theme = useTheme()
+  // const theme = useTheme()
 
   return (
     <Drawer
