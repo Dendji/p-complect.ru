@@ -8,8 +8,8 @@
   margin-bottom: 36px;
 }
 
-@media screen and (max-width: 600px) {
-  .paragraph {
-    font-size: 18px;
+@media screen and (max-width: 640px) {
+  .root:not(:last-child) {
+    margin-bottom: 16px;
   }
 }

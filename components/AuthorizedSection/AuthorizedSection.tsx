@@ -7,15 +7,15 @@ import Typography from '../Typography/Typography'
 import StandardImage from '../StandardImage/StandardImage'
 import Section from '../Section/Section'
 const items = [
-  { url: '#', image: '/images/tenders/roseltorg.png' },
-  { url: '#', image: '/images/tenders/portal.png' },
-  { url: '#', image: '/images/tenders/rts.png' },
+  { url: '#', image: '/images/tenders/roseltorg.svg' },
+  { url: '#', image: '/images/tenders/portal.svg' },
+  { url: '#', image: '/images/tenders/rts.svg' },
 ]
 
 interface Props {}
 export default function AuthorizedSection(props: Props) {
   return (
-    <Section className={style.root}>
+    <Section className={style.root} dark>
       <Container>
         <Grid container justify="center">
           <Grid item xs={12} md={8}>
@@ -27,8 +27,8 @@ export default function AuthorizedSection(props: Props) {
         <Grid container justify="center">
           <Grid item xs={12} md={8}>
             <div className={style.grid}>
-              {items.map((b) => (
-                <StandardImage src={b.image} />
+              {items.map((b, idx) => (
+                <StandardImage src={b.image} key={idx} />
               ))}
             </div>
           </Grid>

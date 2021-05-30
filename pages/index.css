@@ -1,7 +1,9 @@
 @import './fonts.css';
+@import '~react-image-gallery/styles/css/image-gallery.css';
 
 body {
-  min-width: 300px;
+  min-width: 320px;
+  box-sizing: border-box;
   font-variant-ligatures: none;
   font-family: 'TT Norms', sans-serif;
   font-variant: normal;
@@ -19,11 +21,12 @@ body {
   --blue: #1356a8;
   --red: #c60c31;
   --dark-red: #870822;
-  --black: #111111;
+  --black: #49494a;
   --light-black: #444444;
   --white: #fafafa;
   --orange: #faac3d;
   --dark-orange: #e79116;
+  --green: #7edc7c;
   --header-height: 100px;
 }
 

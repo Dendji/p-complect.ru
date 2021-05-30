@@ -7,14 +7,14 @@ import Heading from '../Heading/Heading'
 import Paragraph from '../Paragraph/Paragraph'
 import StandardImage from '../StandardImage/StandardImage'
 import style from './Article.module.css'
+import Button, { ButtonTheme } from '../Button/Button'
 
 interface Props extends IArticlePreview {
   headliner?: boolean
 }
 
 export default function Article({
-  slug,
-  badge,
+  url,
   title,
   cover,
   preview,
@@ -23,7 +23,7 @@ export default function Article({
   const router = useRouter()
 
   const handleClick = () => {
-    router.push(`/blog/${slug}`)
+    router.push(`${url}`)
   }
 
   return (
@@ -33,13 +33,18 @@ export default function Article({
       })}
       onClick={handleClick}
     >
-      <StandardImage src={cover} />
+      <div
+        style={{ backgroundImage: `url(${cover})` }}
+        className={style.cover}
+      />
       <div className={style.text}>
-        <Badge>{badge}</Badge>
         <Heading weight={2} className={style.heading}>
           {title}
         </Heading>
         <Paragraph size={20}>{preview}</Paragraph>
+        <Button theme={ButtonTheme.OrangeBordered} className={style.button}>
+          Читать
+        </Button>
       </div>
     </article>
   )

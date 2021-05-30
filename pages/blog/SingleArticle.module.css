@@ -2,7 +2,7 @@
   padding-top: 184px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .h2 {
     font-size: 24px;
     line-height: 30px;

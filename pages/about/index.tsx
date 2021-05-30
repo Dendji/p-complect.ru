@@ -4,11 +4,13 @@ import React from 'react'
 import style from './index.module.css'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import Heading from '../../components/Heading/Heading'
 import Typography from '../../components/Typography/Typography'
 import Section from '../../components/Section/Section'
 import StandardImage from '../../components/StandardImage/StandardImage'
 import RoundedCard from '../../components/RoundedCard/RoundedCard'
+import Heading from '../../components/Heading/Heading'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import useTheme from '@material-ui/core/styles/useTheme'
 
 interface PageProps {}
 
@@ -72,6 +74,10 @@ const conceptionItems = [
   },
 ]
 const About: NextPage<PageProps> = ({}: PageProps) => {
+  const theme = useTheme()
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
   return (
     <>
       <Head>
@@ -85,7 +91,8 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
       </Head>
       <Section>
         <Container>
-          <RoundedCard>
+          <Heading weight={2}>О компании</Heading>
+          <RoundedCard className={style.card}>
             <div className={style.grid}>
               <div
                 className={style.img}
@@ -94,7 +101,13 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
                 }}
               ></div>
               <div className={style.cardContent}>
-                <Heading weight={1} size="medium" theme="orange" noMt>
+                <Heading
+                  weight={1}
+                  size="medium"
+                  theme="orange"
+                  noMt
+                  className={style.h1}
+                >
                   ООО «ПРОФКОМПЛЕКТАЦИЯ»
                 </Heading>
                 <p>
@@ -146,7 +159,7 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
       </Section>
       <Section>
         <Container>
-          <RoundedCard>
+          <RoundedCard className={style.card}>
             <div className={style.grid}>
               <div className={style.cardContent}>
                 <Heading
@@ -158,6 +171,9 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
                 >
                   Вы занимаетесь строительством профессионально?
                 </Heading>
+                {isMobile && (
+                  <StandardImage src="/images/distributor.jpg"></StandardImage>
+                )}
                 <p>
                   Мы — дистрибьютор, который сможет воплотить ваши самые смелые
                   идеи быстро, выгодно и с комфортом. Компания
@@ -167,7 +183,9 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
                   клиентами.
                 </p>
               </div>
-              <StandardImage src="/images/distributor.jpg"></StandardImage>
+              {!isMobile && (
+                <StandardImage src="/images/distributor.jpg"></StandardImage>
+              )}
             </div>
           </RoundedCard>
         </Container>

@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './Button.module.css'
 import { AlphabetSize } from '../../@types/common'
+import classnames from 'classnames'
 
 export interface ButtonProps
   extends React.DetailedHTMLProps<
@@ -34,7 +35,7 @@ const getClassNameBySize = (size?: AlphabetSize): string => {
       return style.sizeL
     case AlphabetSize.M:
     default:
-      return style.sizeM
+      return style.sizeL
   }
 }
 
@@ -67,12 +68,13 @@ export default function Button(props: ButtonProps) {
     getClassNameBySize(size),
     getClassNameByTheme(theme),
     ...(icon ? [style.withIcon] : []),
+    p.className,
   ]
 
   if (disabled) classNames.push(style.disabled)
 
   return (
-    <button {...p} className={classNames.join(' ')} onClick={props.onClick}>
+    <button {...p} className={classnames(classNames)} onClick={props.onClick}>
       {props.icon && <div className={style.icon}>{props.icon}</div>}
       <span>{props.children}</span>
     </button>

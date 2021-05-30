@@ -1,0 +1,5 @@
+.controls {
+  display: grid;
+  grid-template-columns: 60px 60px;
+  gap: 16px;
+}

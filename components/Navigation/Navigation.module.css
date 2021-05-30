@@ -1,17 +1,5 @@
 .root {
-  background: var(--black);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  overflow-y: scroll;
-  z-index: 100;
-  padding: 24px;
+  padding: 24px 16px;
 }
 
 .close {
@@ -25,22 +13,28 @@
   text-align: left;
   font-size: 20px;
   line-height: 24px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
+  color: var(--black);
 }
 
 .link:nth-last-child(2) {
   margin-top: 64px;
 }
 
-.nav {
-  margin-top: 220px;
-  max-height: 100%;
-  overflow-y: scroll;
-  padding-bottom: 64px;
+.link a {
+  color: var(--black);
 }
 
-.link a {
-  color: var(--white);
+.nav {
+  border-bottom: 1px solid var(--gray);
+  margin-bottom: 24px;
+}
+
+.widgets {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
+  margin-bottom: 24px;
 }
 
 @media screen and (max-height: 660px) {

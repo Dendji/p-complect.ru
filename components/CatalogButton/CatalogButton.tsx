@@ -1,3 +1,5 @@
+import Slide from '@material-ui/core/Slide'
+import Zoom from '@material-ui/core/Zoom'
 import classnames from 'classnames'
 import Link from 'next/link'
 import React from 'react'
@@ -32,7 +34,7 @@ export default function CatalogButton({ isOpen, buttonProps, navs }: Props) {
           <Hamburger open={isOpen} />
         </span>
       </button>
-      {isOpen && (
+      <Zoom in={isOpen} mountOnEnter unmountOnExit>
         <div className={style.menu}>
           {navs.map((n) => (
             <a href={n.url} className={style.link}>
@@ -41,7 +43,7 @@ export default function CatalogButton({ isOpen, buttonProps, navs }: Props) {
             </a>
           ))}
         </div>
-      )}
+      </Zoom>
     </div>
   )
 }

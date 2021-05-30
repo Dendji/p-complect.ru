@@ -5,10 +5,16 @@ import style from './index.module.css'
 import Container from '@material-ui/core/Container'
 import Heading from '../../components/Heading/Heading'
 import Section from '../../components/Section/Section'
+import CatalogSidebar from '../../components/CatalogSidebar/CatalogSidebar'
+import ProductCard from '../../components/ProductCard/ProductCard'
+import { mockProducts } from '../../mocks/products'
+import Hidden from '@material-ui/core/Hidden'
 
 interface PageProps {}
 
 const Catalog: NextPage<PageProps> = ({}: PageProps) => {
+  const handleProductClick = (id: string) => {}
+
   return (
     <>
       <Head>
@@ -22,10 +28,24 @@ const Catalog: NextPage<PageProps> = ({}: PageProps) => {
       </Head>
       <Section>
         <Container>
-          <Heading weight={2} noMt>
-            С кем мы работаем
+          <Heading weight={2} noMt className={style.heading}>
+            Гидроизоляция
           </Heading>
-          <div className={style.clientsGrid}></div>
+          <main className={style.layout}>
+            <Hidden smDown>
+              <CatalogSidebar />
+            </Hidden>
+            <div className={style.products}>
+              {mockProducts.map((p) => (
+                <ProductCard
+                  small
+                  key={p.id}
+                  product={p}
+                  onProductClick={() => handleProductClick(p.id)}
+                />
+              ))}
+            </div>
+          </main>
         </Container>
       </Section>
     </>

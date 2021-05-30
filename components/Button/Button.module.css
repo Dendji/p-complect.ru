@@ -161,8 +161,8 @@
   border: none;
   background: transparent;
   padding: 0;
-  font-size: 24px;
+  /* font-size: 24px; */
   font-weight: 500;
-  line-height: 36px;
+  /* line-height: 36px; */
   color: var(--blue);
 }

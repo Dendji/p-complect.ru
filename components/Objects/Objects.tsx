@@ -22,6 +22,7 @@ interface Props {
   }[]
 }
 export default function Objects({ tabs, objects }: Props) {
+  tabs = [{ value: '', text: 'Все', image: '' }, ...tabs]
   const [activeTab, setActiveTab] = useState(tabs[0].value)
 
   const refGrid = useRef<HTMLDivElement | null>(null)
@@ -57,7 +58,7 @@ export default function Objects({ tabs, objects }: Props) {
   )
 
   const filteredObjects = objects
-    .filter((o) => o.category === activeTab)
+    .filter((o) => (activeTab.length ? o.category === activeTab : true))
     .map((o, index) => (
       <RoundedCard key={index}>
         <div className={style.object}>

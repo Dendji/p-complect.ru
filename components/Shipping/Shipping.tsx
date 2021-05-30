@@ -55,7 +55,7 @@ export default function Shipping({ items }: Props) {
   }
 
   return (
-    <Section>
+    <Section className={style.root}>
       <Container>
         <Heading weight={2} noMt>
           Доставка и оплата

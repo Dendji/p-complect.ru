@@ -1,0 +1,20 @@
+.address {
+  display: grid;
+  gap: 4px;
+  grid-template-columns: auto auto;
+}
+.addressLink {
+  font-size: 14px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #8e8e8e;
+}
+
+@media screen and (max-width: 640px) {
+  .addressLink {
+    font-size: 18px;
+    line-height: 1.2;
+    grid-template-columns: 1fr 1fr;
+  }
+}

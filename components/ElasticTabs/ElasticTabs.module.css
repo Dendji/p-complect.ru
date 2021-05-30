@@ -1,0 +1,27 @@
+.root {
+  border: 1px solid #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 100px;
+  height: 50px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  line-height: 21px;
+  color: var(--dark-grey);
+  cursor: pointer;
+}
+
+.active {
+  border: 1px solid var(--orange);
+  box-sizing: border-box;
+  border-radius: 100px;
+  color: var(--black);
+  font-weight: 500;
+}

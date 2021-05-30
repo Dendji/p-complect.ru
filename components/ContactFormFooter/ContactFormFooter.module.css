@@ -19,7 +19,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .submitPolicy {
     font-size: 10px;
     line-height: 14px;

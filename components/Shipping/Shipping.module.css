@@ -1,3 +1,5 @@
+.root {
+}
 .item {
   max-width: 440px;
 }
@@ -5,12 +7,10 @@
 .card {
   padding: 30px 24px;
   box-sizing: border-box;
+  margin-bottom: 24px !important;
 }
 
 .slider {
-  /* max-width: 800px; */
-  /* margin: 0 auto; */
-  /* overflow: visible; */
 }
 
 .controls {
@@ -39,7 +39,7 @@
   margin-bottom: 24px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .content p {
     font-size: 18px;
   }

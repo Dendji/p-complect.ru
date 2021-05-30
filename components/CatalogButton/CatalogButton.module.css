@@ -42,6 +42,7 @@
 .link:not(:last-child) {
   margin-bottom: 24px;
 }
+
 .menu {
   background-color: var(--light-gray);
   padding: 32px;
@@ -51,6 +52,8 @@
   z-index: 10;
   border-radius: 10px;
   box-sizing: border-box;
+  /* border: 1px solid #000; */
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.07);
 }
 
 .link:hover .icon svg path {

@@ -38,20 +38,20 @@ export const Navs: Nav[] = [
   },
   {
     title: 'Производители',
-    href: '/',
+    href: '/brands',
   },
   {
     title: 'Доставка',
-    href: '/',
+    href: '/shipping-and-payments',
   },
   {
     title: 'Клиенты и объекты',
     href: '/portfolio',
   },
-  // {
-  //   title: 'Статьи',
-  //   href: '/blog',
-  // },
+  {
+    title: 'Статьи',
+    href: '/blog',
+  },
   {
     title: 'Контакты',
     href: '/contact',

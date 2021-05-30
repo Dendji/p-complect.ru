@@ -1,0 +1,21 @@
+.call {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 4px;
+}
+
+.tel {
+  font-size: 14px;
+  line-height: 24px;
+  font-weight: bold;
+  color: #49494a;
+}
+
+@media screen and (max-width: 640px) {
+  .call {
+    grid-template-columns: auto auto;
+  }
+  .tel {
+    font-size: 18px;
+  }
+}

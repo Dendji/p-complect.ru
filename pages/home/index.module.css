@@ -6,7 +6,7 @@
   background-position: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .form {
     background-image: url('/images/form_mobile.svg');
   }

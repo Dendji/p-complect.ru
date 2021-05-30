@@ -1,9 +1,9 @@
 .text {
   font-style: normal;
   font-weight: normal;
-  font-size: 40px;
-  line-height: 48px;
-  color: #111111;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--black);
   margin-bottom: 24px;
 }
 
@@ -13,6 +13,10 @@
   gap: 16px;
   align-items: center;
   margin-bottom: 40px;
+}
+
+.link {
+  font-size: 16px !important;
 }
 
 .controls {
@@ -39,9 +43,24 @@
   color: #111111;
 }
 
-@media screen and (max-width: 600px) {
+.review {
+  padding: 48px 24px;
+  display: grid;
+  grid-template-columns: 100px auto;
+  gap: 32px;
+}
+
+.slide {
+  width: 300px;
+}
+
+@media screen and (max-width: 640px) {
+  .review {
+    padding: 16px;
+    grid-template-columns: 1fr;
+  }
+
   .text {
-    font-size: 24px;
-    line-height: 32px;
+    font-size: 16px;
   }
 }

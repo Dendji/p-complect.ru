@@ -4,58 +4,11 @@
   display: grid;
 }
 
-.hours {
-  font-style: normal;
-  font-weight: normal;
-  color: #49494a;
-  font-size: 12px;
-  line-height: 13px;
-}
 .headerBottom {
   display: grid;
   grid-template-columns: 254px auto;
   gap: 24px;
   align-items: center;
-}
-
-.hours span {
-  margin-right: 8px;
-  color: #8e8e8e;
-}
-
-.address {
-  display: grid;
-  gap: 4px;
-  grid-template-columns: auto auto;
-}
-
-.call {
-  display: grid;
-  grid-template-columns: auto auto;
-  gap: 4px;
-}
-
-.tel {
-  font-size: 14px;
-  line-height: 24px;
-  font-weight: bold;
-  color: #49494a;
-}
-
-.addressLink {
-  font-size: 14px;
-  line-height: 16px;
-  display: flex;
-  align-items: center;
-  color: #8e8e8e;
-}
-
-.hoursTitle {
-  font-size: 14px;
-  line-height: 20px;
-  display: flex;
-  align-items: center;
-  color: #8e8e8e;
 }
 
 .header {
@@ -78,14 +31,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
 .mobile {
   display: flex;
   justify-content: space-between;
+  padding: 8px 0;
+  width: 100%;
 }
 
-.fixed {
+.sticky {
   position: fixed;
   top: 0;
   left: 0;
@@ -93,7 +49,7 @@
   z-index: 101;
   box-shadow: 0px 1px 20px 0px rgba(0, 0, 0, 0.07);
   background-color: var(--white);
-  height: 64px;
+  padding: 8px 0;
 }
 
 .nav {
@@ -101,6 +57,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
 .link {
   margin-right: 24px;
   cursor: pointer;
@@ -111,30 +68,37 @@
   font-weight: 500;
 }
 
-.fixed .link {
+.sticky .link {
   color: var(--black);
 }
 
 .activeLink {
   cursor: default;
   color: #aaa;
+  position: relative;
+}
+.activeLink:after {
+  content: '';
+  height: 4px;
+  background-color: var(--orange);
+  left: 0;
+  border-radius: 100px;
+  width: 100%;
+  position: absolute;
+  bottom: -10px;
 }
 
 .link:hover {
   opacity: 0.5;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .header {
-    padding: 20px 0;
-  }
-
-  .navigationOpen {
-    box-shadow: none;
-    background: var(--black);
+    padding: 0;
   }
 
   .headerContainer {
     margin-bottom: 0;
+    padding: 0 16px;
   }
 }

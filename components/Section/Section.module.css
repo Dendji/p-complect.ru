@@ -6,7 +6,7 @@
 }
 
 .dark {
-  background: var(--light-gray);
+  background: #f2f2f2;
 }
 
 @media screen and (max-width: 1200px) {
@@ -16,7 +16,7 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .root {
     padding-top: 60px;
     padding-bottom: 72px;

@@ -15,7 +15,7 @@
   top: -26px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .subheading {
     position: static;
     margin-bottom: 16px;

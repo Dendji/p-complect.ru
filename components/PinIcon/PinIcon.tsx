@@ -1,10 +1,14 @@
 import React from 'react'
 
-export default function PinIcon() {
+interface Props {
+  isMobile?: boolean
+}
+
+export default function PinIcon({ isMobile }: Props) {
   return (
     <svg
-      width="16"
-      height="22"
+      width={isMobile ? 46 : 16}
+      height={isMobile ? 46 : 22}
       viewBox="0 0 16 22"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

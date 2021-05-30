@@ -13,6 +13,11 @@ import 'swiper/components/navigation/navigation.scss'
 
 export const theme = createMuiTheme({
   spacing: (factor) => [4, 8, 16, 36, 64][factor],
+  palette: {
+    primary: {
+      main: '#FAAC3D',
+    },
+  },
 })
 
 const MyApp = ({ Component, pageProps, router }: AppProps) => {

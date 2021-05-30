@@ -9,6 +9,9 @@ import StandardImage from '../StandardImage/StandardImage'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SliderControl from '../SliderControl/SliderControl'
 import SwiperCore, { SwiperOptions } from 'swiper'
+import SwiperControls from '../SwiperControls/SwiperControls'
+import Button, { ButtonTheme } from '../Button/Button'
+import { AlphabetSize } from '../../@types/common'
 
 export interface IReview {
   img: string
@@ -38,10 +41,10 @@ export default function FeedbackSection({ items }: Props) {
         freeMode: true,
       },
       1024: {
-        slidesOffsetBefore: 200,
+        // slidesOffsetBefore: 200,
         spaceBetween: 40,
         centeredSlides: false,
-        slidesPerView: 2.5,
+        slidesPerView: 2,
       },
     },
   }
@@ -51,13 +54,10 @@ export default function FeedbackSection({ items }: Props) {
         <Grid container spacing={3}>
           <Grid item xs={12} sm={12} md={3} lg={3}>
             <Heading weight={2}>Отзывы клиентов</Heading>
-            <div className={style.controls}>
-              <SliderControl onClick={() => swiperInstance?.slidePrev()} />
-              <SliderControl
-                onClick={() => swiperInstance?.slideNext()}
-                right
-              />
-            </div>
+            <SwiperControls
+              onLeftClick={() => swiperInstance?.slidePrev()}
+              onRightClick={() => swiperInstance?.slideNext()}
+            />
           </Grid>
           <Grid item xs={12} sm={12} md={9} lg={9}>
             <Swiper
@@ -76,7 +76,20 @@ export default function FeedbackSection({ items }: Props) {
                       <div className={style.avatar}>
                         {r.img && r.img.length && <StandardImage src={r.img} />}
                       </div>
-                      <div className={style.content}>{r.content}</div>
+                      <div className={style.content}>
+                        <div className={style.text}>{r.content}</div>
+                        <a
+                          href="https://yandex.ru/maps/org/profkomplektatsiya/80970129270/reviews/"
+                          target="_blank"
+                        >
+                          <Button
+                            theme={ButtonTheme.Link}
+                            className={style.link}
+                          >
+                            Смотреть отзыв в Яндекс
+                          </Button>
+                        </a>
+                      </div>
                     </div>
                   </RoundedCard>
                 </SwiperSlide>

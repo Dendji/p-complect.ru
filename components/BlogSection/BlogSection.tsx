@@ -37,7 +37,7 @@ export default function BlogSection({ items }: Props) {
             className={style.slider}
           >
             {items.map((a, index) => (
-              <SwiperSlide className={style.slide} tag="span">
+              <SwiperSlide className={style.slide} tag="span" key={index}>
                 <BlogItem {...a} />
               </SwiperSlide>
             ))}

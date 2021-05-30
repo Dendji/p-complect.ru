@@ -3,7 +3,7 @@ import { CatalogNav } from '../components/CatalogButton/CatalogButton'
 export const CatalogNavs: CatalogNav[] = [
   {
     text: 'Теплоизоляция',
-    url: '/',
+    url: '/catalog',
     icon: (
       <svg
         width="13"
@@ -29,7 +29,7 @@ export const CatalogNavs: CatalogNav[] = [
   },
   {
     text: 'Гидроизоляция',
-    url: '/',
+    url: '/catalog',
     icon: (
       <svg
         width="16"
@@ -47,7 +47,7 @@ export const CatalogNavs: CatalogNav[] = [
   },
   {
     text: 'Пленки',
-    url: '/',
+    url: '/catalog',
     icon: (
       <svg
         width="20"
@@ -80,7 +80,7 @@ export const CatalogNavs: CatalogNav[] = [
   },
   {
     text: 'Монтажные пены',
-    url: '/',
+    url: '/catalog',
     icon: (
       <svg
         width="9"

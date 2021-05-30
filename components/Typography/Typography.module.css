@@ -13,7 +13,7 @@
   color: var(--blue);
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .github {
     margin-bottom: 24px;
   }

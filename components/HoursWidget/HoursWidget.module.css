@@ -1,0 +1,32 @@
+.hours span {
+  margin-right: 8px;
+  color: #8e8e8e;
+}
+
+.hours {
+  font-style: normal;
+  font-weight: normal;
+  color: #49494a;
+  font-size: 12px;
+  line-height: 13px;
+}
+
+.hoursTitle {
+  font-size: 14px;
+  line-height: 20px;
+  display: flex;
+  align-items: center;
+  color: #8e8e8e;
+}
+
+@media screen and (max-width: 640px) {
+  .hoursTitle {
+    font-size: 18px;
+    margin-bottom: 4px;
+  }
+
+  .hours {
+    font-size: 18px;
+    line-height: 1;
+  }
+}

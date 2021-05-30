@@ -7,40 +7,24 @@ import Container from '@material-ui/core/Container'
 import Heading from '../../components/Heading/Heading'
 import Article from '../../components/Article/Article'
 import Text, { TypographyTheme } from '../../components/Typography/Typography'
+import { mockPosts } from '../../mocks/blog'
 
-export type IArticlePreview = Omit<
-  IArticle,
-  'body' | 'page_title' | 'description'
->
+export type IArticlePreview = Omit<IArticle, 'body'>
 
 export interface IArticle {
-  slug: string
+  id: string
+  url: string
   cover: string
-  badge: string
   title: string
   preview: string
-  page_title: string
-  description: string
-  body?: {
-    text: string
-    url?: string
-    type:
-      | 'paragraph'
-      | 'list-item'
-      | 'heading1'
-      | 'heading2'
-      | 'heading3'
-      | 'heading4'
-      | 'heading5'
-      | 'image'
-  }[]
+  body?: React.ReactNode
 }
 
 interface PageProps {
-  allPosts: IArticlePreview[]
+  posts: IArticlePreview[]
 }
 
-const Blog: NextPage<PageProps> = ({ allPosts }: PageProps) => {
+const Blog: NextPage<PageProps> = ({ posts }: PageProps) => {
   return (
     <div className={style.root}>
       <Head>
@@ -60,20 +44,20 @@ const Blog: NextPage<PageProps> = ({ allPosts }: PageProps) => {
             <div className={style.intro}>
               <Heading weight={1}>Статьи</Heading>
               <Text theme={TypographyTheme.Standard} size={24}>
-                Здесь мы делимся кейсами, обновлениями продукта и другой
-                полезной информацией
+                Здесь мы делимся новостями нашей компании и знаниями из
+                строительной сферы
               </Text>
             </div>
           </Grid>
         </Grid>
         <div className={style.headliner}>
-          {allPosts.slice(0, 1).map((a) => (
+          {posts.slice(0, 1).map((a) => (
             <Article {...a} headliner />
           ))}
         </div>
-        {allPosts.length > 1 && (
+        {posts.length > 1 && (
           <div className={style.articles}>
-            {allPosts.slice(1).map((a) => (
+            {posts.slice(1).map((a) => (
               <Article {...a} />
             ))}
           </div>
@@ -83,11 +67,11 @@ const Blog: NextPage<PageProps> = ({ allPosts }: PageProps) => {
   )
 }
 
-// export async function getStaticProps({ preview = false, previewData }: any) {
-//   const allPosts = await getAllPostsForHome(previewData)
-//   return {
-//     props: { preview, allPosts: allPosts.map(Mapper.mapBlogPost) },
-//   }
-// }
+export async function getStaticProps({ preview = false, previewData }: any) {
+  // const allPosts = await getAllPostsForHome(previewData)
+  return {
+    props: { posts: mockPosts },
+  }
+}
 
 export default Blog

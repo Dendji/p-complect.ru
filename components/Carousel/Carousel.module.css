@@ -36,7 +36,7 @@
   transform: rotate(180deg) translateX(-50%) !important;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .left {
     transform: translateX(10%);
   }

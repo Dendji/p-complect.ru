@@ -40,7 +40,7 @@
   margin-bottom: 64px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .title {
     font-weight: 500;
     font-size: 32px;
