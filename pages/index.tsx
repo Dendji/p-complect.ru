@@ -19,18 +19,18 @@ const articles = [
     heading: 'Мастики как использовать',
     description:
       'Если вы сейчас ищете простой и надежный способ справиться с подобными проблемами, сделайте ремонт кровли битумной мастикой.',
-    img: '/images/blog/blog1.jpg',
+    img: '/images/blog/blog1.jpeg',
   },
   {
     heading: 'Монтаж теплоизоляции',
     description:
       'Если остались материалы от ремонта, их можно превратить в настольную игру — не скучную плоскую карту.',
-    img: '/images/blog/blog2.jpg',
+    img: '/images/blog/blog2.jpeg',
   },
   {
     heading: 'Труба зовет',
     description: 'Что нужно знать о монтаже системы водоснабжения',
-    img: '/images/blog/blog3.jpg',
+    img: '/images/blog/blog3.jpeg',
   },
 ]
 
