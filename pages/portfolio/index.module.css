@@ -4,6 +4,9 @@
   gap: 32px;
 }
 
+.section {
+  padding-top: 0 !important;
+}
 .object {
   display: grid;
   grid-template-columns: 50% 50%;

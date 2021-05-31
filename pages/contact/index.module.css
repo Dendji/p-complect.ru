@@ -6,6 +6,10 @@
   color: #49494a;
 }
 
+.root .intro {
+  padding-top: 0;
+}
+
 .contact span {
   margin-right: 8px;
   color: #8e8e8e;

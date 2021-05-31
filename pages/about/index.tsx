@@ -89,7 +89,7 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
           content=""
         />
       </Head>
-      <Section>
+      <Section className={style.section}>
         <Container>
           <Heading weight={2}>О компании</Heading>
           <RoundedCard className={style.card}>

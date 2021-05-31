@@ -57,9 +57,7 @@ export default function Shipping({ items }: Props) {
   return (
     <Section className={style.root}>
       <Container>
-        <Heading weight={2} noMt>
-          Доставка и оплата
-        </Heading>
+        <Heading weight={2}>Доставка и оплата</Heading>
         <div className={style.controls}>
           <SliderControl onClick={() => swiperInstance?.slideNext()} />
           <SliderControl onClick={() => swiperInstance?.slidePrev()} right />

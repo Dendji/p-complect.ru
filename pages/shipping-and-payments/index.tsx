@@ -93,7 +93,6 @@ const ShippingAndPayments: NextPage<PageProps> = ({}: PageProps) => {
           content="Доставка и оплата"
         />
       </Head>
-
       <Shipping items={objects} />
     </>
   )

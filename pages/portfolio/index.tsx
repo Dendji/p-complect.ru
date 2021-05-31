@@ -58,7 +58,7 @@ const objects = [
     content: (
       <>
         <Typography>
-          Начали монтаж вентилируемого фасада г. Люберцы ул. Попова 19 по
+          Начали монтаж вентилируемого фасада г. Люберцы, ул. Попова 19, по
           програме ФКР
         </Typography>
         <Typography>
@@ -77,8 +77,8 @@ const objects = [
     content: (
       <>
         <Typography>
-          Завершены работы по монтажу вентилируемого фасада по адресу г. Люберцы
-          Ул. Юбилейная 5а ЖЭУ №1
+          Завершены работы по монтажу вентилируемого фасада по адресу г.
+          Люберцы, ул. Юбилейная 5а, ЖЭУ №1
         </Typography>
         <Typography>
           При монтаже вентилируемого фасада, использовали материалы: утепление
@@ -101,11 +101,9 @@ const Portfolio: NextPage<PageProps> = ({}: PageProps) => {
           content=""
         />
       </Head>
-      <Section>
+      <Section className={style.section}>
         <Container>
-          <Heading weight={2} noMt>
-            С кем мы работаем
-          </Heading>
+          <Heading weight={2}>С кем мы работаем</Heading>
           <div className={style.clientsGrid}>
             {tabs.map((item, index) => (
               <ClientCard key={index} image={item.image} heading={item.text} />
