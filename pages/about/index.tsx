@@ -10,6 +10,7 @@ import RoundedCard from '../../components/RoundedCard/RoundedCard'
 import Heading from '../../components/Heading/Heading'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import useTheme from '@material-ui/core/styles/useTheme'
+import ImageLightbox from '../../components/ImageLightbox/ImageLightbox'
 
 interface PageProps {}
 
@@ -132,8 +133,19 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
           </RoundedCard>
         </Container>
       </Section>
-
       <Section dark>
+        <Container>
+          <Heading weight={2} className={style.h2}>
+            Благодарственные письма
+          </Heading>
+          <Grid container spacing={3}>
+            <Grid item xs={6} md={3}>
+              <ImageLightbox src={'/images/letters/IMG_0001.jpg'} />
+            </Grid>
+          </Grid>
+        </Container>
+      </Section>
+      <Section>
         <Container>
           <Heading weight={2}>О концепции</Heading>
           <Grid container spacing={3}>
@@ -156,7 +168,8 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
           </Grid>
         </Container>
       </Section>
-      <Section>
+
+      <Section dark>
         <Container>
           <RoundedCard className={style.card}>
             <div className={style.grid}>

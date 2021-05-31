@@ -105,7 +105,18 @@ export default function Objects({ tabs, objects }: Props) {
         </Swiper>
       )}
       <Container>
-        {!isMobile && <div className={style.tabs}>{renderTabs()}</div>}
+        {!isMobile && (
+          <div
+            className={style.tabs}
+            style={
+              {
+                // gridTemplateColumns: `repeat(auto-fill, 186px)`,
+              }
+            }
+          >
+            {renderTabs()}
+          </div>
+        )}
         <div className={style.objects} ref={refGrid}>
           {filteredObjects.length ? (
             filteredObjects

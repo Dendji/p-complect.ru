@@ -36,7 +36,7 @@ export default function Footer(props: FooterProps) {
               <div className={style.navs}></div>
 
               <div className={style.navs}>
-                <Link href="/privacy-policy">
+                <Link href="/policy">
                   <a className={style.policyLink}>
                     Политика конфиденциальности
                   </a>

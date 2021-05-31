@@ -37,6 +37,11 @@ const tabs = [
     text: 'Тендеры',
     value: 'tenders',
   },
+  {
+    image: '/images/client6.jpeg',
+    text: 'Промышленно-производственные предприятия (ГРЭС, ТЭЦ)',
+    value: 'industry',
+  },
 ]
 
 const objects = [
