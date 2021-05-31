@@ -171,7 +171,7 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
                   Вы занимаетесь строительством профессионально?
                 </Heading>
                 {isMobile && (
-                  <StandardImage src="/images/distributor.jpg"></StandardImage>
+                  <StandardImage src="/images/distributor.jpeg"></StandardImage>
                 )}
                 <p>
                   Мы — дистрибьютор, который сможет воплотить ваши самые смелые
@@ -183,7 +183,7 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
                 </p>
               </div>
               {!isMobile && (
-                <StandardImage src="/images/distributor.jpg"></StandardImage>
+                <StandardImage src="/images/distributor.jpeg"></StandardImage>
               )}
             </div>
           </RoundedCard>

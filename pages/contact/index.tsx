@@ -8,6 +8,7 @@ import Heading from '../../components/Heading/Heading'
 import Section from '../../components/Section/Section'
 // import { useDispatch } from 'react-redux'
 import RLink from '../../components/RLink/RLink'
+import YandexMap from '../../components/YandexMap/YandexMap'
 
 interface PageProps {}
 
@@ -38,12 +39,13 @@ const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
             <Grid item xs={12} md={12}>
               <Heading weight={2}>Связаться</Heading>
               <div className="map">
-                <script
+                {/* <script
                   type="text/javascript"
                   charSet="utf-8"
                   async
                   src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A497006510b013bd96dcbd24921b9cb3f5ab5c7841beefa016a5b9c26b2bfd322&amp;width=100%25&amp;height=537&amp;lang=ru_RU&amp;scroll=false"
-                ></script>
+                ></script> */}
+                <YandexMap src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A497006510b013bd96dcbd24921b9cb3f5ab5c7841beefa016a5b9c26b2bfd322&amp;width=100%25&amp;height=537&amp;lang=ru_RU&amp;scroll=false" />
               </div>
             </Grid>
           </Grid>

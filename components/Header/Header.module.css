@@ -9,6 +9,7 @@
   grid-template-columns: 254px auto;
   gap: 24px;
   align-items: center;
+  width: 100%;
 }
 
 .header {
@@ -92,13 +93,34 @@
   opacity: 0.5;
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 1200px) {
+  .link {
+    font-size: 18px;
+  }
+  .headerBottom {
+    grid-template-columns: 200px auto;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .link {
+    font-size: 16px;
+  }
+  .headerBottom {
+    grid-template-columns: 160px auto;
+  }
+}
+
+@media screen and (max-width: 960px) {
   .header {
     padding: 0;
   }
 
-  .headerContainer {
+  /* .headerContainer {
     margin-bottom: 0;
     padding: 0 16px;
+  } */
+  .headerBottom {
+    grid-template-columns: 1fr;
   }
 }

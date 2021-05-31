@@ -5,7 +5,7 @@ export const mockPosts: IArticlePreview[] = [
   {
     id: faker.datatype.uuid(),
     url: '/blog/123',
-    cover: '/images/blog/blog1.jpg',
+    cover: '/images/blog/blog1.jpeg',
     title: 'Монтаж теплоизоляции',
     preview:
       'Недвижимость — это товар. И вам, как продавцу, важно заключить выгодную сделку. Эксперты рассказали, как с помощью хоум-стейджинга дороже и быстрее сдать в аренду или продать квартиру',
@@ -13,7 +13,7 @@ export const mockPosts: IArticlePreview[] = [
   {
     id: faker.datatype.uuid(),
     url: '/blog/123',
-    cover: '/images/blog/blog.jpg',
+    cover: '/images/blog/blog2.jpeg',
     title: 'Мастики как использовать',
     preview:
       'Если вы сейчас ищете простой и надежный способ справиться с подобными проблемами, сделайте ремонт кровли битумной мастикой.',
@@ -21,7 +21,7 @@ export const mockPosts: IArticlePreview[] = [
   {
     id: faker.datatype.uuid(),
     url: '/blog/123',
-    cover: '/images/blog/blog2.jpg',
+    cover: '/images/blog/blog2.jpeg',
     title: 'Труба зовет',
     preview:
       'Многие считают, что единственная возможность представить квартиру в выгодном свете — дорогостоящий капитальный ремонт. Это оправдано, если жилплощадь непригодна для проживания. ',
@@ -29,7 +29,7 @@ export const mockPosts: IArticlePreview[] = [
   {
     id: faker.datatype.uuid(),
     url: '/blog/123',
-    cover: '/images/blog/blog3.jpg',
+    cover: '/images/blog/blog3.jpeg',
     title: 'Гидроизоляция помещений',
     preview:
       'Многие считают, что единственная возможность представить квартиру в выгодном свете — дорогостоящий капитальный ремонт. Это оправдано, если жилплощадь непригодна для проживания.     ',
@@ -37,7 +37,7 @@ export const mockPosts: IArticlePreview[] = [
   {
     id: faker.datatype.uuid(),
     url: '/blog/123',
-    cover: '/images/blog/blog4.jpg',
+    cover: '/images/blog/blog4.jpeg',
     title: 'Мастики  как использовать',
     preview:
       'Если вы сейчас ищете простой и надежный способ справиться с подобными проблемами, сделайте ремонт кровли битумной мастикой.',

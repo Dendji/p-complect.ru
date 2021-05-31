@@ -77,6 +77,12 @@
   transition: all 0.3s ease-in-out;
 }
 
-.open .arrow {
+.arrowOpen {
   transform: rotate(180deg);
+}
+
+@media screen and (max-width: 1100px) {
+  .root {
+    font-size: 18px;
+  }
 }

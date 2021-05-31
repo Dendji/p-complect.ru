@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "p-complect",
+      "name": "p-complect.ru",
       "cwd": "./",
       "script": "yarn",
       "args": "start"

@@ -48,10 +48,10 @@ export const Navs: Nav[] = [
     title: 'Клиенты и объекты',
     href: '/portfolio',
   },
-  {
-    title: 'Статьи',
-    href: '/blog',
-  },
+  // {
+  //   title: 'Статьи',
+  //   href: '/blog',
+  // },
   {
     title: 'Контакты',
     href: '/contact',

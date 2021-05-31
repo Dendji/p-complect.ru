@@ -94,6 +94,8 @@ export default function Objects({ tabs, objects }: Props) {
           slidesOffsetBefore={20}
           spaceBetween={10}
           className={style.slider}
+          preloadImages={false}
+          lazy
         >
           {tabs.map((t, index) => (
             <SwiperSlide className={style.slide} tag="span">

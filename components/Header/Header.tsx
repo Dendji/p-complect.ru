@@ -42,19 +42,22 @@ export default function Header(props: HeaderProps) {
   const router: NextRouter = useRouter()
 
   const { isNavigation, onToggleNavigation } = props
-  console.log(
-    '🚀 ~ file: Header.tsx ~ line 66 ~ renderSecondHeader ~ router.pathname',
-    router.pathname
-  )
 
   const renderSecondHeader = () => {
     return (
-      <section>
-        <Container>
+      <Container>
+        <div className={style.headerBottom}>
           {isMobile ? (
-            <div></div>
+            <div>
+              <CatalogButton
+                buttonProps={{ onClick: () => setCatalog(!isCatalog) }}
+                isOpen={isCatalog}
+                navs={CatalogNavs}
+                isMobile={isMobile}
+              />
+            </div>
           ) : (
-            <div className={style.headerBottom}>
+            <>
               <CatalogButton
                 buttonProps={{ onClick: () => setCatalog(!isCatalog) }}
                 isOpen={isCatalog}
@@ -76,26 +79,30 @@ export default function Header(props: HeaderProps) {
                   </Link>
                 ))}
               </nav>
-            </div>
+            </>
           )}
-        </Container>
-      </section>
+        </div>
+      </Container>
     )
   }
 
   const renderMobileHeader = () => (
-    <div className={style.mobile}>
-      <Link href="/" as="/">
-        <a className={style.logo}>
-          <Logo />
-        </a>
-      </Link>
-      <Hamburger
-        isOpen={isNavigation}
-        onClick={onToggleNavigation}
-        isLight={false}
-      />
-    </div>
+    <>
+      <Container>
+        <div className={style.mobile}>
+          <Link href="/" as="/">
+            <a className={style.logo}>
+              <Logo />
+            </a>
+          </Link>
+          <Hamburger
+            isOpen={isNavigation}
+            onClick={onToggleNavigation}
+            isLight={false}
+          />
+        </div>
+      </Container>
+    </>
   )
 
   const renderHeader = (sticky: boolean) => (
