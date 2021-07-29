@@ -13,7 +13,7 @@ export interface ButtonProps
   size?: AlphabetSize
   icon?: React.ReactNode
   disabled?: boolean
-  onClick?: () => void
+  onClick?: (e: React.SyntheticEvent) => void
 }
 
 export enum ButtonTheme {

@@ -14,7 +14,7 @@
 }
 
 .image {
-  height: 180px;
+  margin-bottom: 16px;
 }
 
 .subheading {
@@ -25,6 +25,13 @@
   font-size: 16px;
 }
 
+.img {
+  width: 100%;
+  min-height: 200px;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+  background-position: center center;
+}
 .heading {
   font-style: normal;
   font-weight: bold;
@@ -46,6 +53,11 @@
   font-size: 20px;
   line-height: 24px;
   color: var(--black);
+}
+
+.name {
+  font-weight: 500;
+  margin-bottom: 24px;
 }
 
 @media (max-width: 640px) {

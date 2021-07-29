@@ -21,8 +21,25 @@
   color: var(--black);
 }
 
+.priceListItem {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.priceList {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .success {
   color: var(--green);
+}
+
+.failure {
+  color: var(--red);
 }
 
 .heading {
@@ -31,10 +48,15 @@
   line-height: 28px;
   margin-bottom: 48px;
   color: var(--black);
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .buttons {
   margin-bottom: 32px;
+  margin-top: 24px;
 }
 
 .pdfLink {
@@ -51,20 +73,22 @@
 
 .price {
   font-style: normal;
-  font-weight: bold;
+  font-weight: 500;
   font-size: 24px;
   line-height: 28px;
-  margin-bottom: 48px;
   color: var(--black);
+  min-width: 120px;
 }
 
 .unit {
   font-size: 14px;
   line-height: 17px;
-}
-
-.pricePerUnit {
-  margin-bottom: 48px;
+  background-color: var(--dark-gray);
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  color: #fff;
+  display: inline;
 }
 
 @media screen and (max-width: 640px) {

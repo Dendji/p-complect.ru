@@ -1,27 +1,27 @@
 import React, { useState } from 'react'
-import style from './FeedbackSection.module.css'
+import style from './SlidersSection.module.css'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Section from '../Section/Section'
-import Heading from '../Heading/Heading'
 import RoundedCard from '../RoundedCard/RoundedCard'
 import StandardImage from '../StandardImage/StandardImage'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { SwiperOptions } from 'swiper'
-import SwiperControls from '../SwiperControls/SwiperControls'
 import Button, { ButtonTheme } from '../Button/Button'
 
-export interface IReview {
-  img: string
+export interface ISlide {
+  img?: string
+  heading?: string
   content: React.ReactNode
-  link: string
+  buttonText?: string
+  buttonHref?: string
 }
 
 interface Props {
-  items: IReview[]
+  mainSlides: ISlide[]
 }
 
-export default function FeedbackSection({ items }: Props) {
+export default function SlidersSection({ mainSlides }: Props) {
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null)
 
   const swiperParams: SwiperOptions = {
@@ -50,14 +50,7 @@ export default function FeedbackSection({ items }: Props) {
     <Section className={style.root} dark>
       <Container>
         <Grid container spacing={3}>
-          <Grid item xs={12} sm={12} md={3} lg={3}>
-            <Heading weight={2}>Отзывы клиентов</Heading>
-            <SwiperControls
-              onLeftClick={() => swiperInstance?.slideNext()}
-              onRightClick={() => swiperInstance?.slidePrev()}
-            />
-          </Grid>
-          <Grid item xs={12} sm={12} md={9} lg={9}>
+          <Grid item xs={12} sm={12} md={12} lg={12}>
             <Swiper
               speed={800}
               slidesPerView={2}
@@ -67,29 +60,24 @@ export default function FeedbackSection({ items }: Props) {
               onSwiper={(swiper: SwiperCore) => setSwiperInstance(swiper)}
               {...swiperParams}
             >
-              {items.map((r) => (
+              {mainSlides.map((s) => (
                 <SwiperSlide className={style.slide} tag="span">
-                  <RoundedCard>
-                    <div className={style.review}>
-                      <div className={style.avatar}>
-                        {r.img && r.img.length && <StandardImage src={r.img} />}
-                      </div>
-                      <div className={style.content}>
-                        <div className={style.text}>{r.content}</div>
-                        <a
-                          href="https://yandex.ru/maps/org/profkomplektatsiya/80970129270/reviews/"
-                          target="_blank"
-                        >
-                          <Button
-                            theme={ButtonTheme.Link}
-                            className={style.link}
-                          >
-                            Смотреть отзыв в Яндекс
-                          </Button>
-                        </a>
-                      </div>
+                  <div
+                    className={style.slideContent}
+                    style={{
+                      backgroundImage: `url(${s.img})`,
+                    }}
+                  >
+                    <div className={style.content}>
+                      <div className={style.heading}>{s.heading}</div>
+                      <div className={style.text}>{s.content}</div>
+                      <a href={s.buttonHref} target="_blank">
+                        <Button theme={ButtonTheme.Link} className={style.link}>
+                          {s.buttonHref}
+                        </Button>
+                      </a>
                     </div>
-                  </RoundedCard>
+                  </div>
                 </SwiperSlide>
               ))}
             </Swiper>

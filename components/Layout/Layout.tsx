@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 import style from './Layout.module.css'
@@ -9,6 +9,7 @@ import { Navs } from '../../utils/nav'
 import Head from 'next/head'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from '../../store/store'
+import { SearchScreen } from '../SearchScreen/SearchScreen'
 
 export interface LayoutProps {
   children: React.ReactNode
@@ -27,6 +28,8 @@ export default function Layout({ children }: LayoutProps) {
   const dispatch = useDispatch()
   const isContactUs = useSelector((state: AppState) => state.isContactUs)
   const isNavigation = useSelector((state: AppState) => state.isNavigation)
+
+  const [isSearch, setSearch] = useState(false)
 
   const closeContactUs = () => {
     dispatch({
@@ -55,17 +58,6 @@ export default function Layout({ children }: LayoutProps) {
   const isHeaderHidden = isContactUs
 
   const handleSubmit = (formType: FormType) => {
-    formType === FormType.Extended &&
-      window.ym &&
-      window.ym(57871489, 'reachGoal', 'POPUP_CONTACT_US_SUBMIT')
-    formType === FormType.Compact &&
-      window.ym &&
-      window.ym(57871489, 'reachGoal', 'COMPACT_FORM_SUBMIT')
-
-    window.gtag &&
-      window.gtag('event', 'conversion', {
-        send_to: 'AW-587610331/9p68CKXEguABENvxmJgC',
-      })
     setTimeout(() => closeContactUs(), 2000)
   }
 
@@ -75,6 +67,7 @@ export default function Layout({ children }: LayoutProps) {
         top: 0,
         behavior: 'smooth',
       })
+      setSearch(false)
       closeNavigation()
       closeContactUs()
     })
@@ -137,8 +130,10 @@ export default function Layout({ children }: LayoutProps) {
           onModalCall={openContactUs}
           isNavigation={isNavigation}
           onToggleNavigation={handleToggleNavigation}
+          onSearch={() => setSearch(true)}
         />
       )}
+      <SearchScreen isModal={isSearch} onClose={() => setSearch(false)} />
       {children}
       <Footer headingColor={getFooterFontColorByRoute(router.route)} />
     </div>

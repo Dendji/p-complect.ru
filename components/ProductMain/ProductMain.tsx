@@ -3,69 +3,84 @@ import ProductGallery from '../ProductGallery/ProductGallery'
 import style from './ProductMain.module.css'
 import Button, { ButtonTheme } from '../Button/Button'
 import FileIcon from '../FileIcon/FileIcon'
-import { IProduct } from '../ProductCard/ProductCard'
 import classnames from 'classnames'
+import { IFullProduct } from '../../pages/product/[product_id]'
+import Truncated from '../Truncated/Truncated'
+import { formatPrice } from '../../utils/utils'
 
 interface Props {
-  product: IProduct
+  product: IFullProduct
   onBuyClick: () => void
 }
+
 export default function ProductMain({ product, onBuyClick }: Props) {
   return (
     <div className={style.main}>
       <div className={style.images}>
         <ProductGallery
-          items={[
-            {
-              original:
-                'https://profkomplektaciya.ru/image/cache/188-204/data/Dor-razmetka/ef6b2f9c64b0809472e14b17173ebde0.jpg',
-              thumbnail:
-                'https://profkomplektaciya.ru/image/cache/188-204/data/Dor-razmetka/ef6b2f9c64b0809472e14b17173ebde0.jpg',
-            },
-            {
-              original:
-                'https://profkomplektaciya.ru/image/cache/188-204/data/MASTIKA/c40e13431fa7f11035cabde98c6b436b.jpg',
-              thumbnail:
-                'https://profkomplektaciya.ru/image/cache/188-204/data/MASTIKA/c40e13431fa7f11035cabde98c6b436b.jpg',
-            },
-            {
-              original:
-                'https://profkomplektaciya.ru/image/cache/188-204/data/Pena/bf0555d1fdea86994479ef0222ef4f11.jpg',
-              thumbnail:
-                'https://profkomplektaciya.ru/image/cache/188-204/data/Pena/bf0555d1fdea86994479ef0222ef4f11.jpg',
-            },
-          ]}
+          items={product.images?.map((img) => ({
+            thumbnail: img.thumbnail,
+            original: img.large,
+          }))}
         />
       </div>
       <div className={style.info}>
         <div className={style.header}>
-          <div className={style.article}>Арт. 15965542</div>
-          <div className={classnames(style.available, style.success)}>
-            В наличии
+          <div className={style.article}>
+            {product.article && (
+              <Truncated text={`Арт. ${product.article}`} limit={30} />
+            )}
           </div>
+          {product.in_stock ? (
+            <div className={classnames(style.available, style.success)}>
+              В наличии
+            </div>
+          ) : (
+            <div className={classnames(style.available, style.failure)}>
+              Отсутствует
+            </div>
+          )}
         </div>
+
         <h1 className={style.heading}>
-          Гидроизоляция отсечная Технониколь 600
+          {product.name || 'Без незвания'}{' '}
+          {product.unit && <div className={style.unit}>{product.unit}</div>}
         </h1>
-        <div className={style.pricePerUnit}>
-          <span className={style.price}>1 248₽ /</span>{' '}
-          <span className={style.units}>62,40₽ м</span>
-        </div>
+
+        {product.pricelist && product.pricelist.length > 0 && (
+          <div className={style.priceList}>
+            {product.pricelist.map((p) => (
+              <div className={style.priceListItem}>
+                {p.value && (
+                  <div className={style.price}>
+                    {formatPrice(Number.parseInt(p.value))}
+                  </div>
+                )}{' '}
+                <div className={style.for}>при покупке {p.при_покупке_от}</div>
+              </div>
+            ))}
+          </div>
+        )}
+
         <div className={style.buttons}>
           <Button theme={ButtonTheme.Orange} onClick={onBuyClick}>
             Оставить заявку
           </Button>
         </div>
-        <div className={style.pdf}>
-          <Button theme={ButtonTheme.Link} onClick={onBuyClick}>
-            <a href="#" className={style.pdfLink}>
-              <span>
-                <FileIcon />
-              </span>
-              PDF характеристики товара
-            </a>
-          </Button>
-        </div>
+        {product.documents && product.documents.length > 0 && (
+          <div className={style.pdf}>
+            {product.documents.map((d) => (
+              <Button theme={ButtonTheme.Link} onClick={onBuyClick}>
+                <a href={d.url} className={style.pdfLink} target="_blank">
+                  <span>
+                    <FileIcon />
+                  </span>
+                  PDF характеристики товара
+                </a>
+              </Button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

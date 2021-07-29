@@ -2,7 +2,7 @@ import style from './Header.module.css'
 import Link from 'next/link'
 import { useRouter, NextRouter } from 'next/router'
 import React, { useRef, useState } from 'react'
-import { useVisibility } from '../../utils/utils'
+import { fetcher, useVisibility } from '../../utils/utils'
 import Slide from '@material-ui/core/Slide'
 import classnames from 'classnames'
 import Container from '@material-ui/core/Container'
@@ -17,16 +17,34 @@ import { CatalogNavs } from '../../utils/catalog'
 import AddressWidget from '../AddressWidget/AddressWidget'
 import HoursWidget from '../HoursWidget/HoursWidget'
 import CallWidget from '../CallWidget/CallWidget'
+import useSWR from 'swr'
+// import SpeechRecognition, {
+//   useSpeechRecognition,
+// } from 'react-speech-recognition'
 
 export interface HeaderProps {
   isNavigation: boolean
+  onSearch: () => void
   onToggleNavigation: () => void
   onModalCall: () => void
+}
+
+export interface Category {
+  id: number
+  name: string
+  meta: { title: string; description: string }
+  svg?: string
+  subcategories: Category[]
 }
 
 export default function Header(props: HeaderProps) {
   const [sticky, setSticky] = useState(false)
   const [isCatalog, setCatalog] = useState(false)
+
+  const { data: categories, error } = useSWR<Category[]>(
+    'http://wp-api.testing.monster/wp-json/api/v1/categories',
+    fetcher
+  )
 
   const theme = useTheme()
 
@@ -35,9 +53,17 @@ export default function Header(props: HeaderProps) {
   const callback = (isIntersecting: boolean) => {
     setSticky(!isIntersecting)
   }
+  // const { transcript, listening, resetTranscript } = useSpeechRecognition()
 
   const headerRef = useRef(null)
+  const searchRef = useRef(null)
   useVisibility(headerRef, callback)
+
+  const handleFocus = () => {
+    ;(document.activeElement as HTMLElement).blur()
+
+    props.onSearch()
+  }
 
   const router: NextRouter = useRouter()
 
@@ -52,7 +78,15 @@ export default function Header(props: HeaderProps) {
               <CatalogButton
                 buttonProps={{ onClick: () => setCatalog(!isCatalog) }}
                 isOpen={isCatalog}
-                navs={CatalogNavs}
+                navs={
+                  categories?.map((c) => ({
+                    text: c.name,
+                    icon: c.svg ? (
+                      <div dangerouslySetInnerHTML={{ __html: c.svg }}></div>
+                    ) : null,
+                    url: `/categories/${c.id}`,
+                  })) || []
+                }
                 isMobile={isMobile}
               />
             </div>
@@ -61,7 +95,16 @@ export default function Header(props: HeaderProps) {
               <CatalogButton
                 buttonProps={{ onClick: () => setCatalog(!isCatalog) }}
                 isOpen={isCatalog}
-                navs={CatalogNavs}
+                navs={
+                  categories?.map((c) => ({
+                    text: c.name,
+                    icon: c.svg ? (
+                      <div dangerouslySetInnerHTML={{ __html: c.svg }}></div>
+                    ) : null,
+
+                    url: `/categories/${c.id}`,
+                  })) || []
+                }
               />
               <nav className={style.nav}>
                 {Navs.map((nav, index) => (
@@ -130,9 +173,19 @@ export default function Header(props: HeaderProps) {
                 type="search"
                 placeholder="Что вы ищете?"
                 autoComplete="no"
+                onFocus={handleFocus}
+                ref={searchRef}
+                // value={transcript}
               />
+              {/* <div>
+                <p>Microphone: {listening ? 'on' : 'off'}</p>
+                <button onClick={() => SpeechRecognition.startListening()}>
+                  Start
+                </button>
+                <button onClick={SpeechRecognition.stopListening}>Stop</button>
+                <button onClick={resetTranscript}>Reset</button>
+              </div> */}
             </div>
-
             <HoursWidget />
             <AddressWidget />
             <CallWidget />

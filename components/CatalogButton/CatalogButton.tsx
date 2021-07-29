@@ -9,6 +9,7 @@ export interface CatalogNav {
   url: string
   icon?: React.ReactNode
 }
+
 interface Props {
   isMobile?: boolean
   isOpen?: boolean

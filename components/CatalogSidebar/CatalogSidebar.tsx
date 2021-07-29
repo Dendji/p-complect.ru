@@ -5,10 +5,20 @@ import Tooltip from '@material-ui/core/Tooltip'
 import React, { useState } from 'react'
 import style from './CatalogSidebar.module.css'
 import Button, { ButtonTheme } from '../Button/Button'
-import { AlphabetSize } from '../../@types/common'
-import { Checkbox } from '@material-ui/core'
+import { AlphabetSize, IFilter } from '../../@types/common'
+import {
+  Checkbox,
+  FormControl,
+  Input,
+  InputLabel,
+  MenuItem,
+} from '@material-ui/core'
 
-interface Props {}
+import Select from 'react-select'
+
+interface Props {
+  filters: IFilter
+}
 
 const PrettoSlider = withStyles({
   root: {
@@ -55,20 +65,66 @@ function ValueLabelComponent(props: VLProps) {
   )
 }
 
-const categories = [
-  'Рулонная гидроизоляция',
-  'Полимерные мембраны',
-  'Мастики и праймеры',
-  'Герметики и пены',
-  'Комплектующие',
-]
+const ITEM_HEIGHT = 48
+const ITEM_PADDING_TOP = 8
 
-export default function CatalogSidebar({}: Props) {
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+}
+
+export default function CatalogSidebar({ filters }: Props) {
   // const router = useRouter()
 
   const [price, setPrice] = useState<number | number[]>([5000, 80000])
   const [filterBy, setFilterBy] = useState<string[]>([])
 
+  const [values, setValues] = useState<any>([])
+
+  const renderFilter = () => {
+    return Object.values(filters).map((f) => {
+      if (f.type === 'checkbox') {
+        return f.values.length > 0 ? (
+          <div className={style.filterItem}>
+            <div className={style.filterLabel}>{f.name}</div>
+            <Select
+              onChange={(value) =>
+                setValues([...values, { name: f.name, value: value }])
+              }
+              isMulti
+              placeholder="Любая"
+              noOptionsMessage={() => 'Нет опций'}
+              value={
+                values.find((v: any) => v.name === f.name)?.value || undefined
+              }
+              options={f.values.map((v) => ({ value: v, label: v }))}
+            />
+          </div>
+        ) : null
+      }
+      if (f.type === 'dropdown') {
+        return f.values.length > 0 ? (
+          <div className={style.filterItem}>
+            <div className={style.filterLabel}>{f.name}</div>
+            <Select
+              onChange={(value) =>
+                setValues([...values, { name: f.name, value: value }])
+              }
+              placeholder="Любая"
+              value={
+                values.find((v: any) => v.name === f.name)?.value || undefined
+              }
+              options={f.values.map((v) => ({ value: v, label: v }))}
+            />
+          </div>
+        ) : null
+      }
+    })
+  }
   return (
     <div className={style.root}>
       <div className={style.heading}>Цена</div>
@@ -88,8 +144,8 @@ export default function CatalogSidebar({}: Props) {
         // getAriaValueText={valuetext}
       />
       <div className={style.heading}>Товары</div>
-      <div className={style.subheading}>Гидроизоляция</div>
-      <div className="multiselect">
+      <div className={style.filter}>{renderFilter()}</div>
+      {/* <div className="multiselect">
         {categories.map((c, idx) => (
           <FormControlLabel
             key={idx}
@@ -112,6 +168,96 @@ export default function CatalogSidebar({}: Props) {
           />
         ))}
       </div>
+      <div className={style.subheading}>Область применения</div>
+      <div className="multiselect">
+        {applyFields.map((c, idx) => (
+          <FormControlLabel
+            key={idx}
+            control={
+              <Checkbox
+                checked={filterBy.includes(c)}
+                onChange={(
+                  event: React.ChangeEvent<HTMLInputElement>,
+                  checked: boolean
+                ) => {
+                  checked
+                    ? setFilterBy([...filterBy, c])
+                    : setFilterBy(filterBy.filter((cat) => cat !== c))
+                }}
+                name="checkedB"
+                color="primary"
+              />
+            }
+            label={c}
+          />
+        ))}
+      </div>
+      <div className={style.subheading}>Вид</div>
+      <div className="multiselect">
+        {kinds.map((c, idx) => (
+          <FormControlLabel
+            key={idx}
+            control={
+              <Checkbox
+                checked={filterBy.includes(c)}
+                onChange={(
+                  event: React.ChangeEvent<HTMLInputElement>,
+                  checked: boolean
+                ) => {
+                  checked
+                    ? setFilterBy([...filterBy, c])
+                    : setFilterBy(filterBy.filter((cat) => cat !== c))
+                }}
+                name="checkedB"
+                color="primary"
+              />
+            }
+            label={c}
+          />
+        ))}
+      </div>
+      <div className={style.subheading}>Основа</div>
+      <div className="multiselect">
+        {foundations.map((c, idx) => (
+          <FormControlLabel
+            key={idx}
+            control={
+              <Checkbox
+                checked={filterBy.includes(c)}
+                onChange={(
+                  event: React.ChangeEvent<HTMLInputElement>,
+                  checked: boolean
+                ) => {
+                  checked
+                    ? setFilterBy([...filterBy, c])
+                    : setFilterBy(filterBy.filter((cat) => cat !== c))
+                }}
+                name="checkedB"
+                color="primary"
+              />
+            }
+            label={c}
+          />
+        ))}
+      </div> */}
+      {/* <FormControl className={style.formControl}>
+        <InputLabel id="demo-mutiple-name-label">Name</InputLabel>
+        <Select
+          labelId="demo-mutiple-name-label"
+          id="demo-mutiple-name"
+          multiple
+          value={[]}
+          // onChange={handleChange}
+          input={<Input />}
+          MenuProps={MenuProps}
+        >
+          {foundations.map((f) => (
+            <MenuItem key={f} value={f}>
+              {f}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl> */}
       <div className={style.buttons}>
         <Button theme={ButtonTheme.Orange} size={AlphabetSize.L}>
           Применить

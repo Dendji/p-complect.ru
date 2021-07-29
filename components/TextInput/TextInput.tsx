@@ -1,5 +1,6 @@
 import style from './TextInput.module.css'
 import React, { RefObject } from 'react'
+import classnames from 'classnames'
 
 export enum InputTheme {
   White = 'White',
@@ -39,14 +40,15 @@ export default class TextInput extends React.PureComponent<TextInputProps> {
   }
 
   render() {
-    const { error, theme } = this.props
+    const { error, theme, className } = this.props
     const { isError, focus, ...inputProps } = this.props
 
-    const classNames = [
+    const classNames = classnames(
       style.root,
       ...(!!error || isError ? [style.error] : []),
       this.getTextInputClassByTheme(theme),
-    ].join(' ')
+      className
+    )
 
     return (
       <div className={classNames}>
