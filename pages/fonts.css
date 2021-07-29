@@ -1,36 +1,36 @@
 @font-face {
-  font-family: 'TT Norms';
-  src: url('/TTNorms/ttnorms-regular-webfont.woff2') format('woff2'),
-    url('/TTNorms/ttnorms-regular-webfont.woff') format('woff');
+  font-family: 'TT Norms Pro';
+  src: url('../fonts/TTNormsPro/subset-TTNormsPro-Regular.woff2')
+      format('woff2'),
+    url('../fonts/TTNormsPro/subset-TTNormsPro-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'TT Norms';
-  src: url('/TTNorms/ttnorms-bold-webfont.woff2') format('woff2'),
-    url('/TTNorms/ttnorms-bold-webfont.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'TT Norms';
-  src: url('/TTNorms/ttnorms-medium-webfont.woff2') format('woff2'),
-    url('/TTNorms/ttnorms-medium-webfont.ttf') format('ttf'),
-    url('/TTNorms/ttnorms-medium-webfont.woff') format('woff');
+  font-family: 'TT Norms Pro';
+  src: url('../fonts/TTNormsPro/subset-TTNormsPro-Medium.woff2') format('woff2'),
+    url('../fonts/TTNormsPro/subset-TTNormsPro-Medium.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
+  font-family: 'TT Norms Pro';
+  src: url('../fonts/TTNormsPro/subset-TTNormsPro-Bold.woff2') format('woff2'),
+    url('../fonts/TTNormsPro/subset-TTNormsPro-Bold.woff2') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* @font-face {
   font-family: 'RobotoMono';
   src: url('/RobotoMono/robotomono-regular-webfont.woff2') format('woff2'),
     url('/RobotoMono/robotomono-regular-webfont.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
-}
+} */
