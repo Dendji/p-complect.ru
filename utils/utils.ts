@@ -1,9 +1,23 @@
 import { RefObject, useEffect } from 'react'
 
+export const fetcher = (url: string) => fetch(url).then((res) => res.json())
+
+export const truncate = (input: string, limit: number) =>
+  input.length > limit ? `${input.substring(0, limit)}...` : input
+
+export const formatPrice = (price: number) => {
+  let rubleRU = Intl.NumberFormat('ru-RU', {
+    style: 'currency',
+    currency: 'RUB',
+    maximumFractionDigits: 0,
+  })
+  return rubleRU.format(price)
+}
+
 export default class Utils {
   static isMobile = () => {
     var check = false
-    ;(function(a) {
+    ;(function (a) {
       if (
         /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino/i.test(
           a
@@ -20,7 +34,8 @@ export default class Utils {
     return check
   }
 
-  static isiOS = () => !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+  static isiOS = () =>
+    !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform)
 }
 
 export function useVisibility(
@@ -50,6 +65,7 @@ export const isBrowser = () => process.browser === true
 export const isProduction = () => process.env.NODE_ENV === 'production'
 
 export const isEmailValid = (email: string) => {
-  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  var re =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
   return re.test(String(email).toLowerCase())
 }
