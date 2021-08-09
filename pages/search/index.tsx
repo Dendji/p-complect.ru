@@ -49,16 +49,22 @@ PageProps) => {
             {/* <Hidden smDown>
               <CatalogSidebar filters={data.filters} />
             </Hidden> */}
-            <div className={style.products}>
-              {data.products.items.map((p) => (
-                <ProductCard
-                  small
-                  key={p.id}
-                  product={p}
-                  onProductClick={() => handleProductClick(p.id)}
-                />
-              ))}
-            </div>
+            {data.products.items.length === 0 ? (
+              <div className={style.products}>
+                {data.products.items.map((p) => (
+                  <ProductCard
+                    small
+                    key={p.id}
+                    product={p}
+                    onProductClick={() => handleProductClick(p.id)}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="notFound">
+                Не смогли отыскать товары соответствующие вашим критериям
+              </div>
+            )}
           </main>
         </Container>
       </Section>

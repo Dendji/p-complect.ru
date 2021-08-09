@@ -5,13 +5,15 @@
   align-items: center;
   justify-content: center;
   height: 100%;
+  padding: 24px;
 }
 
 .content .input input {
   background-color: transparent;
-  font-size: 48px;
+  font-size: 32px;
   color: var(--white);
   padding: 12px 48px;
+  padding-right: 82px;
 }
 
 .content .input input::placeholder {
@@ -30,8 +32,29 @@
   background-color: rgba(255, 255, 255, 0.3);
 }
 
+.inputContainer {
+  position: relative;
+}
+
+.microphone {
+  position: absolute;
+  right: 0;
+  width: 80px;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .close {
   position: absolute;
   right: 24px;
   top: 24px;
+}
+
+@media screen and (max-width: 600px) {
+  .heading {
+    font-size: 32px;
+    margin-bottom: 0;
+  }
 }

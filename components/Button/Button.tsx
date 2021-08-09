@@ -1,8 +1,15 @@
 import React from 'react'
 import style from './Button.module.css'
-import { AlphabetSize } from '../../@types/common'
 import classnames from 'classnames'
+import Loader from '../Loader/Loader'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
+export enum ButtonSize {
+  L = 'L',
+  M = 'M',
+  S = 'S',
+  XS = 'XS',
+}
 export interface ButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
@@ -10,32 +17,40 @@ export interface ButtonProps
   > {
   children: React.ReactNode
   theme?: ButtonTheme
-  size?: AlphabetSize
-  icon?: React.ReactNode
+  size?: ButtonSize
   disabled?: boolean
-  onClick?: (e: React.SyntheticEvent) => void
+  isLoading?: boolean
+  className?: string
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
+  onMouseOver?: () => void
+  onMouseLeave?: () => void
+  on?: () => void
 }
 
 export enum ButtonTheme {
   White = 'Black',
   Black = 'White',
-  BlueGradient = 'BlueGradient',
-  BlackOnWhite = 'BlackOnWhite',
-  Blue = 'Blue',
-  Link = 'Link',
+  Green = 'Green',
   Orange = 'Orange',
-  OrangeBordered = 'OrangeBordered',
+  BlackOnWhite = 'BlackOnWhite',
+  Gray = 'Gray',
+  Blue = 'Blue',
+  Red = 'Red',
+  BlueBordered = 'BlueBordered',
+  Link = 'Link',
+  LinkButton = 'LinkButton',
+  WhiteLink = 'WhiteLink',
 }
 
-const getClassNameBySize = (size?: AlphabetSize): string => {
+const getClassNameBySize = (size?: ButtonSize): string => {
   switch (size) {
-    case AlphabetSize.S:
+    case ButtonSize.S:
       return style.sizeS
-    case AlphabetSize.L:
-      return style.sizeL
-    case AlphabetSize.M:
+    case ButtonSize.XS:
+      return style.sizeXS
+    case ButtonSize.M:
     default:
-      return style.sizeL
+      return style.sizeM
   }
 }
 
@@ -45,38 +60,84 @@ const getClassNameByTheme = (theme?: ButtonTheme): string => {
       return style.black
     case ButtonTheme.Blue:
       return style.blue
+    case ButtonTheme.Red:
+      return style.red
     case ButtonTheme.BlackOnWhite:
       return style.blackOnWhite
-    case ButtonTheme.BlueGradient:
-      return style.blueGradient
-    case ButtonTheme.Orange:
-      return style.orange
-    case ButtonTheme.OrangeBordered:
-      return style.orangeBordered
+    case ButtonTheme.Green:
+      return style.green
+    case ButtonTheme.Gray:
+      return style.gray
+    case ButtonTheme.BlueBordered:
+      return style.blueBordered
     case ButtonTheme.Link:
       return style.link
+    case ButtonTheme.LinkButton:
+      return style.linkButton
+    case ButtonTheme.WhiteLink:
+      return style.whiteLink
+    case ButtonTheme.Orange:
+      return style.orange
     case ButtonTheme.White:
     default:
       return style.white
   }
 }
 
-export default function Button(props: ButtonProps) {
-  const { theme, size, disabled, icon, ...p } = props
-  const classNames = [
-    style.root,
-    getClassNameBySize(size),
-    getClassNameByTheme(theme),
-    ...(icon ? [style.withIcon] : []),
-    p.className,
-  ]
+export const Button = (props: ButtonProps) => {
+  const {
+    theme,
+    size,
+    disabled,
+    onClick,
+    onMouseOver,
+    onMouseLeave,
+    isLoading,
+    className,
 
-  if (disabled) classNames.push(style.disabled)
+    ...btnProps
+  } = props
+
+  const handleOnClick = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    if (disabled || isLoading) {
+      e.preventDefault()
+      e.stopPropagation()
+      return
+    }
+
+    if (onClick) onClick(e)
+  }
 
   return (
-    <button {...p} className={classnames(classNames)} onClick={props.onClick}>
-      {props.icon && <div className={style.icon}>{props.icon}</div>}
-      <span>{props.children}</span>
+    <button
+      {...btnProps}
+      className={classnames(
+        style.root,
+        className,
+        getClassNameBySize(size),
+        getClassNameByTheme(theme),
+        {
+          [style.disabled]: disabled,
+          [style.isLoading]: isLoading,
+          [style.disabled]: disabled,
+        }
+      )}
+      onClick={handleOnClick}
+      onMouseEnter={onMouseOver}
+      onMouseLeave={onMouseLeave}
+    >
+      {isLoading ? (
+        // <Loader color={theme === ButtonTheme.Black ? '#fafafa' : undefined} />
+        <div className={style.loader}>
+          <CircularProgress size={20} />
+        </div>
+      ) : (
+        props.children
+      )}
     </button>
   )
 }
+
+export default Button

@@ -4,11 +4,38 @@
   gap: 64px;
 }
 
+.layout.fullwidth {
+  display: block;
+}
+
 .products {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 32px;
   align-items: flex-start;
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  opacity: 0.4;
+}
+
+.empty {
+  font-size: 48px;
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 0.3;
+}
+
+.emptyIcon {
+  width: 200px;
 }
 
 @media screen and (max-width: 640px) {

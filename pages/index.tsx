@@ -11,6 +11,7 @@ import BlogSection from '../components/BlogSection/BlogSection'
 import AuthorizedSection from '../components/AuthorizedSection/AuthorizedSection'
 import FeedbackSection from '../components/FeedbackSection/FeedbackSection'
 import faker from 'faker'
+import SlidersSection from '../components/SlidersSection/SlidersSection'
 
 interface PageProps {}
 
@@ -60,6 +61,16 @@ const reviews = [
     link: 'https://yandex.ru/maps/org/profkomplektatsiya/80970129270/',
   },
 ]
+
+const mainSlides = [
+  {
+    img: '',
+    content: '',
+    heading: '',
+    buttonText: '',
+    buttonHref: '',
+  },
+]
 const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
   return (
     <div className={style.root}>
@@ -72,7 +83,7 @@ const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
           content=""
         />
       </Head>
-
+      {/* <SlidersSection mainSlides={mainSlides} /> */}
       <Section className={style.intro}>
         <Container>
           <Grid container justify="center">

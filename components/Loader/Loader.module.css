@@ -1,0 +1,55 @@
+.dot {
+  width: 4px;
+  height: 4px;
+  display: block;
+  background-color: #fafafa;
+  animation-fill-mode: forwards;
+  /* opacity: 0; */
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-name: opacify;
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0.3s;
+}
+
+.dot:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.dot:nth-child(3) {
+  animation-delay: 0.9s;
+}
+
+.dot:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+.loader {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+@keyframes opacify {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

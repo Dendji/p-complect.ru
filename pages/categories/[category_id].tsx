@@ -1,15 +1,19 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import React from 'react'
+import React, { useState } from 'react'
 import style from './index.module.css'
 import Container from '@material-ui/core/Container'
-import Heading from '../../components/Heading/Heading'
 import Section from '../../components/Section/Section'
 import CatalogSidebar from '../../components/CatalogSidebar/CatalogSidebar'
 import ProductCard, { IProduct } from '../../components/ProductCard/ProductCard'
-import Hidden from '@material-ui/core/Hidden'
 import { Category } from '../../components/Header/Header'
 import { IFilter } from '../../@types/common'
+import classnames from 'classnames'
+import Empty from '../../components/Empty/Empty'
+import CatalogHeader from '../../components/CatalogHeader/CatalogHeader'
+import { useRouter } from 'next/router'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import FilterIcon from '../../components/FilterIcon/FilterIcon'
 
 interface PageProps {
   data: {
@@ -25,11 +29,65 @@ const Catalog: NextPage<PageProps> = ({
   categories,
   categoryId,
 }: PageProps) => {
-  console.log('🚀 ~ file: [category_id].tsx ~ line 34 ~ data', data)
-  console.log('🚀 ~ file: [category_id].tsx ~ line 34 ~ categories', categories)
   const currentCategory = categories.find((c) => c.id + '' === categoryId)
 
-  const handleProductClick = (id: number) => {}
+  const r = useRouter()
+
+  const handleProductClick = (id: number) => {
+    r.push(`/product/${id}`)
+  }
+
+  const emptyFilters = Object.keys(data.filters).length > 0
+
+  const [products, setProducts] = useState(data.products)
+  const [isLoading, setLoading] = useState(false)
+
+  const onFilterChange = async (filter: any[]) => {
+    setLoading(true)
+
+    const query = filter.map((f) => `filters[${f.name}][]=${f.value.value}`)
+    let url = `http://wp-api.testing.monster/wp-json/api/v1/categories/${categoryId}`
+
+    if (query.length > 0) {
+      url += `?${query.join('&')}`
+    }
+
+    const res = await fetch(url)
+    const data = await res.json()
+    console.log('🚀 ~ file: [category_id].tsx ~ line 57 ~ getData ~ data', data)
+
+    setProducts(data.products)
+    setLoading(false)
+  }
+
+  const renderProducts = () => {
+    if (isLoading)
+      return (
+        <div className={style.loading}>
+          <CircularProgress size={100} />
+        </div>
+      )
+
+    return products.items.length > 0 ? (
+      <div className={style.products}>
+        {products.items.map((p) => (
+          <ProductCard
+            small
+            key={p.id}
+            product={p}
+            onProductClick={() => handleProductClick(p.id)}
+          />
+        ))}
+      </div>
+    ) : (
+      <div className={style.empty}>
+        <div className={style.emptyIcon}>
+          <Empty />
+        </div>
+        <h3>Товары отсутствуют</h3>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -44,23 +102,24 @@ const Catalog: NextPage<PageProps> = ({
       </Head>
       <Section>
         <Container>
-          <Heading weight={2} noMt className={style.heading}>
+          <CatalogHeader>
             {currentCategory?.name || 'Без названия'}
-          </Heading>
-          <main className={style.layout}>
-            <Hidden smDown>
-              <CatalogSidebar filters={data.filters} />
-            </Hidden>
-            <div className={style.products}>
-              {data.products.items.map((p) => (
-                <ProductCard
-                  small
-                  key={p.id}
-                  product={p}
-                  onProductClick={() => handleProductClick(p.id)}
-                />
-              ))}
-            </div>
+          </CatalogHeader>
+          <main
+            className={classnames({
+              [style.fullwidth]: !emptyFilters,
+              [style.layout]: emptyFilters,
+            })}
+          >
+            {emptyFilters && (
+              <CatalogSidebar
+                filters={data.filters}
+                onFilterChange={onFilterChange}
+                isSubmitLoading={isLoading}
+              />
+            )}
+
+            {renderProducts()}
           </main>
         </Container>
       </Section>

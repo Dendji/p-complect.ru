@@ -1,7 +1,7 @@
 .root {
   height: 48px;
   width: 48px;
-  background: var(--white);
+  background: var(--dark-gray);
   border-radius: 50%;
   display: flex;
   align-items: center;

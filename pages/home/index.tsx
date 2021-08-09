@@ -53,4 +53,23 @@ const Home: NextPage<PageProps> = (props: PageProps) => {
   )
 }
 
+type Data = {}
+
+export const getServerSideProps = async () => {
+  const res = await fetch(
+    'http://wp-api.testing.monster/wp-json/api/v1/categories'
+  )
+  const data: Data = await res.json()
+  console.log(
+    '🚀 ~ file: index.tsx ~ line 62 ~ getServerSideProps ~ data',
+    data
+  )
+
+  return {
+    props: {
+      data,
+    },
+  }
+}
+
 export default Home

@@ -2,109 +2,39 @@
   -webkit-font-smoothing: inherit;
   -moz-osx-font-smoothing: inherit;
   -webkit-appearance: none;
-  border: none;
-  font-family: TT Norms;
-  font-style: normal;
-  font-weight: 500;
-  font-feature-settings: 'liga' off;
   color: var(--black);
   background: var(--white);
   border-radius: 12px;
   cursor: pointer;
   display: inline-block;
-  transition: 0.3s ease all;
+  position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
   outline: none;
-  position: relative;
-}
-
-.root.withIcon {
-  padding-left: 64px;
-}
-
-.icon {
-  position: absolute;
-  left: 12px;
-  top: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 3;
-}
-
-.sizeL {
-  padding: 14px 24px;
-  border-radius: 24px;
-  font-size: 16px;
-}
-
-.blueGradient {
-  background: linear-gradient(250deg, #1356a8 0%, #139eef 100%);
-  color: var(--white);
-  transition: 0.3s ease all;
-  position: relative;
-  overflow: hidden;
-}
-
-.orange {
-  background: var(--orange);
-  color: var(--white);
+  font-family: inherit;
   border: 2px solid transparent;
 }
 
-.orange:hover {
-  background: var(--dark-orange);
-}
-
-.orangeBordered {
-  border-color: var(--orange);
-  color: var(--black);
-  border: 2px solid var(--orange);
-}
-
-.orangeBordered:hover {
-  background-color: var(--orange);
-  border-color: var(--dark-orange);
-  color: var(--white);
-}
-
-.blueGradient:after {
-  position: absolute;
-  content: '';
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 0.3em;
-  background: linear-gradient(0deg, #12498c 0%, #40b9ff 100%);
-  transition: opacity 0.3s ease-out;
-  z-index: 2;
-  opacity: 0;
-}
-
-.blueGradient span {
-  position: relative;
-  z-index: 3;
-}
-
-.blueGradient:hover:after {
-  opacity: 1;
-}
-/* 
-.blueGradient:hover {
-  background: linear-gradient(0, #1356a8 0%, #139eef 120%);
-} */
-
 .sizeM {
-  padding: 8px 24px;
+  padding: 14px 24px;
   border-radius: 24px;
   font-size: 16px;
+  font-weight: 500;
 }
 
 .sizeS {
-  padding: 5px 12px;
+  padding: 9px 24px;
   font-size: 12px;
+  border-radius: 16px;
   line-height: 14px;
+  font-weight: 500;
+}
+
+.sizeXS {
+  padding: 4px 10px;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  border-radius: 14px;
 }
 
 .white {
@@ -117,8 +47,35 @@
   color: var(--white);
 }
 
+.red {
+  background: var(--red);
+  color: var(--white);
+}
+
+.gray {
+  background: var(--gray);
+  color: var(--black);
+}
+
+.blueBordered {
+  background: transparent;
+  color: var(--blue);
+  border-color: var(--blue);
+  border-width: 2px;
+  border-style: solid;
+}
+
+.blueBordered:hover {
+  color: var(--dark-blue);
+  border-color: var(--dark-blue);
+}
+
 .blue:hover {
   background: var(--dark-blue);
+}
+
+.red:hover {
+  background: var(--dark-red);
 }
 
 .white:hover {
@@ -128,6 +85,16 @@
 .black:hover {
   background: var(--white);
   color: var(--black);
+}
+
+.orange {
+  background-color: #e08b09;
+  color: var(--white);
+}
+
+.orange:hover {
+  background-color: #c07608;
+  color: var(--white);
 }
 
 .black {
@@ -149,20 +116,85 @@
   background: var(--blue);
 }
 
+.orange {
+  background-color: #e08b09;
+  color: var(--white);
+}
+
+.orange:hover {
+  background-color: #c07608;
+  color: var(--white);
+}
+
+.green {
+  background: #32bc42;
+  color: var(--white);
+}
+
+.green:hover {
+  background: #258d31;
+  color: var(--white);
+}
+
 .blue:hover {
   background: var(--dark-blue);
 }
-
-.blue:disabled {
-  background: var(--disabled);
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 100%;
 }
 
-.link {
+.disabled {
+  background: var(--disabled);
+  border-color: var(--disabled);
+  color: var(--white);
+  cursor: default;
+}
+
+.disabled:hover {
+  background: var(--disabled);
+  border-color: var(--disabled);
+  color: var(--white);
+}
+
+.link,
+.whiteLink {
   border: none;
   background: transparent;
   padding: 0;
-  /* font-size: 24px; */
   font-weight: 500;
-  /* line-height: 36px; */
+  line-height: 36px;
   color: var(--blue);
+}
+
+.linkButton {
+  border: none;
+  background: transparent;
+}
+
+.link {
+  color: var(--blue);
+  border-bottom: 1px dotted var(--blue);
+  border-radius: 0;
+  line-height: 1;
+}
+
+.link:hover {
+  color: var(--dark-blue);
+  border-color: var(--dark-blue);
+}
+
+.whiteLink {
+  color: var(--white);
+}
+
+.isLoading {
+  color: transparent !important;
+}
+
+.isLoading.black:hover {
+  background: var(--black) !important;
+  color: var(--white);
 }

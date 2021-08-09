@@ -18,6 +18,7 @@ import AddressWidget from '../AddressWidget/AddressWidget'
 import HoursWidget from '../HoursWidget/HoursWidget'
 import CallWidget from '../CallWidget/CallWidget'
 import useSWR from 'swr'
+import SearchIcon from '../SearchIcon/SearchIcon'
 // import SpeechRecognition, {
 //   useSpeechRecognition,
 // } from 'react-speech-recognition'
@@ -74,7 +75,17 @@ export default function Header(props: HeaderProps) {
       <Container>
         <div className={style.headerBottom}>
           {isMobile ? (
-            <div>
+            <div className={style.controls}>
+              {/* <TextInput
+                name="phone"
+                type="search"
+                placeholder="Что вы ищете?"
+                autoComplete="no"
+                onFocus={handleFocus}
+                ref={searchRef}
+                // value={transcript}
+              /> */}
+
               <CatalogButton
                 buttonProps={{ onClick: () => setCatalog(!isCatalog) }}
                 isOpen={isCatalog}
@@ -89,6 +100,9 @@ export default function Header(props: HeaderProps) {
                 }
                 isMobile={isMobile}
               />
+              <button className={style.searchButton} onClick={props.onSearch}>
+                <SearchIcon />
+              </button>
             </div>
           ) : (
             <>

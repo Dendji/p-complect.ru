@@ -7,6 +7,12 @@ import Heading from '../Heading/Heading'
 import TextInput from '../TextInput/TextInput'
 import { useRouter } from 'next/router'
 import CloseButton from '../CloseButton/CloseButton'
+import dynamic from 'next/dynamic'
+
+const SpeechRecognizer = dynamic(
+  () => import('../SpeechRecognizer/SpeechRecognizer'),
+  { ssr: false }
+)
 
 type Props = {
   // children: React.ReactNode
@@ -15,6 +21,7 @@ type Props = {
   onClose: () => void
   // onConfirm: () => void
 }
+
 export const SearchScreen: FC<Props> = ({
   // children,
   isModal,
@@ -47,14 +54,27 @@ export const SearchScreen: FC<Props> = ({
         <div className={s.close}>
           <CloseButton onClose={onClose} />
         </div>
+
         <form className={s.form}>
-          <Heading weight={2}>Поиск по товарам</Heading>
-          <TextInput
-            placeholder="Я ищу..."
-            className={s.input}
-            onChange={(e) => setQuery(e.currentTarget.value)}
-            focus
-          />
+          <Heading weight={2} className={s.heading}>
+            Поиск по товарам
+          </Heading>
+          <div className={s.inputContainer}>
+            <TextInput
+              placeholder="Я ищу..."
+              value={query}
+              className={s.input}
+              onChange={(e) => setQuery(e.currentTarget.value)}
+              focus
+            />
+            <div className={s.microphone}>
+              <SpeechRecognizer
+                onTranscript={(search: string) => {
+                  search.length > 0 && setQuery(search)
+                }}
+              />
+            </div>
+          </div>
           <Button onClick={onSearch}>Искать</Button>
         </form>
       </div>

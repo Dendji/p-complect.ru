@@ -93,6 +93,30 @@
   opacity: 0.5;
 }
 
+.controls {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin-top: 8px;
+  height: 56px;
+}
+
+.searchButton {
+  /* background-color: var(--dark-gray); */
+  background-color: transparent;
+  width: 64px;
+  /* border: none; */
+  box-shadow: none;
+  border-radius: 8px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 2px solid var(--orange);
+}
+
+.searchButton path {
+  fill: var(--orange);
+}
+
 @media screen and (max-width: 1200px) {
   .link {
     font-size: 18px;
