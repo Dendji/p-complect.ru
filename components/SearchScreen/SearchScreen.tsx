@@ -33,29 +33,26 @@ export const SearchScreen: FC<Props> = ({
 
   const router = useRouter()
 
+  const handleClose = () => {
+    onClose()
+    setQuery('')
+  }
   const onSearch = (e: React.SyntheticEvent) => {
     e.preventDefault()
     e.stopPropagation()
     if (!query.length) return
     router.push(`/search/?q=${query}`)
+    setQuery('')
   }
 
   return (
-    // <Dialog open={true} fullScreen className={s.container} hideBackdrop>
-    //   <DialogContent className={s.content}>
-    //     <Heading weight={2}>Поиск по товарам</Heading>
-    //     <form>
-    //       <TextInput placeholder="Имя" />
-    //     </form>
-    //   </DialogContent>
-    // </Dialog>
     <Modal open={isModal} onClose={() => {}} hideBackdrop>
       <div className={s.content}>
         <div className={s.close}>
-          <CloseButton onClose={onClose} />
+          <CloseButton onClose={handleClose} />
         </div>
 
-        <form className={s.form}>
+        <form className={s.form} onSubmit={onSearch}>
           <Heading weight={2} className={s.heading}>
             Поиск по товарам
           </Heading>
@@ -75,7 +72,9 @@ export const SearchScreen: FC<Props> = ({
               />
             </div>
           </div>
-          <Button onClick={onSearch}>Искать</Button>
+          <Button onClick={onSearch} type="submit">
+            Искать
+          </Button>
         </form>
       </div>
     </Modal>

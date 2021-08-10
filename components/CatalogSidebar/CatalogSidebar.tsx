@@ -4,13 +4,14 @@ import Tooltip from '@material-ui/core/Tooltip'
 import React, { useCallback, useEffect, useState } from 'react'
 import style from './CatalogSidebar.module.css'
 import Button, { ButtonSize, ButtonTheme } from '../Button/Button'
-import { AlphabetSize, IFilter } from '../../@types/common'
+import { AlphabetSize, FilterMinMax, IFilter } from '../../@types/common'
 import { useMediaQuery, useTheme } from '@material-ui/core'
 
-import Select, { OptionsType } from 'react-select'
 import Popup from '../Popup/Popup'
 import CloseButton from '../CloseButton/CloseButton'
 import FilterIcon from '../FilterIcon/FilterIcon'
+import TextInput, { InputTheme } from '../TextInput/TextInput'
+import Select from '../Select/Select'
 
 interface Props {
   filters: IFilter
@@ -130,22 +131,55 @@ export default function CatalogSidebar({
   }
 
   const renderFilter = () => {
-    return Object.values(filters).map((f) => {
+    return Object.values(filters).map((f, key) => {
       switch (f.type) {
+        case 'range':
+          const min = Number.parseInt((f.values as FilterMinMax).min)
+          const max = Number.parseInt((f.values as FilterMinMax).max)
+          return min !== max ? (
+            <div className={style.rangeContainer} key={key}>
+              <div className={style.filterLabel}>{f.name}, ₽</div>
+              <div className={style.range}>
+                <span>от</span>
+                <TextInput
+                  placeholder="От"
+                  value={min}
+                  theme={InputTheme.Box}
+                  // onChange={handleChange}
+                  // error={errors.name}
+                  // isError={!!errors.name && touched.name}
+                  autoComplete="no"
+                />
+                <span>до</span>
+                <TextInput
+                  value={max}
+                  placeholder="От"
+                  theme={InputTheme.Box}
+                  // onChange={handleChange}
+                  // error={errors.name}
+                  autoComplete="no"
+                />
+              </div>
+            </div>
+          ) : null
         case 'checkbox':
         case 'dropdown':
         default:
-          return f.values.length > 0 ? (
-            <div className={style.filterItem}>
+          return (f.values as string[]).length > 0 ? (
+            <div className={style.filterItem} key={key}>
               <div className={style.filterLabel}>{f.name}</div>
               <Select
+                instanceId={key}
                 isClearable
                 onChange={(value) => onSelectChange(f.name, value)}
                 placeholder="Все"
                 value={
                   filter.find((v: any) => v.name === f.name)?.value || undefined
                 }
-                options={f.values.map((v) => ({ value: v, label: v }))}
+                options={(f.values as string[]).map((v) => ({
+                  value: v,
+                  label: v,
+                }))}
               />
             </div>
           ) : null
@@ -187,21 +221,6 @@ export default function CatalogSidebar({
     </Popup>
   ) : (
     <div className={style.root}>
-      <div className={style.heading}>Цена</div>
-
-      <PrettoSlider
-        ValueLabelComponent={ValueLabelComponent}
-        value={price}
-        valueLabelFormat={(value) => (
-          <div className={style.sliderValue}>{value + ' ₽'}</div>
-        )}
-        max={100000}
-        onChange={(event: React.ChangeEvent<{}>, value: number | number[]) =>
-          onPriceChange(value)
-        }
-        valueLabelDisplay="auto"
-        aria-labelledby="range-slider"
-      />
       <div className={style.heading}>Товары</div>
       <div className={style.filter}>{renderFilter()}</div>
       {renderControls()}

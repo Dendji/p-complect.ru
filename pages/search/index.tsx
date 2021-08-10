@@ -10,6 +10,7 @@ import Hidden from '@material-ui/core/Hidden'
 import { Category } from '../../components/Header/Header'
 import { IFilter } from '../../@types/common'
 import CatalogSidebar from '../../components/CatalogSidebar/CatalogSidebar'
+import { useRouter } from 'next/router'
 
 interface PageProps {
   data: {
@@ -27,6 +28,9 @@ const Search: NextPage<PageProps> = ({
 PageProps) => {
   // const currentCategory = categories.find((c) => c.id + '' === categoryId)
 
+  const router = useRouter()
+  const { q } = router.query
+
   const handleProductClick = (id: number) => {}
 
   return (
@@ -42,14 +46,8 @@ PageProps) => {
       </Head>
       <Section>
         <Container>
-          <Heading weight={2} noMt className={style.heading}>
-            {/* {currentCategory?.name || 'Без названия'} */}
-          </Heading>
           <main className={style.layout}>
-            {/* <Hidden smDown>
-              <CatalogSidebar filters={data.filters} />
-            </Hidden> */}
-            {data.products.items.length === 0 ? (
+            {data.products.items.length !== 0 ? (
               <div className={style.products}>
                 {data.products.items.map((p) => (
                   <ProductCard
@@ -61,8 +59,9 @@ PageProps) => {
                 ))}
               </div>
             ) : (
-              <div className="notFound">
-                Не смогли отыскать товары соответствующие вашим критериям
+              <div className={style.notFound}>
+                По вашему запросу: <strong>{q}</strong> <br />
+                товары не найдены
               </div>
             )}
           </main>

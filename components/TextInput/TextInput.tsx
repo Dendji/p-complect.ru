@@ -4,6 +4,7 @@ import classnames from 'classnames'
 
 export enum InputTheme {
   White = 'White',
+  Box = 'Box',
   WhiteOnBlue = 'WhiteOnBlue',
 }
 
@@ -24,6 +25,10 @@ export default class TextInput extends React.PureComponent<TextInputProps> {
 
   getTextInputClassByTheme(theme?: InputTheme) {
     switch (theme) {
+      case InputTheme.WhiteOnBlue:
+        return style.whiteOnBlue
+      case InputTheme.Box:
+        return style.box
       case InputTheme.WhiteOnBlue:
         return style.whiteOnBlue
       case InputTheme.White:

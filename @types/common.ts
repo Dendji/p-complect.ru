@@ -15,11 +15,15 @@ export interface IImage {
   thumbnail: string
 }
 
+export type FilterMinMax = {
+  min: string
+  max: string
+}
 export interface IFilter {
   [key: string]: {
     id: number
     name: string
-    type: 'checkbox' | 'dropdown'
-    values: any[]
+    type: 'checkbox' | 'dropdown' | 'range'
+    values: string[] | FilterMinMax
   }
 }

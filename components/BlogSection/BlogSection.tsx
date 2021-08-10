@@ -5,7 +5,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Section from '../Section/Section'
 import BlogItem, { IBlogItem } from '../BlogItem/BlogItem'
-import Button, { ButtonTheme } from '../Button/Button'
+import Button, { ButtonSize, ButtonTheme } from '../Button/Button'
 import Link from 'next/link'
 import { AlphabetSize } from '../../@types/common'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -50,7 +50,7 @@ export default function BlogSection({ items }: Props) {
         )}
         <div className={style.buttons}>
           <Link href="/blog">
-            <Button theme={ButtonTheme.Orange} size={AlphabetSize.L}>
+            <Button theme={ButtonTheme.Orange} size={ButtonSize.L}>
               Читать всё
             </Button>
           </Link>

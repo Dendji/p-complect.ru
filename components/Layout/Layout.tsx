@@ -10,6 +10,7 @@ import Head from 'next/head'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from '../../store/store'
 import { SearchScreen } from '../SearchScreen/SearchScreen'
+import { ContactPopup } from '../ContactPopup/ContactPopup'
 
 export interface LayoutProps {
   children: React.ReactNode
@@ -38,6 +39,11 @@ export default function Layout({ children }: LayoutProps) {
   }
 
   const openContactUs = () => {
+    console.log(
+      '🚀 ~ file: Layout.tsx ~ line 46 ~ openContactUs ~ openContactUs',
+      openContactUs
+    )
+
     dispatch({
       type: 'OPEN_CONTACT_US',
     })
@@ -57,7 +63,7 @@ export default function Layout({ children }: LayoutProps) {
 
   const isHeaderHidden = isContactUs
 
-  const handleSubmit = (formType: FormType) => {
+  const handleSubmit = () => {
     setTimeout(() => closeContactUs(), 2000)
   }
 
@@ -120,11 +126,16 @@ export default function Layout({ children }: LayoutProps) {
       </Head>
       <Navigation isOpen={isNavigation} onClose={closeNavigation} navs={Navs} />
       <ContactUs
-        formType={FormType.Extended}
         isOpen={isContactUs}
         onClose={closeContactUs}
         onSubmit={handleSubmit}
       />
+      {/* <ContactPopup
+        isModal={isContactUs}
+        // isLoading,
+        onCancel={closeContactUs}
+        onConfirm={handleSubmit}
+      /> */}
       {isHeaderHidden ? null : (
         <Header
           onModalCall={openContactUs}

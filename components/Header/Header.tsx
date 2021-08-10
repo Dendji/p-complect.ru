@@ -13,7 +13,6 @@ import { Navs } from '../../utils/nav'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useTheme } from '@material-ui/core'
 import Hamburger from '../Hamburger/Hamburger'
-import { CatalogNavs } from '../../utils/catalog'
 import AddressWidget from '../AddressWidget/AddressWidget'
 import HoursWidget from '../HoursWidget/HoursWidget'
 import CallWidget from '../CallWidget/CallWidget'
@@ -76,16 +75,6 @@ export default function Header(props: HeaderProps) {
         <div className={style.headerBottom}>
           {isMobile ? (
             <div className={style.controls}>
-              {/* <TextInput
-                name="phone"
-                type="search"
-                placeholder="Что вы ищете?"
-                autoComplete="no"
-                onFocus={handleFocus}
-                ref={searchRef}
-                // value={transcript}
-              /> */}
-
               <CatalogButton
                 buttonProps={{ onClick: () => setCatalog(!isCatalog) }}
                 isOpen={isCatalog}
@@ -169,10 +158,10 @@ export default function Header(props: HeaderProps) {
         [style.navigationOpen]: isNavigation,
       })}
     >
-      <Container>
-        {isMobile ? (
-          renderMobileHeader()
-        ) : (
+      {isMobile ? (
+        renderMobileHeader()
+      ) : (
+        <Container>
           <div className={style.grid}>
             <div>
               <Link href="/" as="/">
@@ -189,23 +178,14 @@ export default function Header(props: HeaderProps) {
                 autoComplete="no"
                 onFocus={handleFocus}
                 ref={searchRef}
-                // value={transcript}
               />
-              {/* <div>
-                <p>Microphone: {listening ? 'on' : 'off'}</p>
-                <button onClick={() => SpeechRecognition.startListening()}>
-                  Start
-                </button>
-                <button onClick={SpeechRecognition.stopListening}>Stop</button>
-                <button onClick={resetTranscript}>Reset</button>
-              </div> */}
             </div>
             <HoursWidget />
             <AddressWidget />
-            <CallWidget />
+            <CallWidget onCall={props.onModalCall} />
           </div>
-        )}
-      </Container>
+        </Container>
+      )}
     </header>
   )
 

@@ -5,9 +5,10 @@ import Heading from '../Heading/Heading'
 import style from './CatalogHeader.module.css'
 
 interface Props {
+  isFilter: boolean
   children: React.ReactNode
 }
-export default function CatalogHeader({ children }: Props) {
+export default function CatalogHeader({ children, isFilter }: Props) {
   const onClick = () => {
     const event = new Event('toggleFilters')
     document.dispatchEvent(event)
@@ -23,7 +24,7 @@ export default function CatalogHeader({ children }: Props) {
         {children}
       </Heading>
 
-      {isMobile && (
+      {isMobile && isFilter && (
         <button className={style.filterButton} onClick={onClick}>
           <FilterIcon />
         </button>

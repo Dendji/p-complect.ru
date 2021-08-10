@@ -60,7 +60,7 @@ export default function CatalogButton({
       <Zoom in={isOpen} mountOnEnter unmountOnExit>
         <div className={style.menu}>
           {navs.map((n) => (
-            <a href={n.url} className={style.link}>
+            <a href={n.url} className={style.link} key={n.url}>
               <span className={style.icon}>{n.icon}</span>
               <span className={style.text}>{n.text}</span>
             </a>

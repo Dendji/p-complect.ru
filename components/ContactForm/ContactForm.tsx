@@ -131,46 +131,9 @@ export default function ContactForm(props: ContactFormProps) {
                 />
               </Grid>
               <Grid item className={style.formField}>
-                <TextInput
-                  placeholder="Компания"
-                  name="company"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  theme={props.theme}
-                  error={errors.company}
-                  isError={!!errors.company && touched.company}
-                  autoComplete="no"
-                />
-              </Grid>
-              <Grid item className={style.formField}>
-                <TextInput
-                  placeholder="Объем документов"
-                  name="volume"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  theme={props.theme}
-                  error={errors.volume}
-                  isError={!!errors.volume && touched.volume}
-                  autoComplete="no"
-                />
-              </Grid>
-
-              <Grid item className={style.formField}>
-                <TextInput
-                  placeholder="Откуда вы узнали про нас?"
-                  theme={props.theme}
-                  error={errors.foundOut}
-                  isError={!!errors.foundOut && touched.foundOut}
-                  autoComplete="no"
-                  name="foundOut"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item className={style.formField}>
                 <Textarea
                   theme={props.theme}
-                  placeholder="Опишите задачу в двух словах"
+                  placeholder="Опишите ваш запрос в двух словах"
                   autoComplete="no"
                   rows={5}
                   name="issue"

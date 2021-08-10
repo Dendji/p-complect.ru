@@ -29,6 +29,7 @@ const Catalog: NextPage<PageProps> = ({
   categories,
   categoryId,
 }: PageProps) => {
+  console.log('🚀 ~ file: [category_id].tsx ~ line 32 ~ data', data)
   const currentCategory = categories.find((c) => c.id + '' === categoryId)
 
   const r = useRouter()
@@ -102,7 +103,7 @@ const Catalog: NextPage<PageProps> = ({
       </Head>
       <Section>
         <Container>
-          <CatalogHeader>
+          <CatalogHeader isFilter={products.items.length > 0}>
             {currentCategory?.name || 'Без названия'}
           </CatalogHeader>
           <main

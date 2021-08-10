@@ -273,31 +273,28 @@
 ```json
 {
   "title": "Связаться",
-  "article": "124123",
+  "map": "https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A497006510b013bd96dcbd24921b9cb3f5ab5c7841beefa016a5b9c26b2bfd322&amp;width=100%25&amp;height=537&amp;lang=ru_RU&amp;scroll=false",
   "items": [
     {
       "title": "Время работы",
       "items": [
         "пн-чт <strong>9:00 – 18:00</strong>",
         "пт <strong>9:00 – 17:00</strong>"
-      ]
+      ],
+      "type": "text"
     },
     {
       "title": "Позвонить",
-      "items": ["+7 495 970 55 05", "+7 916 825 03 03"]
+      "items": ["+7 495 970 55 05", "+7 916 825 03 03"],
+      "type": "tel"
     },
     {
       "title": "Адрес",
-      "items": ["Московская обл.,", "г. Люберцы, ул. Кирова, д. 20А"]
+      "items": ["Московская обл.,", "г. Люберцы, ул. Кирова, д. 20А"],
+      "type": "map",
+      "link": "https://yandex.ru/maps/-/CCUYJ0wDPB"
     }
-  ],
-  "preview": {
-    "original": "https//p-complect.ru/media/48823293147",
-    "medium": "https//p-complect.ru/media/48823293147",
-    "large": "https//p-complect.ru/media/48823293147",
-    "thumbnail": "https//p-complect.ru/media/48823293147"
-  },
-  "unit": "кв. м" // м3 | м2 | кг | упаковка | рулон | мешок | коробка | ведро | тюбик
+  ]
 }
 ```
 

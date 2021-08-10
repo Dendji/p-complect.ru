@@ -20,3 +20,18 @@
 .light.root {
   color: #fff;
 }
+
+.svg {
+  max-height: 100%;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 350px) {
+  .root {
+    gap: 10px;
+    grid-template-columns: 36px auto;
+  }
+  .strong {
+    font-size: 14px;
+  }
+}

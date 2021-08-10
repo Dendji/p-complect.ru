@@ -1,9 +1,9 @@
 .root {
-  font-family: TT Norms;
   font-style: normal;
   color: var(--black);
   position: relative;
   width: 100%;
+  box-sizing: border-box;
 }
 
 .input {
@@ -14,11 +14,15 @@
   outline: none;
   border: 2px solid #e0e0e0;
   box-sizing: border-box;
-  border-radius: 161px;
+  border-radius: 10px;
 }
 
 .input::placeholder {
   color: #aaa;
+}
+
+.box .input {
+  border-radius: 10px;
 }
 
 .whiteOnBlue .input:focus {

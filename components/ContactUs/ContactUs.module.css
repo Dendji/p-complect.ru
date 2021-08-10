@@ -5,18 +5,25 @@
   top: 0;
   right: 0;
   bottom: 0;
-  background: #e5e5e5;
+  background: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   padding-top: 32px;
   overflow-y: scroll;
   z-index: 100;
+  align-items: center;
 }
 
 .formContainer {
   display: flex;
   align-items: center;
-  height: calc(100% - 32px - 48px);
+  height: auto;
+  background-color: var(--light-gray);
+  position: relative;
+  border-radius: 10px;
+  max-width: 600px;
+  padding: 0 48px;
+  margin: 0 auto;
 }
 
 .header {
@@ -39,10 +46,14 @@
 
 .close {
   z-index: 100;
+  position: absolute;
+  right: 24px;
+  top: 24px;
 }
 
 .form {
   padding-bottom: 120px;
+  width: 100%;
 }
 
 @media screen and (max-height: 840px) {

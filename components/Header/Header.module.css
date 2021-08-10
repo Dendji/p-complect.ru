@@ -38,6 +38,7 @@
 .mobile {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 8px 0;
   width: 100%;
 }
@@ -94,17 +95,19 @@
 }
 
 .controls {
-  display: flex;
-  flex-direction: row;
+  display: grid;
   gap: 16px;
+  grid-template-columns: 1fr 56px;
   margin-top: 8px;
+  align-items: start;
   height: 56px;
 }
 
 .searchButton {
   /* background-color: var(--dark-gray); */
   background-color: transparent;
-  width: 64px;
+  width: 56px;
+  height: 56px;
   /* border: none; */
   box-shadow: none;
   border-radius: 8px;
@@ -140,10 +143,6 @@
     padding: 0;
   }
 
-  /* .headerContainer {
-    margin-bottom: 0;
-    padding: 0 16px;
-  } */
   .headerBottom {
     grid-template-columns: 1fr;
   }

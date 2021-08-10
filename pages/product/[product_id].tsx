@@ -9,6 +9,7 @@ import ProductMain from '../../components/ProductMain/ProductMain'
 import ProductInfo from '../../components/ProductInfo/ProductInfo'
 import { IProduct } from '../../components/ProductCard/ProductCard'
 import { IImage } from '../../@types/common'
+import { useDispatch } from 'react-redux'
 
 export interface IFullProduct {
   id: number
@@ -55,7 +56,14 @@ export default function ProductPage({ data }: Props) {
     data
   )
 
-  const onBuyClick = () => {}
+  const dispatch = useDispatch()
+
+  const onBuyClick = () => {
+    dispatch({
+      type: 'OPEN_CONTACT_US',
+    })
+  }
+
   const onSuggestionClick = (id: string) => {}
   return (
     <>

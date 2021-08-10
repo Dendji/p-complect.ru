@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import style from './index.module.css'
@@ -10,9 +10,19 @@ import Section from '../../components/Section/Section'
 import RLink from '../../components/RLink/RLink'
 import YandexMap from '../../components/YandexMap/YandexMap'
 
-interface PageProps {}
+interface PageProps {
+  data: {
+    title: string
+    items: {
+      title: string
+      items: {
+        [key: string]: string
+      }[]
+    }[]
+  }
+}
 
-const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
+const ContactPage: NextPage<PageProps> = ({ data }: PageProps) => {
   // const dispatch = useDispatch()
 
   // const openContactUs = () => {
@@ -37,14 +47,8 @@ const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
         <Container>
           <Grid container justify="center">
             <Grid item xs={12} md={12}>
-              <Heading weight={2}>Связаться</Heading>
+              <Heading weight={2}>{data.title}</Heading>
               <div className="map">
-                {/* <script
-                  type="text/javascript"
-                  charSet="utf-8"
-                  async
-                  src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A497006510b013bd96dcbd24921b9cb3f5ab5c7841beefa016a5b9c26b2bfd322&amp;width=100%25&amp;height=537&amp;lang=ru_RU&amp;scroll=false"
-                ></script> */}
                 <YandexMap src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A497006510b013bd96dcbd24921b9cb3f5ab5c7841beefa016a5b9c26b2bfd322&amp;width=100%25&amp;height=537&amp;lang=ru_RU&amp;scroll=false" />
               </div>
             </Grid>
@@ -54,22 +58,46 @@ const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
       <Section>
         <Container>
           <Grid container justify="center">
-            <Grid item xs={12} md={4}>
-              <Heading weight={4} size="small" className={style.blockTitle}>
-                Время работы
-              </Heading>
-              <div className={style.contact}>
-                <div>
-                  <span>пн-чт</span>
-                  <strong>9:00 – 18:00</strong>
+            {data.items.map((d) => (
+              <Grid item xs={12} md={4}>
+                <Heading weight={4} size="small" className={style.blockTitle}>
+                  {d.title}
+                </Heading>
+                <div className={style.contact}>
+                  {d.items.map((item) => {
+                    if (d.title === 'Позвонить') {
+                      return (
+                        <div>
+                          <RLink href={`tel: ${item['текст']}`}>
+                            {item['текст']}
+                          </RLink>
+                        </div>
+                      )
+                    }
+                    if (d.title === 'Адрес') {
+                      return (
+                        <div>
+                          <RLink
+                            href="https://yandex.ru/maps/-/CCUYJ0wDPB"
+                            className={style.link}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {item['текст']}
+                          </RLink>
+                        </div>
+                      )
+                    }
+                    return (
+                      <div
+                        dangerouslySetInnerHTML={{ __html: item['текст'] }}
+                      ></div>
+                    )
+                  })}
                 </div>
-                <div>
-                  <span>пт</span>
-                  <strong>9:00 – 17:00</strong>
-                </div>
-              </div>
-            </Grid>
-            <Grid item xs={12} md={4}>
+              </Grid>
+            ))}
+            {/* <Grid item xs={12} md={4}>
               <Heading weight={4} size="small" className={style.blockTitle}>
                 Позвонить
               </Heading>
@@ -97,12 +125,38 @@ const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
                   <br /> г. Люберцы, ул. Кирова, д. 20А
                 </RLink>
               </div>
-            </Grid>
+            </Grid> */}
           </Grid>
         </Container>
       </Section>
     </div>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async function ({}) {
+  // if (!params?.category_id) {
+  //   throw new Error('id is not defined')
+  // }
+
+  const res = await fetch(
+    'http://wp-api.testing.monster/wp-json/api/v1/pages/contact'
+  )
+
+  // const categoriesRes = await fetch(
+  //   `http://wp-api.testing.monster/wp-json/api/v1/categories`
+  // )
+
+  const data = await res.json()
+  console.log('🚀 ~ file: index.tsx ~ line 85 ~ data', data)
+  // const categories = await categoriesRes.json()
+
+  return {
+    props: {
+      data,
+      // categories,
+      // categoryId: params.category_id,
+    },
+  }
 }
 
 export default ContactPage

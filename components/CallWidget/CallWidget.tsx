@@ -3,8 +3,10 @@ import CallButton from '../CallButton/CallButton'
 import RLink from '../RLink/RLink'
 import style from './CallWidget.module.css'
 
-interface Props {}
-export default function CallWidget(props: Props) {
+interface Props {
+  onCall: () => void
+}
+export default function CallWidget({ onCall }: Props) {
   return (
     <div className={style.call}>
       <div>
@@ -20,7 +22,7 @@ export default function CallWidget(props: Props) {
         </div>
       </div>
       <div>
-        <CallButton />
+        <CallButton onClick={onCall} />
       </div>
     </div>
   )

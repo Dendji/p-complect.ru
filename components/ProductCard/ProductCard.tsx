@@ -54,9 +54,9 @@ export default function ProductCard({ product, onProductClick, small }: Props) {
         )}
       </div>
       <div className={style.name}>
-        <Truncated text={product.name} limit={40} />
+        <Truncated text={product.name} limit={36} />
       </div>
-      {product.price && <div className={style.price}>{product.price}</div>}
+      {product.price && <div className={style.price}>{product.price}₽</div>}
       <div className={style.button}>
         <Link href={`/product/${product.id}`}>
           <Button theme={ButtonTheme.Orange} className={style.btn}>

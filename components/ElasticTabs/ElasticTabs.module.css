@@ -25,3 +25,10 @@
   color: var(--black);
   font-weight: 500;
 }
+
+@media screen and (max-width: 640px) {
+  .tab {
+    width: 100%;
+    padding: 0 16px;
+  }
+}

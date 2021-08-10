@@ -59,15 +59,15 @@
 
 .blueBordered {
   background: transparent;
-  color: var(--blue);
-  border-color: var(--blue);
+  color: var(--orange);
+  border-color: var(--orange);
   border-width: 2px;
   border-style: solid;
 }
 
 .blueBordered:hover {
-  color: var(--dark-blue);
-  border-color: var(--dark-blue);
+  color: var(--dark-orange);
+  border-color: var(--dark-orange);
 }
 
 .blue:hover {
@@ -88,7 +88,7 @@
 }
 
 .orange {
-  background-color: #e08b09;
+  background-color: #faac3d;
   color: var(--white);
 }
 
@@ -113,16 +113,16 @@
 }
 
 .blue {
-  background: var(--blue);
+  background: var(--orange);
 }
 
 .orange {
-  background-color: #e08b09;
+  background-color: var(--orange);
   color: var(--white);
 }
 
 .orange:hover {
-  background-color: #c07608;
+  background-color: var(--dark-orange);
   color: var(--white);
 }
 
@@ -137,8 +137,9 @@
 }
 
 .blue:hover {
-  background: var(--dark-blue);
+  background: var(--dark-orange);
 }
+
 .loader {
   display: flex;
   align-items: center;
@@ -176,7 +177,7 @@
 
 .link {
   color: var(--blue);
-  border-bottom: 1px dotted var(--blue);
+  /* border-bottom: 1px dotted var(--blue); */
   border-radius: 0;
   line-height: 1;
 }

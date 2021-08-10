@@ -10,11 +10,10 @@ export default function Logo({ light }: Props) {
   return (
     <div className={classnames(style.root, { [style.light]: light })}>
       <svg
-        width="48"
-        height="53"
         viewBox="0 0 48 53"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        className={style.svg}
       >
         <path
           d="M45.8777 34.931H33.2246C32.12 34.931 31.2246 35.8265 31.2246 36.931V49.5667C31.2246 50.6713 32.12 51.5667 33.2246 51.5667H45.8777C46.9822 51.5667 47.8777 50.6713 47.8777 49.5667V36.931C47.8777 35.8265 46.9822 34.931 45.8777 34.931Z"

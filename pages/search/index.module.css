@@ -11,6 +11,9 @@
   align-items: flex-start;
 }
 
+.notFound {
+  font-size: 48px;
+}
 @media screen and (max-width: 640px) {
   .layout {
     /* display: grid;

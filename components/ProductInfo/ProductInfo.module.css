@@ -1,9 +1,19 @@
 @media screen and (max-width: 640px) {
-  .root {
+  /* .root {
     display: none;
-  }
+  } */
 }
 
 .content {
   padding-top: 48px;
+}
+
+.heading {
+  margin-bottom: 16px;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.desc {
+  margin-bottom: 48px;
 }
