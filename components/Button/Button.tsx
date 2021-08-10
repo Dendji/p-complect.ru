@@ -1,7 +1,6 @@
 import React from 'react'
 import style from './Button.module.css'
 import classnames from 'classnames'
-import Loader from '../Loader/Loader'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
 export enum ButtonSize {
@@ -36,7 +35,7 @@ export enum ButtonTheme {
   Gray = 'Gray',
   Blue = 'Blue',
   Red = 'Red',
-  BlueBordered = 'BlueBordered',
+  OrangeBordered = 'OrangeBordered',
   Link = 'Link',
   LinkButton = 'LinkButton',
   WhiteLink = 'WhiteLink',
@@ -68,7 +67,7 @@ const getClassNameByTheme = (theme?: ButtonTheme): string => {
       return style.green
     case ButtonTheme.Gray:
       return style.gray
-    case ButtonTheme.BlueBordered:
+    case ButtonTheme.OrangeBordered:
       return style.blueBordered
     case ButtonTheme.Link:
       return style.link
@@ -129,7 +128,6 @@ export const Button = (props: ButtonProps) => {
       onMouseLeave={onMouseLeave}
     >
       {isLoading ? (
-        // <Loader color={theme === ButtonTheme.Black ? '#fafafa' : undefined} />
         <div className={style.loader}>
           <CircularProgress size={20} />
         </div>

@@ -6,8 +6,7 @@ import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Typography from '../../components/Typography/Typography'
 import Section from '../../components/Section/Section'
-import Button, { ButtonTheme } from '../../components/Button/Button'
-import { AlphabetSize } from '../../@types/common'
+import Button, { ButtonSize, ButtonTheme } from '../../components/Button/Button'
 
 interface PageProps {}
 
@@ -56,7 +55,7 @@ const Price: NextPage<PageProps> = ({}: PageProps) => {
                     href="http://www.africau.edu/images/default/sample.pdf"
                     target="_blank"
                   >
-                    <Button theme={ButtonTheme.Orange} size={AlphabetSize.L}>
+                    <Button theme={ButtonTheme.Orange} size={ButtonSize.L}>
                       Cкачать
                     </Button>
                   </a>

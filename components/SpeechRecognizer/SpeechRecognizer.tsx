@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default function SpeechRecognizer({ onTranscript }: Props) {
-  const { transcript, listening, resetTranscript } = useSpeechRecognition()
+  const { transcript, listening } = useSpeechRecognition()
 
   if (!SpeechRecognition.browserSupportsSpeechRecognition()) {
     return <span>Browser doesn't support speech recognition.</span>

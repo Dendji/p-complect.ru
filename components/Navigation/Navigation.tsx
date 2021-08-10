@@ -7,6 +7,7 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core'
 import AddressWidget from '../AddressWidget/AddressWidget'
 import HoursWidget from '../HoursWidget/HoursWidget'
 import CallWidget from '../CallWidget/CallWidget'
+import { useDispatch } from 'react-redux'
 
 export interface NavigationProps {
   isOpen: boolean
@@ -61,11 +62,20 @@ const mapNav = (nav: Nav, index: number): React.ReactNode => {
     </div>
   )
 }
+
 export default function Navigation({ isOpen, navs, onClose }: NavigationProps) {
   const container =
     typeof window !== 'undefined' ? () => window.document.body : undefined
   const classes = useStyles()
   // const theme = useTheme()
+
+  const dispatch = useDispatch()
+
+  const openContactUs = () => {
+    dispatch({
+      type: 'OPEN_CONTACT_US',
+    })
+  }
 
   return (
     <Drawer
@@ -87,7 +97,7 @@ export default function Navigation({ isOpen, navs, onClose }: NavigationProps) {
           <HoursWidget />
           <AddressWidget isMobile />
 
-          <CallWidget />
+          <CallWidget onCall={openContactUs} />
         </div>
       </div>
     </Drawer>

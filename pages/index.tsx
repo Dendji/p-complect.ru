@@ -11,7 +11,7 @@ import BlogSection from '../components/BlogSection/BlogSection'
 import AuthorizedSection from '../components/AuthorizedSection/AuthorizedSection'
 import FeedbackSection from '../components/FeedbackSection/FeedbackSection'
 import faker from 'faker'
-import SlidersSection from '../components/SlidersSection/SlidersSection'
+// import SlidersSection from '../components/SlidersSection/SlidersSection'
 
 interface PageProps {}
 
@@ -62,15 +62,15 @@ const reviews = [
   },
 ]
 
-const mainSlides = [
-  {
-    img: '',
-    content: '',
-    heading: '',
-    buttonText: '',
-    buttonHref: '',
-  },
-]
+// const mainSlides = [
+//   {
+//     img: '',
+//     content: '',
+//     heading: '',
+//     buttonText: '',
+//     buttonHref: '',
+//   },
+// ]
 const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
   return (
     <div className={style.root}>

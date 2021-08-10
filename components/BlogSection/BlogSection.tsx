@@ -7,7 +7,6 @@ import Section from '../Section/Section'
 import BlogItem, { IBlogItem } from '../BlogItem/BlogItem'
 import Button, { ButtonSize, ButtonTheme } from '../Button/Button'
 import Link from 'next/link'
-import { AlphabetSize } from '../../@types/common'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useMediaQuery, useTheme } from '@material-ui/core'
 

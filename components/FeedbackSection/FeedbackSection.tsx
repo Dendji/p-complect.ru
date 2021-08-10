@@ -67,8 +67,8 @@ export default function FeedbackSection({ items }: Props) {
               onSwiper={(swiper: SwiperCore) => setSwiperInstance(swiper)}
               {...swiperParams}
             >
-              {items.map((r) => (
-                <SwiperSlide className={style.slide} tag="span">
+              {items.map((r, key) => (
+                <SwiperSlide className={style.slide} tag="span" key={key}>
                   <RoundedCard>
                     <div className={style.review}>
                       <div className={style.avatar}>

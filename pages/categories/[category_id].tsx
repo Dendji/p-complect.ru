@@ -13,7 +13,6 @@ import Empty from '../../components/Empty/Empty'
 import CatalogHeader from '../../components/CatalogHeader/CatalogHeader'
 import { useRouter } from 'next/router'
 import CircularProgress from '@material-ui/core/CircularProgress'
-import FilterIcon from '../../components/FilterIcon/FilterIcon'
 
 interface PageProps {
   data: {
@@ -29,12 +28,11 @@ const Catalog: NextPage<PageProps> = ({
   categories,
   categoryId,
 }: PageProps) => {
-  console.log('🚀 ~ file: [category_id].tsx ~ line 32 ~ data', data)
   const currentCategory = categories.find((c) => c.id + '' === categoryId)
 
   const r = useRouter()
 
-  const handleProductClick = (id: number) => {
+  const handleProductClick = (id: number | string) => {
     r.push(`/product/${id}`)
   }
 
@@ -55,7 +53,6 @@ const Catalog: NextPage<PageProps> = ({
 
     const res = await fetch(url)
     const data = await res.json()
-    console.log('🚀 ~ file: [category_id].tsx ~ line 57 ~ getData ~ data', data)
 
     setProducts(data.products)
     setLoading(false)

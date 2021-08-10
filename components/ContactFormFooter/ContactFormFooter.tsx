@@ -1,8 +1,7 @@
 import Grid from '@material-ui/core/Grid'
 import React from 'react'
-import Button, { ButtonTheme } from '../Button/Button'
+import Button, { ButtonSize, ButtonTheme } from '../Button/Button'
 import style from './ContactFormFooter.module.css'
-import { AlphabetSize } from '../../@types/common'
 
 interface ContactFormFooterProps {
   submitTheme?: ButtonTheme
@@ -20,7 +19,7 @@ export default function ContactFormFooter({
           <Button
             theme={submitTheme ? submitTheme : ButtonTheme.Blue}
             disabled={isSubmitting}
-            size={AlphabetSize.L}
+            size={ButtonSize.L}
             type="submit"
           >
             Отправить

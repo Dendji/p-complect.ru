@@ -3,8 +3,6 @@ import style from './SlidersSection.module.css'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Section from '../Section/Section'
-import RoundedCard from '../RoundedCard/RoundedCard'
-import StandardImage from '../StandardImage/StandardImage'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { SwiperOptions } from 'swiper'
 import Button, { ButtonTheme } from '../Button/Button'
@@ -22,7 +20,7 @@ interface Props {
 }
 
 export default function SlidersSection({ mainSlides }: Props) {
-  const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null)
+  const [_swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null)
 
   const swiperParams: SwiperOptions = {
     breakpoints: {

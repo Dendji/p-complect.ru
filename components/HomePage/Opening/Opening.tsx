@@ -3,8 +3,7 @@ import style from './Opening.module.css'
 import Heading from '../../Heading/Heading'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
-import Button, { ButtonTheme } from '../../Button/Button'
-import { AlphabetSize } from '../../../@types/common'
+import Button, { ButtonSize, ButtonTheme } from '../../Button/Button'
 import StandardImage from '../../StandardImage/StandardImage'
 
 interface Props {
@@ -29,7 +28,7 @@ export default function Opening({ onRequestDemo }: Props) {
             <Button
               onClick={onRequestDemo}
               theme={ButtonTheme.Blue}
-              size={AlphabetSize.L}
+              size={ButtonSize.L}
             >
               Попробовать демо
             </Button>

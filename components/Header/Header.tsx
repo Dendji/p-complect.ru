@@ -41,7 +41,10 @@ export default function Header(props: HeaderProps) {
   const [sticky, setSticky] = useState(false)
   const [isCatalog, setCatalog] = useState(false)
 
-  const { data: categories, error } = useSWR<Category[]>(
+  const {
+    data: categories,
+    // error
+  } = useSWR<Category[]>(
     'http://wp-api.testing.monster/wp-json/api/v1/categories',
     fetcher
   )

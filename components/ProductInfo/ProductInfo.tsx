@@ -52,14 +52,16 @@ export default function ProductInfo({ description, attributes }: Props) {
         <div className={style.desc}>
           <div className={style.heading}>Характеристики</div>
           <table className="table">
-            {Object.values(attributes).map((a) => (
-              <tr>
-                <td>{a.name}</td>
-                {a.values.map((v) => (
-                  <td>{v}</td>
-                ))}
-              </tr>
-            ))}
+            <tbody>
+              {Object.values(attributes).map((a, key) => (
+                <tr key={key}>
+                  <td>{a.name}</td>
+                  {a.values.map((v) => (
+                    <td key={v}>{v}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
           </table>
         </div>
       )}
@@ -76,14 +78,16 @@ export default function ProductInfo({ description, attributes }: Props) {
         )}
         {tab === 'attr' && attributes && (
           <table className="table">
-            {Object.values(attributes).map((a) => (
-              <tr>
-                <td>{a.name}</td>
-                {a.values.map((v) => (
-                  <td>{v}</td>
-                ))}
-              </tr>
-            ))}
+            <tbody>
+              {Object.values(attributes).map((a, key) => (
+                <tr key={key}>
+                  <td>{a.name}</td>
+                  {a.values.map((v) => (
+                    <td key={v}>{v}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
           </table>
         )}
       </div>

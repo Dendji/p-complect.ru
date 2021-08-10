@@ -3,13 +3,10 @@ import Head from 'next/head'
 import React from 'react'
 import style from './index.module.css'
 import Container from '@material-ui/core/Container'
-import Heading from '../../components/Heading/Heading'
 import Section from '../../components/Section/Section'
 import ProductCard, { IProduct } from '../../components/ProductCard/ProductCard'
-import Hidden from '@material-ui/core/Hidden'
 import { Category } from '../../components/Header/Header'
 import { IFilter } from '../../@types/common'
-import CatalogSidebar from '../../components/CatalogSidebar/CatalogSidebar'
 import { useRouter } from 'next/router'
 
 interface PageProps {
@@ -31,7 +28,9 @@ PageProps) => {
   const router = useRouter()
   const { q } = router.query
 
-  const handleProductClick = (id: number) => {}
+  const handleProductClick = (id: number | string) => {
+    router.push(`/product/${id}`)
+  }
 
   return (
     <>

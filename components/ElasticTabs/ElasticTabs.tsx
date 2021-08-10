@@ -21,6 +21,7 @@ export default function ElasticTabs({ tabs, onChange }: Props) {
     <div className={style.root}>
       {tabs.map((t, idx) => (
         <div
+          key={idx}
           className={classnames(style.tab, {
             [style.active]: t.value === value,
           })}

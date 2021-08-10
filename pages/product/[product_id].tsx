@@ -51,11 +51,6 @@ interface Props {
 }
 
 export default function ProductPage({ data }: Props) {
-  console.log(
-    '🚀 ~ file: [product_id].tsx ~ line 18 ~ ProductPage ~ data',
-    data
-  )
-
   const dispatch = useDispatch()
 
   const onBuyClick = () => {
@@ -108,7 +103,6 @@ export default function ProductPage({ data }: Props) {
 export const getServerSideProps: GetServerSideProps = async function ({
   params,
 }) {
-  console.log('🚀 ~ file: [product_id].tsx ~ line 59 ~ params', params)
   if (!params?.product_id) {
     throw new Error('id is not defined')
   }

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { Dialog, DialogContent, DialogActions } from '@material-ui/core'
+import { Dialog, DialogContent } from '@material-ui/core'
 
 import s from './index.module.css'
 import Button, { ButtonTheme } from '../Button/Button'

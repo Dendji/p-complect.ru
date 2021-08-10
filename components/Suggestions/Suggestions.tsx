@@ -50,7 +50,10 @@ export default function Suggestions({ items, onClick }: Props) {
       >
         {items.map((p) => (
           <SwiperSlide className={style.slide} tag="span">
-            <ProductCard product={p} onProductClick={() => onClick(p.id)} />
+            <ProductCard
+              product={p}
+              onProductClick={() => onClick(p.id + '')}
+            />
           </SwiperSlide>
         ))}
       </Swiper>

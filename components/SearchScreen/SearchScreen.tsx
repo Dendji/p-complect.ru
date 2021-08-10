@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Dialog, DialogContent, DialogActions, Modal } from '@material-ui/core'
+import { Modal } from '@material-ui/core'
 
 import s from './SearchScreen.module.css'
 import Button from '../Button/Button'
@@ -15,20 +15,11 @@ const SpeechRecognizer = dynamic(
 )
 
 type Props = {
-  // children: React.ReactNode
   isModal: boolean
-  // isLoading?: boolean
   onClose: () => void
-  // onConfirm: () => void
 }
 
-export const SearchScreen: FC<Props> = ({
-  // children,
-  isModal,
-  // isLoading,
-  onClose,
-  // onConfirm,
-}) => {
+export const SearchScreen: FC<Props> = ({ isModal, onClose }) => {
   const [query, setQuery] = useState('')
 
   const router = useRouter()

@@ -49,8 +49,8 @@ export default function ProductMain({ product, onBuyClick }: Props) {
 
         {product.pricelist && product.pricelist.length > 0 && (
           <div className={style.priceList}>
-            {product.pricelist.map((p) => (
-              <div className={style.priceListItem}>
+            {product.pricelist.map((p, key) => (
+              <div className={style.priceListItem} key={key}>
                 {p.value && (
                   <div className={style.price}>
                     {formatPrice(Number.parseInt(p.value))}
@@ -69,8 +69,8 @@ export default function ProductMain({ product, onBuyClick }: Props) {
         </div>
         {product.documents && product.documents.length > 0 && (
           <div className={style.pdf}>
-            {product.documents.map((d) => (
-              <Button theme={ButtonTheme.Link} onClick={onBuyClick}>
+            {product.documents.map((d, key) => (
+              <Button theme={ButtonTheme.Link} onClick={onBuyClick} key={key}>
                 <a href={d.url} className={style.pdfLink} target="_blank">
                   <span>
                     <FileIcon />

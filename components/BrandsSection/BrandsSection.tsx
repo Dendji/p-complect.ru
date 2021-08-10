@@ -38,8 +38,8 @@ export default function BrandsSection(props: Props) {
 
           <Grid item xs={12} md={6}>
             <div className={style.grid}>
-              {items.map((b) => (
-                <StandardImage src={b.image} />
+              {items.map((b, key) => (
+                <StandardImage src={b.image} key={key} />
               ))}
             </div>
           </Grid>

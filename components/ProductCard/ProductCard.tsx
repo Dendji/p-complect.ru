@@ -8,7 +8,7 @@ import ImagePlaceholder from '../ImagePlaceholder/ImagePlaceholder'
 import Truncated from '../Truncated/Truncated'
 
 export interface IProduct {
-  id: number
+  id: number | string
   article: string
   attributes: {
     [key: string]: {

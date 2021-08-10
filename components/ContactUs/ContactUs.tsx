@@ -2,21 +2,15 @@ import Container from '@material-ui/core/Container'
 import React from 'react'
 import Heading from '../Heading/Heading'
 import style from './ContactUs.module.css'
-import Grid from '@material-ui/core/Grid'
 import CloseButton from '../CloseButton/CloseButton'
 import ContactForm from '../ContactForm/ContactForm'
 import { InputTheme } from '../TextInput/TextInput'
 import { ButtonTheme } from '../Button/Button'
 import Popup from '../Popup/Popup'
 
-export enum FormType {
-  Extended = 'Extended',
-  Compact = 'Compact',
-}
-
 export interface ContactUsProps {
   isOpen: boolean
-  onSubmit: (formType: FormType) => void
+  onSubmit: () => void
   onClose: () => void
 }
 
@@ -35,7 +29,7 @@ export default function ContactUs({
       </div>
       {isOpen && (
         <ContactForm
-          onSubmit={() => onSubmit(FormType.Extended)}
+          onSubmit={onSubmit}
           autoFocus
           theme={InputTheme.White}
           submitTheme={ButtonTheme.Blue}
