@@ -45,7 +45,7 @@ export default function Header(props: HeaderProps) {
     data: categories,
     // error
   } = useSWR<Category[]>(
-    'http://wp-api.testing.monster/wp-json/api/v1/categories',
+    'https://wp-api.testing.monster/wp-json/api/v1/categories',
     fetcher
   )
 

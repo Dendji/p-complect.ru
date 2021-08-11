@@ -57,7 +57,7 @@ type Data = {}
 
 export const getServerSideProps = async () => {
   const res = await fetch(
-    'http://wp-api.testing.monster/wp-json/api/v1/categories'
+    'https://wp-api.testing.monster/wp-json/api/v1/categories'
   )
   const data: Data = await res.json()
   console.log(

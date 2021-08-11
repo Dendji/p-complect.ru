@@ -107,7 +107,7 @@ export const getServerSideProps: GetServerSideProps = async function ({
     throw new Error('id is not defined')
   }
   const res = await fetch(
-    `http://wp-api.testing.monster/wp-json/api/v1/products/${params.product_id}`
+    `https://wp-api.testing.monster/wp-json/api/v1/products/${params.product_id}`
   )
 
   const data = await res.json()

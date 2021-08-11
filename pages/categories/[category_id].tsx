@@ -45,7 +45,7 @@ const Catalog: NextPage<PageProps> = ({
     setLoading(true)
 
     const query = filter.map((f) => `filters[${f.name}][]=${f.value.value}`)
-    let url = `http://wp-api.testing.monster/wp-json/api/v1/categories/${categoryId}`
+    let url = `https://wp-api.testing.monster/wp-json/api/v1/categories/${categoryId}`
 
     if (query.length > 0) {
       url += `?${query.join('&')}`
@@ -132,11 +132,11 @@ export const getServerSideProps: GetServerSideProps = async function ({
     throw new Error('id is not defined')
   }
   const res = await fetch(
-    `http://wp-api.testing.monster/wp-json/api/v1/categories/${params.category_id}`
+    `https://wp-api.testing.monster/wp-json/api/v1/categories/${params.category_id}`
   )
 
   const categoriesRes = await fetch(
-    `http://wp-api.testing.monster/wp-json/api/v1/categories`
+    `https://wp-api.testing.monster/wp-json/api/v1/categories`
   )
 
   const data = await res.json()

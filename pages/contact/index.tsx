@@ -139,11 +139,11 @@ export const getServerSideProps: GetServerSideProps = async function ({}) {
   // }
 
   const res = await fetch(
-    'http://wp-api.testing.monster/wp-json/api/v1/pages/contact'
+    'https://wp-api.testing.monster/wp-json/api/v1/pages/contact'
   )
 
   // const categoriesRes = await fetch(
-  //   `http://wp-api.testing.monster/wp-json/api/v1/categories`
+  //   `https://wp-api.testing.monster/wp-json/api/v1/categories`
   // )
 
   const data = await res.json()

@@ -80,13 +80,13 @@ export const getServerSideProps: GetServerSideProps = async function ({
   const { q = '' } = query
 
   const res = await fetch(
-    `http://wp-api.testing.monster/wp-json/api/v1/search/${encodeURIComponent(
+    `https://wp-api.testing.monster/wp-json/api/v1/search/${encodeURIComponent(
       q as string
     )}`
   )
 
   const categoriesRes = await fetch(
-    `http://wp-api.testing.monster/wp-json/api/v1/categories`
+    `https://wp-api.testing.monster/wp-json/api/v1/categories`
   )
 
   const data = await res.json()
