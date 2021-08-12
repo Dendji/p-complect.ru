@@ -1,0 +1,32 @@
+.root {
+  width: 544px;
+  height: 360px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--white);
+}
+
+.text {
+  font-style: 500;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  color: var(--black);
+}
+
+.subtext {
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+  line-height: 1.4;
+  color: #8f8a8a;
+  margin-top: 12px;
+}
+
+@media screen and (max-width: 600px) {
+  .root {
+    width: 100%;
+  }
+}

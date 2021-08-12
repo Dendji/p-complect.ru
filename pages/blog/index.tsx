@@ -8,6 +8,7 @@ import Heading from '../../components/Heading/Heading'
 import Article from '../../components/Article/Article'
 import Text, { TypographyTheme } from '../../components/Typography/Typography'
 import { mockPosts } from '../../mocks/blog'
+import Layout from '../../components/Layout/Layout'
 
 export type IArticlePreview = Omit<IArticle, 'body'>
 
@@ -26,44 +27,46 @@ interface PageProps {
 
 const Blog: NextPage<PageProps> = ({ posts }: PageProps) => {
   return (
-    <div className={style.root}>
-      <Head>
-        <title>Блог ПрофКомплектация</title>
-        <meta
-          property="description"
-          name="Description"
-          key="description"
-          content=""
-        />
-        <meta property="og:title" content="" />
-        <meta property="og:type" content="page" />
-      </Head>
-      <Container>
-        <Grid container justify="center">
-          <Grid item xs={12} md={8}>
-            <div className={style.intro}>
-              <Heading weight={1}>Статьи</Heading>
-              <Text theme={TypographyTheme.Standard} size={24}>
-                Здесь мы делимся новостями нашей компании и знаниями из
-                строительной сферы
-              </Text>
-            </div>
+    <Layout>
+      <div className={style.root}>
+        <Head>
+          <title>Блог ПрофКомплектация</title>
+          <meta
+            property="description"
+            name="Description"
+            key="description"
+            content=""
+          />
+          <meta property="og:title" content="" />
+          <meta property="og:type" content="page" />
+        </Head>
+        <Container>
+          <Grid container justify="center">
+            <Grid item xs={12} md={8}>
+              <div className={style.intro}>
+                <Heading weight={1}>Статьи</Heading>
+                <Text theme={TypographyTheme.Standard} size={24}>
+                  Здесь мы делимся новостями нашей компании и знаниями из
+                  строительной сферы
+                </Text>
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
-        <div className={style.headliner}>
-          {posts.slice(0, 1).map((a) => (
-            <Article {...a} headliner />
-          ))}
-        </div>
-        {posts.length > 1 && (
-          <div className={style.articles}>
-            {posts.slice(1).map((a) => (
-              <Article {...a} />
+          <div className={style.headliner}>
+            {posts.slice(0, 1).map((a) => (
+              <Article {...a} headliner />
             ))}
           </div>
-        )}
-      </Container>
-    </div>
+          {posts.length > 1 && (
+            <div className={style.articles}>
+              {posts.slice(1).map((a) => (
+                <Article {...a} />
+              ))}
+            </div>
+          )}
+        </Container>
+      </div>
+    </Layout>
   )
 }
 

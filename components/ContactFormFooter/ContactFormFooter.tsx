@@ -18,9 +18,9 @@ export default function ContactFormFooter({
         <div className={style.submit}>
           <Button
             theme={submitTheme ? submitTheme : ButtonTheme.Blue}
-            disabled={isSubmitting}
             size={ButtonSize.L}
             type="submit"
+            isLoading={isSubmitting}
           >
             Отправить
           </Button>

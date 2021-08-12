@@ -27,16 +27,14 @@ const MyApp = ({ Component, pageProps, router }: AppProps) => {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Layout>
-          <PageTransition
-            timeout={300}
-            loadingDelay={200}
-            classNames="page-transition"
-            monkeyPatchScrolling
-          >
-            <Component {...pageProps} key={router.route} />
-          </PageTransition>
-        </Layout>
+        <PageTransition
+          timeout={300}
+          loadingDelay={200}
+          classNames="page-transition"
+          monkeyPatchScrolling
+        >
+          <Component {...pageProps} key={router.route} />
+        </PageTransition>
       </ThemeProvider>
     </Provider>
   )

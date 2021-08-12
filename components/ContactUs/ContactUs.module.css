@@ -75,3 +75,33 @@
     padding-bottom: 24px;
   }
 }
+@media screen and (max-width: 440px) {
+  .formContainer {
+    padding: 16px 8px;
+    max-height: 100vh;
+    box-sizing: border-box;
+  }
+  .heading {
+    font-size: 24px;
+  }
+  .subtitle {
+    font-size: 18px;
+    line-height: 1.2;
+  }
+  .close {
+    z-index: 100;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+  }
+
+  .form {
+    padding-top: 24px;
+  }
+
+  .root {
+    max-height: 100vh;
+    align-items: flex-start;
+    padding-bottom: 24px;
+  }
+}

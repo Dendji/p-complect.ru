@@ -1,0 +1,11 @@
+.root {
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.number {
+  font-size: 74px;
+}

@@ -8,6 +8,7 @@ import ProductCard, { IProduct } from '../../components/ProductCard/ProductCard'
 import { Category } from '../../components/Header/Header'
 import { IFilter } from '../../@types/common'
 import { useRouter } from 'next/router'
+import Layout from '../../components/Layout/Layout'
 
 interface PageProps {
   data: {
@@ -33,7 +34,7 @@ PageProps) => {
   }
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>Поиск по товарам | ПрофКомплектация</title>
         <meta
@@ -66,7 +67,7 @@ PageProps) => {
           </main>
         </Container>
       </Section>
-    </>
+    </Layout>
   )
 }
 

@@ -11,6 +11,7 @@ import Heading from '../../components/Heading/Heading'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import useTheme from '@material-ui/core/styles/useTheme'
 import ImageLightbox from '../../components/ImageLightbox/ImageLightbox'
+import Layout from '../../components/Layout/Layout'
 
 interface PageProps {}
 
@@ -79,7 +80,7 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>О ПрофКомплектации</title>
         <meta
@@ -196,13 +197,18 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
                 </p>
               </div>
               {!isMobile && (
-                <StandardImage src="/images/distributor.jpeg"></StandardImage>
+                <div
+                  className={style.sectionImage}
+                  style={{
+                    backgroundImage: `url(${'/images/distributor.jpeg'})`,
+                  }}
+                ></div>
               )}
             </div>
           </RoundedCard>
         </Container>
       </Section>
-    </>
+    </Layout>
   )
 }
 

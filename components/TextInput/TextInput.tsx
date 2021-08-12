@@ -12,7 +12,14 @@ export type TextInputProps = {
   isError?: boolean
   error?: string
   focus?: boolean
+  inputSize?: 'standard' | 'small' | 'large'
   theme?: InputTheme
+  oneSymboled?: boolean
+  inputRef?:
+    | RefObject<HTMLInputElement>
+    | undefined
+    | null
+    | ((instance: HTMLInputElement | null) => void)
 } & React.HTMLProps<HTMLInputElement>
 
 export default class TextInput extends React.PureComponent<TextInputProps> {
@@ -37,16 +44,16 @@ export default class TextInput extends React.PureComponent<TextInputProps> {
     }
   }
 
-  componentDidMount() {
-    const { focus } = this.props
-    if (focus) {
-      this.input?.current?.focus()
-    }
-  }
+  // componentDidMount() {
+  //   const { focus } = this.props
+  //   if (focus) {
+  //     this.input?.current?.focus()
+  //   }
+  // }
 
   render() {
     const { error, theme, className } = this.props
-    const { isError, focus, ...inputProps } = this.props
+    const { isError, focus, inputRef, ...inputProps } = this.props
 
     const classNames = classnames(
       style.root,
@@ -59,9 +66,9 @@ export default class TextInput extends React.PureComponent<TextInputProps> {
       <div className={classNames}>
         <input
           type="text"
-          ref={this.input}
           {...inputProps}
           className={style.input}
+          ref={inputRef ? inputRef : this.input}
         />
         {error && <div className={style.errorText}>{error}</div>}
       </div>

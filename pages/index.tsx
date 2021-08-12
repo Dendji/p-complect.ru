@@ -1,7 +1,6 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
-import style from './home/index.module.css'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import Section from '../components/Section/Section'
@@ -11,6 +10,7 @@ import BlogSection from '../components/BlogSection/BlogSection'
 import AuthorizedSection from '../components/AuthorizedSection/AuthorizedSection'
 import FeedbackSection from '../components/FeedbackSection/FeedbackSection'
 import faker from 'faker'
+import Layout from '../components/Layout/Layout'
 // import SlidersSection from '../components/SlidersSection/SlidersSection'
 
 interface PageProps {}
@@ -73,7 +73,7 @@ const reviews = [
 // ]
 const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
   return (
-    <div className={style.root}>
+    <Layout>
       <Head>
         <title>ПрофКомплектация | Строительные материалы</title>
         <meta
@@ -84,7 +84,7 @@ const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
         />
       </Head>
       {/* <SlidersSection mainSlides={mainSlides} /> */}
-      <Section className={style.intro}>
+      <Section>
         <Container>
           <Grid container justify="center">
             <Grid item xs={12} md={12}></Grid>
@@ -96,7 +96,7 @@ const ContactPage: NextPage<PageProps> = ({}: PageProps) => {
       <BrandsSection />
       <BlogSection items={articles} />
       <AuthorizedSection />
-    </div>
+    </Layout>
   )
 }
 

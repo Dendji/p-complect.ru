@@ -8,6 +8,7 @@ import Typography from '../../components/Typography/Typography'
 import Section from '../../components/Section/Section'
 import ClientCard from '../../components/ClientCard/ClientCard'
 import Objects from '../../components/Objects/Objects'
+import Layout from '../../components/Layout/Layout'
 
 interface PageProps {}
 
@@ -91,7 +92,7 @@ const objects = [
 
 const Portfolio: NextPage<PageProps> = ({}: PageProps) => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>О ПрофКомплектации</title>
         <meta
@@ -112,7 +113,7 @@ const Portfolio: NextPage<PageProps> = ({}: PageProps) => {
         </Container>
       </Section>
       <Objects tabs={tabs} objects={objects} />
-    </>
+    </Layout>
   )
 }
 

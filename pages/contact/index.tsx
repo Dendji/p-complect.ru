@@ -9,6 +9,7 @@ import Section from '../../components/Section/Section'
 // import { useDispatch } from 'react-redux'
 import RLink from '../../components/RLink/RLink'
 import YandexMap from '../../components/YandexMap/YandexMap'
+import Layout from '../../components/Layout/Layout'
 
 interface PageProps {
   data: {
@@ -32,72 +33,73 @@ const ContactPage: NextPage<PageProps> = ({ data }: PageProps) => {
   // }
 
   return (
-    <div className={style.root}>
-      <Head>
-        <title>Контакты – ПрофКомплектация</title>
-        <meta
-          property="description"
-          name="Description"
-          key="description"
-          content=""
-        />
-      </Head>
+    <Layout>
+      <div className={style.root}>
+        <Head>
+          <title>Контакты – ПрофКомплектация</title>
+          <meta
+            property="description"
+            name="Description"
+            key="description"
+            content=""
+          />
+        </Head>
 
-      <Section className={style.intro}>
-        <Container>
-          <Grid container justify="center">
-            <Grid item xs={12} md={12}>
-              <Heading weight={2}>{data.title}</Heading>
-              <div className="map">
-                <YandexMap src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A497006510b013bd96dcbd24921b9cb3f5ab5c7841beefa016a5b9c26b2bfd322&amp;width=100%25&amp;height=537&amp;lang=ru_RU&amp;scroll=false" />
-              </div>
-            </Grid>
-          </Grid>
-        </Container>
-      </Section>
-      <Section>
-        <Container>
-          <Grid container justify="center">
-            {data.items.map((d) => (
-              <Grid item xs={12} md={4}>
-                <Heading weight={4} size="small" className={style.blockTitle}>
-                  {d.title}
-                </Heading>
-                <div className={style.contact}>
-                  {d.items.map((item) => {
-                    if (d.title === 'Позвонить') {
-                      return (
-                        <div>
-                          <RLink href={`tel: ${item['текст']}`}>
-                            {item['текст']}
-                          </RLink>
-                        </div>
-                      )
-                    }
-                    if (d.title === 'Адрес') {
-                      return (
-                        <div>
-                          <RLink
-                            href="https://yandex.ru/maps/-/CCUYJ0wDPB"
-                            className={style.link}
-                            target="_blank"
-                            rel="noreferrer"
-                          >
-                            {item['текст']}
-                          </RLink>
-                        </div>
-                      )
-                    }
-                    return (
-                      <div
-                        dangerouslySetInnerHTML={{ __html: item['текст'] }}
-                      ></div>
-                    )
-                  })}
+        <Section className={style.intro}>
+          <Container>
+            <Grid container justify="center">
+              <Grid item xs={12} md={12}>
+                <Heading weight={2}>{data.title}</Heading>
+                <div className="map">
+                  <YandexMap src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A497006510b013bd96dcbd24921b9cb3f5ab5c7841beefa016a5b9c26b2bfd322&amp;width=100%25&amp;height=537&amp;lang=ru_RU&amp;scroll=false" />
                 </div>
               </Grid>
-            ))}
-            {/* <Grid item xs={12} md={4}>
+            </Grid>
+          </Container>
+        </Section>
+        <Section>
+          <Container>
+            <Grid container justify="center">
+              {data.items.map((d) => (
+                <Grid item xs={12} md={4}>
+                  <Heading weight={4} size="small" className={style.blockTitle}>
+                    {d.title}
+                  </Heading>
+                  <div className={style.contact}>
+                    {d.items.map((item) => {
+                      if (d.title === 'Позвонить') {
+                        return (
+                          <div>
+                            <RLink href={`tel: ${item['текст']}`}>
+                              {item['текст']}
+                            </RLink>
+                          </div>
+                        )
+                      }
+                      if (d.title === 'Адрес') {
+                        return (
+                          <div>
+                            <RLink
+                              href="https://yandex.ru/maps/-/CCUYJ0wDPB"
+                              className={style.link}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              {item['текст']}
+                            </RLink>
+                          </div>
+                        )
+                      }
+                      return (
+                        <div
+                          dangerouslySetInnerHTML={{ __html: item['текст'] }}
+                        ></div>
+                      )
+                    })}
+                  </div>
+                </Grid>
+              ))}
+              {/* <Grid item xs={12} md={4}>
               <Heading weight={4} size="small" className={style.blockTitle}>
                 Позвонить
               </Heading>
@@ -126,10 +128,11 @@ const ContactPage: NextPage<PageProps> = ({ data }: PageProps) => {
                 </RLink>
               </div>
             </Grid> */}
-          </Grid>
-        </Container>
-      </Section>
-    </div>
+            </Grid>
+          </Container>
+        </Section>
+      </div>
+    </Layout>
   )
 }
 

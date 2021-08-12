@@ -5,6 +5,8 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 export interface AppState {
   isContactUs: boolean
   isNavigation: boolean
+  isFormSucceeded: boolean
+  isFormFailed: boolean
 }
 
 let store: any
@@ -12,17 +14,29 @@ let store: any
 const initialState: AppState = {
   isContactUs: false,
   isNavigation: false,
-  // light: false,
-  // count: 0,
+  isFormSucceeded: false,
+  isFormFailed: false,
 }
 
-const reducer = (state = initialState, action: any) => {
+const reducer = (state = initialState, action: any): AppState => {
   switch (action.type) {
     case 'OPEN_CONTACT_US':
       return {
         ...state,
         isContactUs: true,
         isNavigation: false,
+      }
+    case 'SET_FORM_SUCCESS':
+      return {
+        ...state,
+        isContactUs: false,
+        isFormSucceeded: action.payload,
+      }
+    case 'SET_FORM_ERROR':
+      return {
+        ...state,
+        isContactUs: false,
+        isFormFailed: action.payload,
       }
     case 'CLOSE_CONTACT_US':
       return {

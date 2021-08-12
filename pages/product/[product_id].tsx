@@ -10,6 +10,7 @@ import ProductInfo from '../../components/ProductInfo/ProductInfo'
 import { IProduct } from '../../components/ProductCard/ProductCard'
 import { IImage } from '../../@types/common'
 import { useDispatch } from 'react-redux'
+import Layout from '../../components/Layout/Layout'
 
 export interface IFullProduct {
   id: number
@@ -61,7 +62,7 @@ export default function ProductPage({ data }: Props) {
 
   const onSuggestionClick = (id: string) => {}
   return (
-    <>
+    <Layout>
       <Head>
         <title>{data.seo?.title || data.name}</title>
         <meta
@@ -96,7 +97,7 @@ export default function ProductPage({ data }: Props) {
           </div>
         )}
       </div>
-    </>
+    </Layout>
   )
 }
 

@@ -7,12 +7,13 @@ import Grid from '@material-ui/core/Grid'
 import Typography from '../../components/Typography/Typography'
 import Section from '../../components/Section/Section'
 import Button, { ButtonSize, ButtonTheme } from '../../components/Button/Button'
+import Layout from '../../components/Layout/Layout'
 
 interface PageProps {}
 
 const Price: NextPage<PageProps> = ({}: PageProps) => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Прайс-лист на строительные материалы ПРОФКОМПОЛЕКТАЦИЯ</title>
         <meta
@@ -65,7 +66,7 @@ const Price: NextPage<PageProps> = ({}: PageProps) => {
           </Grid>
         </Container>
       </Section>
-    </>
+    </Layout>
   )
 }
 

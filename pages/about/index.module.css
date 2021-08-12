@@ -22,6 +22,15 @@
   background-size: cover;
 }
 
+.sectionImage {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-position: center center;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
 @media screen and (max-width: 640px) {
   .h1 {
     font-size: 20px;
@@ -55,6 +64,7 @@
   .conceptionImage {
     width: 64px !important;
   }
+
   .img {
     height: 160px;
   }

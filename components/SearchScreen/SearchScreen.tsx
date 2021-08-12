@@ -8,6 +8,8 @@ import TextInput from '../TextInput/TextInput'
 import { useRouter } from 'next/router'
 import CloseButton from '../CloseButton/CloseButton'
 import dynamic from 'next/dynamic'
+import { ReactAutosuggest } from '../Autosuggest/Autosuggest'
+import Autosuggest from 'react-autosuggest'
 
 const SpeechRecognizer = dynamic(
   () => import('../SpeechRecognizer/SpeechRecognizer'),
@@ -19,6 +21,24 @@ type Props = {
   onClose: () => void
 }
 
+const suggestions = [
+  'утеплитель',
+  'мастика',
+  'праймер',
+  'битум',
+  'геотекстиль',
+  'воронка',
+  'аэратор',
+  'мембрана',
+  'пена',
+  'герметик',
+  'техноэласт',
+  'бикрост',
+  'унифлекс',
+  'плантер',
+  'pir',
+]
+
 export const SearchScreen: FC<Props> = ({ isModal, onClose }) => {
   const [query, setQuery] = useState('')
 
@@ -28,14 +48,18 @@ export const SearchScreen: FC<Props> = ({ isModal, onClose }) => {
     onClose()
     setQuery('')
   }
+
   const onSearch = (e: React.SyntheticEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    startSearch(query)
+  }
+
+  const startSearch = (query: string) => {
     if (!query.length) return
     router.push(`/search/?q=${query}`)
     setQuery('')
   }
-
   return (
     <Modal open={isModal} onClose={() => {}} hideBackdrop>
       <div className={s.content}>
@@ -48,12 +72,23 @@ export const SearchScreen: FC<Props> = ({ isModal, onClose }) => {
             Поиск по товарам
           </Heading>
           <div className={s.inputContainer}>
-            <TextInput
-              placeholder="Я ищу..."
-              value={query}
-              className={s.input}
-              onChange={(e) => setQuery(e.currentTarget.value)}
-              focus
+            <ReactAutosuggest
+              suggestions={suggestions}
+              onSuggestionSelected={(e, data) =>
+                startSearch(data.suggestionValue)
+              }
+              renderInput={(
+                inputProps: Autosuggest.RenderInputComponentProps
+              ) => (
+                <TextInput
+                  placeholder="Я ищу..."
+                  className={s.input}
+                  onChange={(e) => setQuery(e.currentTarget.value)}
+                  {...inputProps}
+                  ref={null}
+                  inputRef={inputProps.ref}
+                />
+              )}
             />
             <div className={s.microphone}>
               <SpeechRecognizer

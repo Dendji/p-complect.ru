@@ -1,0 +1,35 @@
+.selected {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  color: #fff;
+  z-index: 10;
+  font-size: 16px;
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+}
+
+.btn {
+  height: 95%;
+  position: relative;
+  border-radius: 5px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.2);
+  padding-right: 30px;
+  max-width: 100%;
+  background-color: #1356a8;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.suggestHint {
+  padding: 0 10px;
+  color: gray;
+}

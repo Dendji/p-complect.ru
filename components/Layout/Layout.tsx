@@ -10,6 +10,8 @@ import Head from 'next/head'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppState } from '../../store/store'
 import { SearchScreen } from '../SearchScreen/SearchScreen'
+import SuccessPopup from '../SuccessPopup/SuccessPopup'
+import ErrorPopup from '../ErrorPopup/ErrorPopup'
 
 export interface LayoutProps {
   children: React.ReactNode
@@ -27,6 +29,10 @@ export default function Layout({ children }: LayoutProps) {
 
   const dispatch = useDispatch()
   const isContactUs = useSelector((state: AppState) => state.isContactUs)
+  const isFormSucceeded = useSelector(
+    (state: AppState) => state.isFormSucceeded
+  )
+  const isFormFailed = useSelector((state: AppState) => state.isFormFailed)
   const isNavigation = useSelector((state: AppState) => state.isNavigation)
 
   const [isSearch, setSearch] = useState(false)
@@ -52,6 +58,19 @@ export default function Layout({ children }: LayoutProps) {
   const closeNavigation = () => {
     dispatch({
       type: 'CLOSE_NAVIGATION',
+    })
+  }
+  const onErrorClose = () => {
+    dispatch({
+      type: 'SET_FORM_ERROR',
+      payload: false,
+    })
+  }
+
+  const onSuccessClose = () => {
+    dispatch({
+      type: 'SET_FORM_SUCCESS',
+      payload: false,
     })
   }
 
@@ -124,6 +143,8 @@ export default function Layout({ children }: LayoutProps) {
         onClose={closeContactUs}
         onSubmit={handleSubmit}
       />
+      <SuccessPopup isOpen={isFormSucceeded} onClose={onSuccessClose} />
+      <ErrorPopup isOpen={isFormFailed} onClose={onErrorClose} />
 
       {isHeaderHidden ? null : (
         <Header

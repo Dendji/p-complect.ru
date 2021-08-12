@@ -4,12 +4,13 @@ import TextInput, { InputTheme } from '../TextInput/TextInput'
 import Textarea from '../Textarea/Textarea'
 import { ButtonTheme } from '../Button/Button'
 import style from './ContactForm.module.css'
-import Utils from '../../utils/utils'
+import Utils, { wait } from '../../utils/utils'
 import InputMask from 'react-input-mask'
 import * as Sentry from '@sentry/browser'
 import ContactFormFooter from '../ContactFormFooter/ContactFormFooter'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
+import { useDispatch } from 'react-redux'
 export interface ContactFormProps {
   submitTheme: ButtonTheme
   theme: InputTheme
@@ -25,15 +26,7 @@ export default function ContactForm(props: ContactFormProps) {
   const FormSchema = Yup.object().shape({
     name: Yup.string().max(50, 'Слишком длинный'),
     phone: Yup.string().required('Обязательное поле'),
-    foundOut: Yup.string()
-      .min(2, 'Слишком короткий')
-      .max(100, 'Слишком длинный')
-      .required('Обязательное поле'),
-    company: Yup.string()
-      .min(2, 'Слишком короткий')
-      .max(100, 'Слишком длинный')
-      .required('Обязательное поле'),
-    email: Yup.string().email('Неверный e-mail').required('Обязательное поле'),
+    email: Yup.string().email('Неверный e-mail'),
   })
 
   const initialValues = {
@@ -46,6 +39,8 @@ export default function ContactForm(props: ContactFormProps) {
     volume: '',
   }
 
+  const dispatch = useDispatch()
+
   return (
     <div className={style.form}>
       <Formik
@@ -53,6 +48,7 @@ export default function ContactForm(props: ContactFormProps) {
         initialValues={initialValues}
         onSubmit={async (values, { setSubmitting }) => {
           setSubmitting(true)
+          await wait(2000)
           try {
             // const res = await FormApi.sendForm(values)
             // if (res.status === 200) {
@@ -67,6 +63,10 @@ export default function ContactForm(props: ContactFormProps) {
             // if (res.data.status === 'failure') {
             //   console.error(`ERRORS: ${res.data.errors}`)
             // }
+            dispatch({
+              type: 'SET_FORM_SUCCESS',
+              payload: true,
+            })
           } catch (e) {
             Sentry.captureException(`Form submit error ${JSON.stringify(e)}`)
             setSubmitError(true)

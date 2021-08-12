@@ -2,7 +2,7 @@
   background-color: rgba(0, 0, 0, 0.7);
   color: var(--white);
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: center;
   height: 100%;
   padding: 24px;
@@ -26,6 +26,7 @@
   flex-direction: column;
   gap: 24px;
   text-align: center;
+  margin-top: 10%;
 }
 
 .container {
@@ -39,7 +40,7 @@
 .microphone {
   position: absolute;
   right: 0;
-  width: 80px;
+  width: 44px;
   top: 0;
   height: 100%;
   display: flex;

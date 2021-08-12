@@ -1,6 +1,7 @@
 import { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
+import Layout from '../../components/Layout/Layout'
 import Shipping from '../../components/Shipping/Shipping'
 
 interface PageProps {}
@@ -83,7 +84,7 @@ const objects = [
 
 const ShippingAndPayments: NextPage<PageProps> = ({}: PageProps) => {
   return (
-    <>
+    <Layout>
       <Head>
         <title>Доставка и оплата</title>
         <meta
@@ -94,7 +95,7 @@ const ShippingAndPayments: NextPage<PageProps> = ({}: PageProps) => {
         />
       </Head>
       <Shipping items={objects} />
-    </>
+    </Layout>
   )
 }
 

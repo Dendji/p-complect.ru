@@ -13,6 +13,7 @@ import Empty from '../../components/Empty/Empty'
 import CatalogHeader from '../../components/CatalogHeader/CatalogHeader'
 import { useRouter } from 'next/router'
 import CircularProgress from '@material-ui/core/CircularProgress'
+import Layout from '../../components/Layout/Layout'
 
 interface PageProps {
   data: {
@@ -88,7 +89,7 @@ const Catalog: NextPage<PageProps> = ({
   }
 
   return (
-    <>
+    <Layout>
       <Head>
         <title>О ПрофКомплектации</title>
         <meta
@@ -121,7 +122,7 @@ const Catalog: NextPage<PageProps> = ({
           </main>
         </Container>
       </Section>
-    </>
+    </Layout>
   )
 }
 

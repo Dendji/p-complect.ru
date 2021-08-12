@@ -174,7 +174,7 @@
 
 ```json
 {
-  "clients": {
+  "categories": {
     "title": "С кем мы работаем",
     "items": [
       {
@@ -188,30 +188,27 @@
       }
     ]
   },
-  "objects": {
-    "tags": ["Все", "Жилые комплексы", "Торговые центры"],
-    "items": [
-      {
-        "name": "г. Люберцы ул. Попова 19",
-        "tag": "Жилые комплексы",
-        "content": "Начали монтаж вентилируемого фасада г. Люберцы, ул. Попова 19, по програме ФКР На объекте смонтирована подсистема и выполнено утепление фасада, ведётся монтаж керамогранита. Используемые материалы: подсистема Doksal, утепление Baswool ВЕНТ ФАСАД т. 50+50 мм, керамогранит Грани Таганая.",
-        "images": [
-          {
-            "original": "https//p-complect.ru/media/48823293147",
-            "medium": "https//p-complect.ru/media/48823293147",
-            "large": "https//p-complect.ru/media/48823293147",
-            "thumbnail": "https//p-complect.ru/media/48823293147"
-          },
-          {
-            "original": "https//p-complect.ru/media/48823293147",
-            "medium": "https//p-complect.ru/media/48823293147",
-            "large": "https//p-complect.ru/media/48823293147",
-            "thumbnail": "https//p-complect.ru/media/48823293147"
-          }
-        ]
-      }
-    ]
-  }
+  "items": [
+    {
+      "name": "г. Люберцы ул. Попова 19",
+      "category": "Жилые комплексы",
+      "content": "Начали монтаж вентилируемого фасада г. Люберцы, ул. Попова 19, по програме ФКР На объекте смонтирована подсистема и выполнено утепление фасада, ведётся монтаж керамогранита. Используемые материалы: подсистема Doksal, утепление Baswool ВЕНТ ФАСАД т. 50+50 мм, керамогранит Грани Таганая.",
+      "images": [
+        {
+          "original": "https//p-complect.ru/media/48823293147",
+          "medium": "https//p-complect.ru/media/48823293147",
+          "large": "https//p-complect.ru/media/48823293147",
+          "thumbnail": "https//p-complect.ru/media/48823293147"
+        },
+        {
+          "original": "https//p-complect.ru/media/48823293147",
+          "medium": "https//p-complect.ru/media/48823293147",
+          "large": "https//p-complect.ru/media/48823293147",
+          "thumbnail": "https//p-complect.ru/media/48823293147"
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -441,5 +438,31 @@
       }
     ]
   }
+}
+```
+
+### Slides
+
+GET /slides
+
+```json
+{
+  "categories": [
+    "Большой слайдер",
+    "Маленький слайдер",
+  ],
+  "items": [
+    {
+      "category": "Большой слайдер"
+      "image": {
+        "original": "https//p-complect.ru/media/48823293147",
+        "medium": "https//p-complect.ru/media/48823293147",
+        "large": "https//p-complect.ru/media/48823293147",
+        "thumbnail": "https//p-complect.ru/media/48823293147"
+      },
+      "heading": "Заголовок",
+      "content": "HTML CONTENT"
+    }
+  ]
 }
 ```
