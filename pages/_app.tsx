@@ -1,6 +1,5 @@
 import 'normalize.css'
 import './index.css'
-import Layout from '../components/Layout/Layout'
 import React from 'react'
 import { PageTransition } from 'next-page-transitions'
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
