@@ -63,15 +63,6 @@ const articles = [
   },
 ]
 
-const mainSlides = [
-  {
-    img: '',
-    content: '',
-    heading: '',
-    buttonText: '',
-    buttonHref: '',
-  },
-]
 const HomePage: NextPage<PageProps> = ({ data }: PageProps) => {
   return (
     <Layout>
