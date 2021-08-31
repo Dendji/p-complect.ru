@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import style from './index.module.css'
@@ -13,7 +13,44 @@ import useTheme from '@material-ui/core/styles/useTheme'
 import ImageLightbox from '../../components/ImageLightbox/ImageLightbox'
 import Layout from '../../components/Layout/Layout'
 
-interface PageProps {}
+export interface MultiImage {
+  thumbnail: string
+  medium: string
+  medium_large: string
+  large: string
+  '1536x1536': string
+  '2048x2048': string
+}
+
+interface PageProps {
+  data: {
+    title: string
+    about: {
+      title: string
+      content: string
+      image: MultiImage
+    }
+    certificates: {
+      title: string
+      images: (MultiImage | null)[]
+    }
+    benefits: {
+      title: string
+      items: {
+        icon: string
+        title: string
+        content: string
+      }[]
+    }
+    extra: {
+      title: string
+      content: string
+      image: MultiImage
+    }
+    seo_description: string
+    seo_title: string
+  }
+}
 
 const conceptionItems = [
   {
@@ -74,7 +111,8 @@ const conceptionItems = [
     ),
   },
 ]
-const About: NextPage<PageProps> = ({}: PageProps) => {
+const About: NextPage<PageProps> = ({ data }: PageProps) => {
+  console.log('🚀 ~ file: index.tsx ~ line 115 ~ data', data)
   const theme = useTheme()
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
@@ -82,27 +120,29 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
   return (
     <Layout>
       <Head>
-        <title>О ПрофКомплектации</title>
-        <meta
-          property="description"
-          name="Description"
-          key="description"
-          content=""
-        />
+        <title>{data.seo_title || 'ПРОФКОМПЛЕКТАЦИЯ'}</title>
+        {data.seo_description && (
+          <meta
+            property="description"
+            name="Description"
+            key="description"
+            content={data.seo_description}
+          />
+        )}
       </Head>
       <Section className={style.section}>
         <Container>
-          <Heading weight={2}>О компании</Heading>
-          <RoundedCard className={style.card}>
+          {data.title && <Heading weight={2}>{data.title}</Heading>}
+          <div className={style.card}>
             <div className={style.grid}>
               <div
                 className={style.img}
                 style={{
-                  backgroundImage: `url(${'/images/about-company.jpeg'})`,
+                  backgroundImage: `url(${data.about.image.large})`,
                 }}
               ></div>
-              <div className={style.cardContent}>
-                <Heading
+              <div className={style.text}>
+                {/* <Heading
                   weight={1}
                   size="medium"
                   theme="orange"
@@ -110,58 +150,58 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
                   className={style.h1}
                 >
                   ООО «ПРОФКОМПЛЕКТАЦИЯ»
-                </Heading>
-                <p>
-                  Крупный и&nbsp;надежный поставщик строительно-отделочных
-                  материалов, имеющий дилерские соглашения с&nbsp;известными
-                  российскими и&nbsp;зарубежными производителями.
-                </p>
-                <p>
-                  Мы&nbsp;организуем комплексные поставки стройматериалов
-                  по&nbsp;всей стране, каждый год обеспечивая ими сотни
-                  строительных объектов. Являемся участниками тендеров
-                  на&nbsp;строительство и&nbsp;ремонт.
-                </p>
-                <p>
-                  Нашим клиентам доступен широкий ассортимент высококачественной
-                  продукции, достойное сервисное обслуживание и&nbsp;приятные
-                  цены. Мы&nbsp;обеспечиваем лучшие условия как и&nbsp;для
-                  строительства крупного складского комплекса, так и&nbsp;для
-                  простого утепления стен жилого дома.
-                </p>
+                </Heading> */}
+                <div
+                  dangerouslySetInnerHTML={{ __html: data.about.content }}
+                ></div>
               </div>
             </div>
-          </RoundedCard>
+          </div>
         </Container>
       </Section>
       <Section dark>
         <Container>
-          <Heading weight={2} className={style.h2}>
-            Благодарственные письма
-          </Heading>
+          {data.certificates.title && (
+            <Heading weight={2} className={style.h2}>
+              {data.certificates.title}
+            </Heading>
+          )}
           <Grid container spacing={3}>
-            <Grid item xs={6} md={3}>
-              <ImageLightbox src={'/images/letters/IMG_0001.jpg'} />
-            </Grid>
+            {data.certificates.images.map((image) =>
+              image ? (
+                <Grid item xs={6} md={3}>
+                  <ImageLightbox src={image.large} />
+                </Grid>
+              ) : null
+            )}
           </Grid>
         </Container>
       </Section>
       <Section>
         <Container>
-          <Heading weight={2}>О концепции</Heading>
+          {data.benefits.title && (
+            <Heading weight={2} className={style.h2}>
+              {data.benefits.title}
+            </Heading>
+          )}
           <Grid container spacing={3}>
-            {conceptionItems.map((item, index) => (
+            {data.benefits.items.map((item, index) => (
               <Grid item xs={12} md={6} key={index}>
                 <div className={style.conceptionItem}>
-                  <StandardImage
-                    src={item.icon}
-                    className={style.conceptionImage}
-                  />
-                  <div className="content">
-                    <p>
-                      <strong>{item.heading}</strong> <br />
-                      {item.content}
-                    </p>
+                  {item.icon && (
+                    <StandardImage
+                      src={item.icon}
+                      className={style.conceptionImage}
+                    />
+                  )}
+                  <div>
+                    {item.title && <strong>{item.title}</strong>}
+                    <br />
+                    {item.content && (
+                      <div
+                        dangerouslySetInnerHTML={{ __html: item.content }}
+                      ></div>
+                    )}
                   </div>
                 </div>
               </Grid>
@@ -169,38 +209,34 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
           </Grid>
         </Container>
       </Section>
-
       <Section dark>
         <Container>
           <RoundedCard className={style.card}>
             <div className={style.grid}>
               <div className={style.cardContent}>
-                <Heading
-                  weight={2}
-                  size="big"
-                  theme="orange"
-                  noMt
-                  className={style.h2}
-                >
-                  Вы занимаетесь строительством профессионально?
-                </Heading>
-                {isMobile && (
-                  <StandardImage src="/images/distributor.jpeg"></StandardImage>
+                {data.extra.title && (
+                  <Heading
+                    weight={2}
+                    size="big"
+                    theme="orange"
+                    noMt
+                    className={style.h2}
+                  >
+                    {data.extra.title}
+                  </Heading>
                 )}
-                <p>
-                  Мы — дистрибьютор, который сможет воплотить ваши самые смелые
-                  идеи быстро, выгодно и с комфортом. Компания
-                  «ПРОФКОМПЛЕКТАЦИЯ» — это индивидуальный подход к каждому
-                  клиенту и полное выполнение всех обязательств. Мы нацелены на
-                  максимально высокий результат и долгосрочные отношения с
-                  клиентами.
-                </p>
+                {isMobile && (
+                  <StandardImage src={data.extra.image.large}></StandardImage>
+                )}
+                <div
+                  dangerouslySetInnerHTML={{ __html: data.extra.content }}
+                ></div>
               </div>
               {!isMobile && (
                 <div
                   className={style.sectionImage}
                   style={{
-                    backgroundImage: `url(${'/images/distributor.jpeg'})`,
+                    backgroundImage: `url(${data.extra.image.large})`,
                   }}
                 ></div>
               )}
@@ -210,6 +246,20 @@ const About: NextPage<PageProps> = ({}: PageProps) => {
       </Section>
     </Layout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async function ({}) {
+  const res = await fetch(
+    'https://wp-api.testing.monster/wp-json/api/v1/pages/about'
+  )
+
+  const data = await res.json()
+
+  return {
+    props: {
+      data,
+    },
+  }
 }
 
 export default About

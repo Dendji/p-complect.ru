@@ -29,10 +29,16 @@
 }
 
 .avatar {
-  height: 80px;
-  width: 80px;
+  height: 100px;
+  width: 100px;
   border-radius: 50%;
   overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
 }
 
 .name {
@@ -45,9 +51,13 @@
 
 .review {
   padding: 48px 24px;
-  display: grid;
-  grid-template-columns: 100px auto;
+  display: flex;
   gap: 32px;
+}
+
+.text > p {
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 .slide {
@@ -58,6 +68,8 @@
   .review {
     padding: 16px;
     grid-template-columns: 1fr;
+    gap: 0;
+    flex-direction: column;
   }
 
   .text {

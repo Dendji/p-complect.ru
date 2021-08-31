@@ -5,16 +5,17 @@ import Grid from '@material-ui/core/Grid'
 import Section from '../Section/Section'
 import Heading from '../Heading/Heading'
 import RoundedCard from '../RoundedCard/RoundedCard'
-import StandardImage from '../StandardImage/StandardImage'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { SwiperOptions } from 'swiper'
 import SwiperControls from '../SwiperControls/SwiperControls'
 import Button, { ButtonTheme } from '../Button/Button'
+import { MultiImage } from '../../pages/about'
 
 export interface IReview {
-  img: string
-  content: React.ReactNode
-  link: string
+  avatar: MultiImage | null
+  content: string | null
+  href: string | null
+  name: string
 }
 
 interface Props {
@@ -46,7 +47,7 @@ export default function FeedbackSection({ items }: Props) {
       },
     },
   }
-  return (
+  return items.length > 0 ? (
     <Section className={style.root} dark>
       <Container>
         <Grid container spacing={3}>
@@ -71,22 +72,30 @@ export default function FeedbackSection({ items }: Props) {
                 <SwiperSlide className={style.slide} tag="span" key={key}>
                   <RoundedCard>
                     <div className={style.review}>
-                      <div className={style.avatar}>
-                        {r.img && r.img.length && <StandardImage src={r.img} />}
+                      <div
+                        className={style.avatar}
+                        style={{ backgroundImage: `url(${r.avatar?.medium})` }}
+                      >
+                        {/* {r.avatar && <StandardImage src={r.avatar.medium} />} */}
+                        {/* <StandardImage src={faker.image.avatar()} /> */}
                       </div>
                       <div className={style.content}>
-                        <div className={style.text}>{r.content}</div>
-                        <a
-                          href="https://yandex.ru/maps/org/profkomplektatsiya/80970129270/reviews/"
-                          target="_blank"
-                        >
-                          <Button
-                            theme={ButtonTheme.Link}
-                            className={style.link}
-                          >
-                            Смотреть отзыв в Яндекс
-                          </Button>
-                        </a>
+                        {r.content && (
+                          <div
+                            className={style.text}
+                            dangerouslySetInnerHTML={{ __html: r.content }}
+                          ></div>
+                        )}
+                        {r.href && (
+                          <a href={r.href} target="_blank">
+                            <Button
+                              theme={ButtonTheme.Link}
+                              className={style.link}
+                            >
+                              Смотреть отзыв в Яндекс
+                            </Button>
+                          </a>
+                        )}
                       </div>
                     </div>
                   </RoundedCard>
@@ -97,5 +106,5 @@ export default function FeedbackSection({ items }: Props) {
         </Grid>
       </Container>
     </Section>
-  )
+  ) : null
 }

@@ -13,9 +13,9 @@ import SliderControl from '../SliderControl/SliderControl'
 
 interface Props {
   items: {
+    title: string
     icon: string
-    heading: string
-    content: React.ReactNode
+    content: string
   }[]
 }
 export default function Shipping({ items }: Props) {
@@ -75,9 +75,12 @@ export default function Shipping({ items }: Props) {
                   <StandardImage src={item.icon} />
                 </div>
                 <Heading weight={3} className={style.heading}>
-                  {item.heading}
+                  {item.title}
                 </Heading>
-                <div className={style.content}>{item.content}</div>
+                <div
+                  className={style.content}
+                  dangerouslySetInnerHTML={{ __html: item.content }}
+                ></div>
               </RoundedCard>
             </SwiperSlide>
           ))}

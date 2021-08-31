@@ -15,3 +15,9 @@
 .placeholder svg {
   height: 100%;
 }
+
+@media screen and (max-width: 375px) {
+  .placeholder {
+    height: 100%;
+  }
+}

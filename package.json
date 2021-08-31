@@ -14,7 +14,8 @@
     "export": "next export"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.4",
+    "@material-ui/core": "^4.12.3",
+    "@material-ui/lab": "^4.0.0-alpha.60",
     "@sentry/browser": "^6.3.6",
     "@types/faker": "^5.5.5",
     "@types/isotope-layout": "^3.0.8",
@@ -60,7 +61,7 @@
   "devDependencies": {
     "@next/bundle-analyzer": "^10.2.0",
     "@types/classnames": "^2.2.11",
-    "@types/material-ui": "^0.21.8",
+    "@types/material-ui": "^0.21.9",
     "@types/node": "^15.3.0",
     "@types/nuka-carousel": "^4.4.6",
     "@types/react": "^17.0.5",

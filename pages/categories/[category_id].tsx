@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import style from './index.module.css'
 import Container from '@material-ui/core/Container'
 import Section from '../../components/Section/Section'
@@ -14,6 +14,7 @@ import CatalogHeader from '../../components/CatalogHeader/CatalogHeader'
 import { useRouter } from 'next/router'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Layout from '../../components/Layout/Layout'
+import Pagination from '@material-ui/lab/Pagination'
 
 interface PageProps {
   data: {
@@ -22,6 +23,16 @@ interface PageProps {
   }
   categoryId: string
   categories: Category[]
+}
+
+export const AMOUNT_PER_PAGE = 20
+
+const getPaginationParams = (page: number): URLSearchParams => {
+  const params = new URLSearchParams()
+
+  params.set('amount', AMOUNT_PER_PAGE + '')
+  params.set('start', AMOUNT_PER_PAGE * (page - 1) + '')
+  return params
 }
 
 const Catalog: NextPage<PageProps> = ({
@@ -41,18 +52,43 @@ const Catalog: NextPage<PageProps> = ({
 
   const [products, setProducts] = useState(data.products)
   const [isLoading, setLoading] = useState(false)
+  const [filter, setFilter] = useState<any[]>([])
+  const [sub, setSub] = useState<string | null>(null)
+  const [page, setPage] = useState(1)
 
-  const onFilterChange = async (filter: any[]) => {
+  const onPageChange = (event: React.ChangeEvent<unknown>, page: number) => {
+    setPage(page)
+  }
+
+  const onFilterChange = async (filter: any[], sub: string | null) => {
+    setFilter(filter)
+    if (sub) {
+      setSub(sub)
+    }
+  }
+
+  useEffect(() => {
+    onGetProducts()
+  }, [filter, sub, page])
+
+  const onGetProducts = async () => {
     setLoading(true)
 
     const query = filter.map((f) => `filters[${f.name}][]=${f.value.value}`)
-    let url = `https://wp-api.testing.monster/wp-json/api/v1/categories/${categoryId}`
+    let url = `https://wp-api.testing.monster/wp-json/api/v1/categories/${
+      sub ? sub : categoryId
+    }`
 
     if (query.length > 0) {
       url += `?${query.join('&')}`
     }
 
-    const res = await fetch(url)
+    const params = new URLSearchParams()
+
+    params.set('amount', AMOUNT_PER_PAGE + '')
+    params.set('start', AMOUNT_PER_PAGE * (page - 1) + 1 + '')
+
+    const res = await fetch(url + `?${params.toString()}`)
     const data = await res.json()
 
     setProducts(data.products)
@@ -91,7 +127,7 @@ const Catalog: NextPage<PageProps> = ({
   return (
     <Layout>
       <Head>
-        <title>О ПрофКомплектации</title>
+        <title>Каталог ПРОФКОМПЛЕКТАЦИИ</title>
         <meta
           property="description"
           name="Description"
@@ -110,15 +146,29 @@ const Catalog: NextPage<PageProps> = ({
               [style.layout]: emptyFilters,
             })}
           >
-            {emptyFilters && (
+            {emptyFilters && currentCategory && (
               <CatalogSidebar
+                currentCategory={currentCategory}
+                categories={categories}
                 filters={data.filters}
                 onFilterChange={onFilterChange}
                 isSubmitLoading={isLoading}
               />
             )}
-
-            {renderProducts()}
+            <div className={style.productGrid}>
+              {renderProducts()}
+              {products.items.length > 0 && (
+                <div className={style.pagination}>
+                  <Pagination
+                    count={Math.ceil(products.total / AMOUNT_PER_PAGE)}
+                    shape="rounded"
+                    size="large"
+                    page={page}
+                    onChange={onPageChange}
+                  />
+                </div>
+              )}
+            </div>
           </main>
         </Container>
       </Section>
@@ -132,13 +182,22 @@ export const getServerSideProps: GetServerSideProps = async function ({
   if (!params?.category_id) {
     throw new Error('id is not defined')
   }
-  const res = await fetch(
-    `https://wp-api.testing.monster/wp-json/api/v1/categories/${params.category_id}`
-  )
+  // const res =
 
-  const categoriesRes = await fetch(
-    `https://wp-api.testing.monster/wp-json/api/v1/categories`
-  )
+  const paginationParams = getPaginationParams(1)
+
+  const [res, categoriesRes] = await Promise.all([
+    fetch(
+      `https://wp-api.testing.monster/wp-json/api/v1/categories/${
+        params.category_id
+      }?${paginationParams.toString()}`
+    ),
+    fetch(`https://wp-api.testing.monster/wp-json/api/v1/categories`),
+  ])
+
+  // const categoriesRes = await fetch(
+  //   `https://wp-api.testing.monster/wp-json/api/v1/categories`
+  // )
 
   const data = await res.json()
   const categories = await categoriesRes.json()

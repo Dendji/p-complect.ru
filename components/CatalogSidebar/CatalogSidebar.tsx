@@ -8,16 +8,20 @@ import Popup from '../Popup/Popup'
 import CloseButton from '../CloseButton/CloseButton'
 import TextInput, { InputTheme } from '../TextInput/TextInput'
 import Select from '../Select/Select'
+import { Category } from '../Header/Header'
 
 interface Props {
   filters: IFilter
   isSubmitLoading?: boolean
-  onFilterChange: (filter: any[]) => void
+  categories: Category[]
+  currentCategory: Category
+  onFilterChange: (filter: any[], sub: string | null) => void
 }
 
 export default function CatalogSidebar({
   filters,
   isSubmitLoading,
+  currentCategory,
   onFilterChange,
 }: Props) {
   const theme = useTheme()
@@ -28,6 +32,10 @@ export default function CatalogSidebar({
   const [isOpen, setOpen] = useState<boolean>(false)
 
   const [filter, setFilter] = useState<any[]>([])
+  const [sub, setSub] = useState<{
+    label: string
+    value: string
+  } | null>(null)
 
   const eventHandlerCallback = useCallback(() => {
     setOpen(true)
@@ -56,18 +64,23 @@ export default function CatalogSidebar({
     setFilter(newFilter)
   }
 
+  const onSubChange = (option: { value: string; label: string } | null) => {
+    setSub(option)
+  }
+
   // const onPriceChange = (value: number | number[]) => {
   //   setPrice(value)
   // }
 
   const onApply = () => {
-    onFilterChange(filter)
+    onFilterChange(filter, sub?.value || null)
     if (isOpen) setOpen(false)
   }
 
   const onReset = () => {
     setFilter([])
-    onFilterChange([])
+    setSub(null)
+    onFilterChange([], null)
     if (isOpen) setOpen(false)
   }
 
@@ -163,7 +176,24 @@ export default function CatalogSidebar({
   ) : (
     <div className={style.root}>
       <div className={style.heading}>Товары</div>
-      <div className={style.filter}>{renderFilter()}</div>
+
+      <div className={style.filter}>
+        <div className={style.filterItem}>
+          <div className={style.filterLabel}>Категории</div>
+          <Select
+            instanceId={'4123'}
+            isClearable
+            onChange={(option) => onSubChange(option)}
+            placeholder="Все"
+            value={sub}
+            options={currentCategory.subcategories.map((s) => ({
+              label: s.name,
+              value: s.id + '',
+            }))}
+          />
+        </div>
+        {renderFilter()}
+      </div>
       {renderControls()}
     </div>
   )

@@ -12,6 +12,10 @@
   padding: 32px;
 }
 
+.text {
+  padding: 32px;
+  padding-top: 0;
+}
 .conceptionItem {
   display: grid;
   gap: 24px;
@@ -20,6 +24,7 @@
 
 .img {
   background-size: cover;
+  max-height: 400px;
 }
 
 .sectionImage {
@@ -39,16 +44,21 @@
     max-width: 100px;
   }
 
+  .section {
+    padding-top: 64px !important;
+  }
+
   .h2 {
-    font-size: 32px;
-    line-height: 1.2;
+    font-size: 32px !important;
+    line-height: 1.2 !important;
   }
   .grid {
     padding: 10px;
     gap: 32px;
   }
 
-  .cardContent {
+  .cardContent,
+  .text {
     padding: 0;
   }
   .grid {
@@ -74,5 +84,13 @@
   }
   .h2 {
     margin-bottom: 16px !important;
+    font-size: 36px !important;
+    line-height: 1.2 !important;
+  }
+
+  .extraTitle {
+    margin-bottom: 16px;
+    font-size: 36px;
+    line-height: 1.2;
   }
 }
