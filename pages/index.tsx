@@ -14,6 +14,7 @@ import FeedbackSection, {
 import Layout from '../components/Layout/Layout'
 import SlidersSection from '../components/SlidersSection/SlidersSection'
 import { MultiImage } from './about'
+import { API_HOST } from '../utils/const'
 // import SlidersSection from '../components/SlidersSection/SlidersSection'
 
 interface PageProps {
@@ -93,9 +94,7 @@ const HomePage: NextPage<PageProps> = ({ data }: PageProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async function () {
-  const res = await fetch(
-    `https://wp-api.testing.monster/wp-json/api/v1/pages/home`
-  )
+  const res = await fetch(`${API_HOST}/pages/home`)
 
   const data = await res.json()
 

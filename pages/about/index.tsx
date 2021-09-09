@@ -12,6 +12,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import useTheme from '@material-ui/core/styles/useTheme'
 import ImageLightbox from '../../components/ImageLightbox/ImageLightbox'
 import Layout from '../../components/Layout/Layout'
+import { API_HOST } from '../../utils/const'
 
 export interface MultiImage {
   thumbnail: string
@@ -190,9 +191,7 @@ const About: NextPage<PageProps> = ({ data }: PageProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async function ({}) {
-  const res = await fetch(
-    'https://wp-api.testing.monster/wp-json/api/v1/pages/about'
-  )
+  const res = await fetch(`${API_HOST}/pages/about`)
 
   const data = await res.json()
 

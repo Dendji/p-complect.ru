@@ -18,6 +18,7 @@ import HoursWidget from '../HoursWidget/HoursWidget'
 import CallWidget from '../CallWidget/CallWidget'
 import useSWR from 'swr'
 import SearchIcon from '../SearchIcon/SearchIcon'
+import { API_HOST } from '../../utils/const'
 // import SpeechRecognition, {
 //   useSpeechRecognition,
 // } from 'react-speech-recognition'
@@ -44,10 +45,7 @@ export default function Header(props: HeaderProps) {
   const {
     data: categories,
     // error
-  } = useSWR<Category[]>(
-    'https://wp-api.testing.monster/wp-json/api/v1/categories',
-    fetcher
-  )
+  } = useSWR<Category[]>(`${API_HOST}/categories`, fetcher)
 
   const theme = useTheme()
 

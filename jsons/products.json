@@ -1,0 +1,132 @@
+{
+  "filters": {
+    "33": {
+      "id": "33",
+      "name": "\u0411\u0440\u0435\u043d\u0434",
+      "type": "dropdown",
+      "values": [
+        "\u0422\u0435\u0445\u043d\u043e\u041d\u0418\u041a\u041e\u041b\u042c",
+        "\u042e\u043d\u0438\u0432\u0435\u0440\u0441\u0430\u043b"
+      ]
+    },
+    "32": {
+      "id": "32",
+      "name": "\u041e\u0441\u043d\u043e\u0432\u0430",
+      "type": "checkbox",
+      "values": [
+        "\u0411\u0438\u0442\u0443\u043c\u043d\u043e-\u043f\u043e\u043b\u0438\u043c\u0435\u0440\u043d\u0430\u044f"
+      ]
+    },
+    "17": {
+      "id": "17",
+      "name": "\u041c\u0430\u0440\u043a\u0430 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430",
+      "type": "checkbox",
+      "values": ["LOGICROOF", "SINTOFOIL"]
+    },
+    "19": {
+      "id": "19",
+      "name": "\u0422\u043e\u043b\u0449\u0438\u043d\u0430",
+      "type": "dropdown",
+      "values": ["1,2", "1,5"]
+    }
+  },
+  "products": {
+    "items": [
+      {
+        "id": 137,
+        "name": "\u0423\u043d\u0438\u0444\u043b\u0435\u043a\u0441 \u042d\u041a\u041f \u0441\u043b\u0430\u043d\u0435\u0446 \u0441\u0435\u0440\u044b\u0439",
+        "brand": "\u0422\u0435\u0445\u043d\u043e\u041d\u0418\u041a\u041e\u041b\u042c",
+        "brand_image": {
+          "thumbnail": "https://wp-api.testing.monster/wp-content/uploads/2021/07/TI01-150x150.png",
+          "thumbnail-width": 150,
+          "thumbnail-height": 150,
+          "medium": "https://wp-api.testing.monster/wp-content/uploads/2021/07/TI01-300x209.png",
+          "medium-width": 300,
+          "medium-height": 209,
+          "medium_large": "https://wp-api.testing.monster/wp-content/uploads/2021/07/TI01-768x534.png",
+          "medium_large-width": 768,
+          "medium_large-height": 534,
+          "large": "https://wp-api.testing.monster/wp-content/uploads/2021/07/TI01-1024x712.png",
+          "large-width": 1024,
+          "large-height": 712,
+          "1536x1536": "https://wp-api.testing.monster/wp-content/uploads/2021/07/TI01-1536x1069.png",
+          "1536x1536-width": 1536,
+          "1536x1536-height": 1069,
+          "2048x2048": "https://wp-api.testing.monster/wp-content/uploads/2021/07/TI01-2048x1425.png",
+          "2048x2048-width": 2048,
+          "2048x2048-height": 1425
+        },
+        "article": "\u0423\u043d\u0438\u0444\u043b\u0435\u043a\u0441 \u042d\u041a\u041f \u0441\u043b\u0430\u043d\u0435\u0446 \u0441\u0435\u0440\u044b\u0439",
+        "price": "",
+        "preview": [
+          {
+            "preview": "https://wp-api.testing.monster/wp-content/uploads/2021/07/unifleks-khkp-150x150.png",
+            "medium": "https://wp-api.testing.monster/wp-content/uploads/2021/07/unifleks-khkp-300x225.png",
+            "large": "https://wp-api.testing.monster/wp-content/uploads/2021/07/unifleks-khkp.png",
+            "thumbnail": "https://wp-api.testing.monster/wp-content/uploads/2021/07/unifleks-khkp-150x150.png"
+          }
+        ],
+        "unit": "\u043c2",
+        "attributes": {
+          "32": {
+            "id": 32,
+            "name": "\u041e\u0441\u043d\u043e\u0432\u0430",
+            "type": "checkbox",
+            "values": [
+              "\u0411\u0438\u0442\u0443\u043c\u043d\u043e-\u043f\u043e\u043b\u0438\u043c\u0435\u0440\u043d\u0430\u044f"
+            ]
+          }
+        }
+      },
+      {
+        "id": 204,
+        "name": "\u041f\u043e\u043b\u0438\u043c\u0435\u0440\u043d\u0430\u044f \u041c\u0435\u043c\u0431\u0440\u0430\u043d\u0430 \u21162",
+        "brand": "",
+        "brand_image": null,
+        "article": "",
+        "price": "",
+        "preview": [],
+        "unit": "",
+        "attributes": {
+          "19": {
+            "id": 19,
+            "name": "\u0422\u043e\u043b\u0449\u0438\u043d\u0430",
+            "type": "dropdown",
+            "values": ["1,5"]
+          },
+          "17": {
+            "id": 17,
+            "name": "\u041c\u0430\u0440\u043a\u0430 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430",
+            "type": "checkbox",
+            "values": ["SINTOFOIL"]
+          }
+        }
+      },
+      {
+        "id": 203,
+        "name": "\u041f\u043e\u043b\u0438\u043c\u0435\u0440\u043d\u0430\u044f \u041c\u0435\u043c\u0431\u0440\u0430\u043d\u0430 \u21161",
+        "brand": "\u042e\u043d\u0438\u0432\u0435\u0440\u0441\u0430\u043b",
+        "brand_image": null,
+        "article": "124124313",
+        "price": "",
+        "preview": [],
+        "unit": "",
+        "attributes": {
+          "17": {
+            "id": 17,
+            "name": "\u041c\u0430\u0440\u043a\u0430 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430",
+            "type": "checkbox",
+            "values": ["LOGICROOF"]
+          },
+          "19": {
+            "id": 19,
+            "name": "\u0422\u043e\u043b\u0449\u0438\u043d\u0430",
+            "type": "dropdown",
+            "values": ["1,2"]
+          }
+        }
+      }
+    ],
+    "total": 3
+  }
+}

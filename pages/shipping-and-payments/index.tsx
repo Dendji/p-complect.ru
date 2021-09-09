@@ -3,6 +3,7 @@ import Head from 'next/head'
 import React from 'react'
 import Layout from '../../components/Layout/Layout'
 import Shipping from '../../components/Shipping/Shipping'
+import { API_HOST } from '../../utils/const'
 
 interface PageProps {
   data: {
@@ -35,9 +36,7 @@ const ShippingAndPayments: NextPage<PageProps> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async function ({}) {
-  const res = await fetch(
-    'https://wp-api.testing.monster/wp-json/api/v1/pages/shipping-and-payments'
-  )
+  const res = await fetch(`${API_HOST}/pages/shipping-and-payments`)
 
   const data = await res.json()
 

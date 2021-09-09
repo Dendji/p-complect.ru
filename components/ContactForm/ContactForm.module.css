@@ -10,3 +10,9 @@
   margin-bottom: 4px;
   width: 100%;
 }
+
+.grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

@@ -11,6 +11,7 @@ import { IProduct } from '../../components/ProductCard/ProductCard'
 import { IImage } from '../../@types/common'
 import { useDispatch } from 'react-redux'
 import Layout from '../../components/Layout/Layout'
+import { API_HOST } from '../../utils/const'
 
 export interface IFullProduct {
   id: number
@@ -107,9 +108,7 @@ export const getServerSideProps: GetServerSideProps = async function ({
   if (!params?.product_id) {
     throw new Error('id is not defined')
   }
-  const res = await fetch(
-    `https://wp-api.testing.monster/wp-json/api/v1/products/${params.product_id}`
-  )
+  const res = await fetch(`${API_HOST}/products/${params.product_id}`)
 
   const data = await res.json()
 

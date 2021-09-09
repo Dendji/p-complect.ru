@@ -9,6 +9,7 @@ import { Category } from '../../components/Header/Header'
 import { IFilter } from '../../@types/common'
 import { useRouter } from 'next/router'
 import Layout from '../../components/Layout/Layout'
+import { API_HOST } from '../../utils/const'
 
 interface PageProps {
   data: {
@@ -81,14 +82,10 @@ export const getServerSideProps: GetServerSideProps = async function ({
   const { q = '' } = query
 
   const res = await fetch(
-    `https://wp-api.testing.monster/wp-json/api/v1/search/${encodeURIComponent(
-      q as string
-    )}`
+    `${API_HOST}/search/${encodeURIComponent(q as string)}`
   )
 
-  const categoriesRes = await fetch(
-    `https://wp-api.testing.monster/wp-json/api/v1/categories`
-  )
+  const categoriesRes = await fetch(`${API_HOST}/categories`)
 
   const data = await res.json()
   console.log('🚀 ~ file: index.tsx ~ line 85 ~ data', data)

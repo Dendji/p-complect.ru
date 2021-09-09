@@ -84,8 +84,8 @@ export default function ContactForm(props: ContactFormProps) {
           isSubmitting,
         }) => (
           <form onSubmit={handleSubmit} autoComplete="no">
-            <Grid container direction="column" spacing={2}>
-              <Grid item className={style.formField}>
+            <div className={style.grid}>
+              <div className={style.formField}>
                 <TextInput
                   placeholder="Имя"
                   theme={props.theme}
@@ -97,8 +97,8 @@ export default function ContactForm(props: ContactFormProps) {
                   isError={!!errors.name && touched.name}
                   autoComplete="no"
                 />
-              </Grid>
-              <Grid item className={style.formField}>
+              </div>
+              <div className={style.formField}>
                 <InputMask
                   mask="+7(999) 999-99-99"
                   name="phone"
@@ -116,8 +116,8 @@ export default function ContactForm(props: ContactFormProps) {
                     />
                   )}
                 />
-              </Grid>
-              <Grid item className={style.formField}>
+              </div>
+              <div className={style.formField}>
                 <TextInput
                   theme={props.theme}
                   type="email"
@@ -129,8 +129,8 @@ export default function ContactForm(props: ContactFormProps) {
                   onBlur={handleBlur}
                   onChange={handleChange}
                 />
-              </Grid>
-              <Grid item className={style.formField}>
+              </div>
+              <div className={style.formField}>
                 <Textarea
                   theme={props.theme}
                   placeholder="Опишите ваш запрос в двух словах"
@@ -140,20 +140,12 @@ export default function ContactForm(props: ContactFormProps) {
                   onBlur={handleBlur}
                   onChange={handleChange}
                 />
-              </Grid>
-              {isSubmitted ? (
-                <Grid item className={style.formField}>
-                  <div className={style.success}>
-                    Спасибо, скоро мы свяжемся с вами
-                  </div>
-                </Grid>
-              ) : (
-                <ContactFormFooter
-                  isSubmitting={isSubmitting}
-                  submitTheme={props.submitTheme}
-                />
-              )}
-            </Grid>
+              </div>
+              <ContactFormFooter
+                isSubmitting={isSubmitting}
+                submitTheme={props.submitTheme}
+              />
+            </div>
           </form>
         )}
       </Formik>

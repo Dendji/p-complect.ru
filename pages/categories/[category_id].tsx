@@ -15,6 +15,7 @@ import { useRouter } from 'next/router'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Layout from '../../components/Layout/Layout'
 import Pagination from '@material-ui/lab/Pagination'
+import { API_HOST } from '../../utils/const'
 
 interface PageProps {
   data: {
@@ -75,9 +76,7 @@ const Catalog: NextPage<PageProps> = ({
     setLoading(true)
 
     const query = filter.map((f) => `filters[${f.name}][]=${f.value.value}`)
-    let url = `https://wp-api.testing.monster/wp-json/api/v1/categories/${
-      sub ? sub : categoryId
-    }`
+    let url = `${API_HOST}/categories/${sub ? sub : categoryId}`
 
     if (query.length > 0) {
       url += `?${query.join('&')}`
@@ -188,15 +187,15 @@ export const getServerSideProps: GetServerSideProps = async function ({
 
   const [res, categoriesRes] = await Promise.all([
     fetch(
-      `https://wp-api.testing.monster/wp-json/api/v1/categories/${
+      `${API_HOST}/categories/${
         params.category_id
       }?${paginationParams.toString()}`
     ),
-    fetch(`https://wp-api.testing.monster/wp-json/api/v1/categories`),
+    fetch(`${API_HOST}/categories`),
   ])
 
   // const categoriesRes = await fetch(
-  //   `https://wp-api.testing.monster/wp-json/api/v1/categories`
+  //   `${API_HOST}/categories`
   // )
 
   const data = await res.json()

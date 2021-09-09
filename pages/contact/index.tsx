@@ -10,6 +10,7 @@ import Section from '../../components/Section/Section'
 import RLink from '../../components/RLink/RLink'
 import YandexMap from '../../components/YandexMap/YandexMap'
 import Layout from '../../components/Layout/Layout'
+import { API_HOST } from '../../utils/const'
 
 interface PageProps {
   data: {
@@ -105,9 +106,7 @@ const ContactPage: NextPage<PageProps> = ({ data }: PageProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async function ({}) {
-  const res = await fetch(
-    'https://wp-api.testing.monster/wp-json/api/v1/pages/contact'
-  )
+  const res = await fetch(`${API_HOST}/pages/contact`)
 
   const data = await res.json()
 
