@@ -1,5 +1,5 @@
 import classnames from 'classnames'
-import React from 'react'
+import React, { RefObject } from 'react'
 import style from './Section.module.css'
 
 interface SectionProps {

@@ -54,7 +54,6 @@ interface PageProps {
 }
 
 const About: NextPage<PageProps> = ({ data }: PageProps) => {
-  console.log('🚀 ~ file: index.tsx ~ line 115 ~ data', data)
   const theme = useTheme()
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))

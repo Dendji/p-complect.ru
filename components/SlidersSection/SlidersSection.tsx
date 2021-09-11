@@ -23,10 +23,6 @@ interface Props {
 }
 
 export default function SlidersSection({ mainSlides }: Props) {
-  console.log(
-    '🚀 ~ file: SlidersSection.tsx ~ line 25 ~ SlidersSection ~ mainSlides',
-    mainSlides
-  )
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null)
 
   const swiperParams: SwiperOptions = {

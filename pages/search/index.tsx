@@ -75,7 +75,6 @@ PageProps) => {
 export const getServerSideProps: GetServerSideProps = async function ({
   query,
 }) {
-  console.log('🚀 ~ file: index.tsx ~ line 72 ~ query', query)
   // if (!params?.category_id) {
   //   throw new Error('id is not defined')
   // }
@@ -88,7 +87,6 @@ export const getServerSideProps: GetServerSideProps = async function ({
   const categoriesRes = await fetch(`${API_HOST}/categories`)
 
   const data = await res.json()
-  console.log('🚀 ~ file: index.tsx ~ line 85 ~ data', data)
   const categories = await categoriesRes.json()
 
   return {

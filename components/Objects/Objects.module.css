@@ -50,12 +50,19 @@
 
 .content {
   padding-right: 64px;
+  font-size: 18px;
+  line-height: 1.4;
 }
 
 .slideImg {
-  width: 100%;
-  max-width: 100%;
+  height: 100%;
+}
+
+.slideImgContainer {
+  height: 384px;
+  background-size: cover;
   border-radius: 20px;
+  background-position: center;
 }
 
 .objects {

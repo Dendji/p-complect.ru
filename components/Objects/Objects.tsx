@@ -1,5 +1,5 @@
 import { Container, useMediaQuery, useTheme } from '@material-ui/core'
-import React, { useRef, useState } from 'react'
+import React, { RefObject, useRef, useState } from 'react'
 import Button, { ButtonTheme } from '../Button/Button'
 import Heading from '../Heading/Heading'
 import RoundedCard from '../RoundedCard/RoundedCard'
@@ -12,17 +12,16 @@ interface Props {
   tabs: {
     value: string
     text: string
-    image: string
   }[]
   objects: {
     images: string[]
     heading: string
-    content: React.ReactNode
-    category: string
+    content: string
+    category: string[]
   }[]
 }
 export default function Objects({ tabs, objects }: Props) {
-  tabs = [{ value: '', text: 'Все', image: '' }, ...tabs]
+  tabs = [{ value: '', text: 'Все' }, ...tabs]
   const [activeTab, setActiveTab] = useState(tabs[0].value)
 
   const refGrid = useRef<HTMLDivElement | null>(null)
@@ -58,20 +57,33 @@ export default function Objects({ tabs, objects }: Props) {
   )
 
   const filteredObjects = objects
-    .filter((o) => (activeTab.length ? o.category === activeTab : true))
+    .filter((o) => (activeTab.length ? o.category.includes(activeTab) : true))
     .map((o, index) => (
       <RoundedCard key={index}>
         <div className={style.object}>
           <Carousel>
             {o.images.map((im) => (
-              <img src={im} className={style.slideImg} key={im}></img>
+              <div
+                className={style.slideImgContainer}
+                style={{ backgroundImage: `url(${im})` }}
+                key={im}
+              >
+                {/* <img src={im} className={style.slideImg} key={im}></img> */}
+              </div>
             ))}
           </Carousel>
           <div className={style.cardContent}>
-            <Heading weight={1} size="medium" theme="orange" noMt>
-              {o.heading}
-            </Heading>
-            <div className={style.content}>{o.content}</div>
+            {o.heading && (
+              <Heading weight={1} size="medium" theme="orange" noMt>
+                {o.heading}
+              </Heading>
+            )}
+            {o.content && (
+              <div
+                className={style.content}
+                dangerouslySetInnerHTML={{ __html: o.content }}
+              ></div>
+            )}
           </div>
         </div>
       </RoundedCard>

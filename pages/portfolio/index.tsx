@@ -1,6 +1,6 @@
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
-import React from 'react'
+import React, { useRef } from 'react'
 import style from './index.module.css'
 import Container from '@material-ui/core/Container'
 import Heading from '../../components/Heading/Heading'
@@ -9,8 +9,26 @@ import Section from '../../components/Section/Section'
 import ClientCard from '../../components/ClientCard/ClientCard'
 import Objects from '../../components/Objects/Objects'
 import Layout from '../../components/Layout/Layout'
+import { API_HOST } from '../../utils/const'
+import { MultiImage } from '../about'
 
-interface PageProps {}
+interface PageProps {
+  data: {
+    categories: {
+      title?: string
+      items?: {
+        name?: string
+        image?: MultiImage
+      }[]
+    }
+    items: {
+      category?: string[]
+      content?: string
+      images?: MultiImage[]
+      name?: string
+    }[]
+  }
+}
 
 const tabs = [
   {
@@ -90,7 +108,13 @@ const objects = [
   },
 ]
 
-const Portfolio: NextPage<PageProps> = ({}: PageProps) => {
+const Portfolio: NextPage<PageProps> = ({ data }: PageProps) => {
+  const ref = useRef<HTMLDivElement>(null)
+  const onScroll = () => {
+    ref.current?.scrollIntoView({
+      behavior: 'smooth',
+    })
+  }
   return (
     <Layout>
       <Head>
@@ -106,15 +130,47 @@ const Portfolio: NextPage<PageProps> = ({}: PageProps) => {
         <Container>
           <Heading weight={2}>С кем мы работаем</Heading>
           <div className={style.clientsGrid}>
-            {tabs.map((item, index) => (
-              <ClientCard key={index} image={item.image} heading={item.text} />
+            {data.categories.items?.map((item, index) => (
+              <ClientCard
+                key={index}
+                image={item.image?.large}
+                heading={item.name}
+                onClick={onScroll}
+              />
             ))}
           </div>
         </Container>
       </Section>
-      <Objects tabs={tabs} objects={objects} />
+      <div ref={ref}>
+        <Objects
+          tabs={
+            data.categories.items?.map((item) => ({
+              value: item.name || '',
+              text: item.name || '',
+            })) || []
+          }
+          objects={data.items.map((item) => ({
+            images: item.images?.map((image) => image.large) || [],
+            category: item.category || [],
+            content: item.content || '',
+            heading: item.name || '',
+          }))}
+        />
+      </div>
     </Layout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async function () {
+  const res = await fetch(`${API_HOST}/objects`)
+
+  const data = await res.json()
+
+  return {
+    props: {
+      data,
+    },
+  }
 }
 
 export default Portfolio
