@@ -84,4 +84,8 @@
   .content {
     padding-right: 0;
   }
+
+  .slideImgContainer {
+    height: 200px;
+  }
 }

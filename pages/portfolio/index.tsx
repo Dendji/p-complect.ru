@@ -118,7 +118,7 @@ const Portfolio: NextPage<PageProps> = ({ data }: PageProps) => {
   return (
     <Layout>
       <Head>
-        <title>О ПрофКомплектации</title>
+        <title>Клиенты и объекты – ПрофКомплектация</title>
         <meta
           property="description"
           name="Description"
