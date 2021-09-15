@@ -11,6 +11,8 @@ import ContactFormFooter from '../ContactFormFooter/ContactFormFooter'
 import { Formik } from 'formik'
 import * as Yup from 'yup'
 import { useDispatch } from 'react-redux'
+import axios from 'axios'
+import { API_HOST } from '../../utils/const'
 export interface ContactFormProps {
   submitTheme: ButtonTheme
   theme: InputTheme
@@ -32,11 +34,8 @@ export default function ContactForm(props: ContactFormProps) {
   const initialValues = {
     email: '',
     phone: '',
-    company: '',
-    issue: '',
     name: '',
-    foundOut: '',
-    volume: '',
+    issue: '',
   }
 
   const dispatch = useDispatch()
@@ -50,19 +49,27 @@ export default function ContactForm(props: ContactFormProps) {
           setSubmitting(true)
           await wait(2000)
           try {
-            // const res = await FormApi.sendForm(values)
-            // if (res.status === 200) {
-            //   setSubmitError(false)
-            //   setSubmitted(true)
-            //   if (props.onSubmit) {
-            //     props.onSubmit()
-            //   }
-            // } else {
-            //   setSubmitError(true)
-            // }
-            // if (res.data.status === 'failure') {
-            //   console.error(`ERRORS: ${res.data.errors}`)
-            // }
+            // const res = await axios.post(
+            //   `https://wp-api.testing.monster/wp-json/api/v1/sendMail`,
+            //   values
+            // )
+            const res = await axios.post(`${API_HOST}/sendMail`, values)
+            console.log(
+              '🚀 ~ file: ContactForm.tsx ~ line 56 ~ onSubmit={ ~ res',
+              res
+            )
+            if (res.status === 200) {
+              setSubmitError(false)
+              // setSubmitted(true)
+              if (props.onSubmit) {
+                props.onSubmit()
+              }
+            } else {
+              setSubmitError(true)
+            }
+            if (res.data.status === 'failure') {
+              console.error(`ERRORS: ${res.data.errors}`)
+            }
             dispatch({
               type: 'SET_FORM_SUCCESS',
               payload: true,
