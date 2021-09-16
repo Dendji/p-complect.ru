@@ -12,12 +12,14 @@ import { AppState } from '../../store/store'
 import { SearchScreen } from '../SearchScreen/SearchScreen'
 import SuccessPopup from '../SuccessPopup/SuccessPopup'
 import ErrorPopup from '../ErrorPopup/ErrorPopup'
+import { IInit } from '../../@types/common'
 
 export interface LayoutProps {
+  init?: IInit
   children: React.ReactNode
 }
 
-export default function Layout({ children }: LayoutProps) {
+export default function Layout({ children, init }: LayoutProps) {
   const router = useRouter()
 
   useEffect(() => {
@@ -148,6 +150,7 @@ export default function Layout({ children }: LayoutProps) {
 
       {isHeaderHidden ? null : (
         <Header
+          init={init}
           onModalCall={openContactUs}
           isNavigation={isNavigation}
           onToggleNavigation={handleToggleNavigation}

@@ -11,6 +11,7 @@ import RLink from '../../components/RLink/RLink'
 import YandexMap from '../../components/YandexMap/YandexMap'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST } from '../../utils/const'
+import { IInit } from '../../@types/common'
 
 interface PageProps {
   data: {
@@ -25,11 +26,12 @@ interface PageProps {
       link: string
     }[]
   }
+  init: IInit
 }
 
-const ContactPage: NextPage<PageProps> = ({ data }: PageProps) => {
+const ContactPage: NextPage<PageProps> = ({ data, init }: PageProps) => {
   return (
-    <Layout>
+    <Layout init={init}>
       <div className={style.root}>
         <Head>
           <title>Контакты – ПрофКомплектация</title>
@@ -106,13 +108,18 @@ const ContactPage: NextPage<PageProps> = ({ data }: PageProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async function ({}) {
-  const res = await fetch(`${API_HOST}/pages/contact`)
+  const [res, initRes] = await Promise.all([
+    fetch(`${API_HOST}/pages/contact`),
+    fetch(`${API_HOST}/init`),
+  ])
 
   const data = await res.json()
+  const init = await initRes.json()
 
   return {
     props: {
       data,
+      init,
     },
   }
 }

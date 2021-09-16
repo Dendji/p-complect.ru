@@ -5,8 +5,7 @@ import style from './index.module.css'
 import Container from '@material-ui/core/Container'
 import Section from '../../components/Section/Section'
 import ProductCard, { IProduct } from '../../components/ProductCard/ProductCard'
-import { Category } from '../../components/Header/Header'
-import { IFilter } from '../../@types/common'
+import { IFilter, IInit } from '../../@types/common'
 import { useRouter } from 'next/router'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST } from '../../utils/const'
@@ -16,17 +15,10 @@ interface PageProps {
     filters: IFilter
     products: { items: IProduct[]; total: number }
   }
-  // categoryId: string
-  categories: Category[]
+  init: IInit
 }
 
-const Search: NextPage<PageProps> = ({
-  data,
-  categories,
-}: // categoryId,
-PageProps) => {
-  // const currentCategory = categories.find((c) => c.id + '' === categoryId)
-
+const Search: NextPage<PageProps> = ({ data, init }: PageProps) => {
   const router = useRouter()
   const { q } = router.query
 
@@ -35,7 +27,7 @@ PageProps) => {
   }
 
   return (
-    <Layout>
+    <Layout init={init}>
       <Head>
         <title>Поиск по товарам | ПрофКомплектация</title>
         <meta
@@ -75,25 +67,19 @@ PageProps) => {
 export const getServerSideProps: GetServerSideProps = async function ({
   query,
 }) {
-  // if (!params?.category_id) {
-  //   throw new Error('id is not defined')
-  // }
   const { q = '' } = query
 
-  const res = await fetch(
-    `${API_HOST}/search/${encodeURIComponent(q as string)}`
-  )
-
-  const categoriesRes = await fetch(`${API_HOST}/categories`)
-
+  const [res, initRes] = await Promise.all([
+    fetch(`${API_HOST}/search/${encodeURIComponent(q as string)}`),
+    fetch(`${API_HOST}/init`),
+  ])
+  const init = await initRes.json()
   const data = await res.json()
-  const categories = await categoriesRes.json()
 
   return {
     props: {
       data,
-      categories,
-      // categoryId: params.category_id,
+      init,
     },
   }
 }

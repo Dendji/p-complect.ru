@@ -8,7 +8,7 @@ import Heading from '../../components/Heading/Heading'
 import ProductMain from '../../components/ProductMain/ProductMain'
 import ProductInfo from '../../components/ProductInfo/ProductInfo'
 import { IProduct } from '../../components/ProductCard/ProductCard'
-import { IImage } from '../../@types/common'
+import { IImage, IInit } from '../../@types/common'
 import { useDispatch } from 'react-redux'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST } from '../../utils/const'
@@ -50,9 +50,10 @@ export interface IFullProduct {
 
 interface Props {
   data: IFullProduct
+  init: IInit
 }
 
-export default function ProductPage({ data }: Props) {
+export default function ProductPage({ data, init }: Props) {
   const dispatch = useDispatch()
 
   const onBuyClick = () => {
@@ -63,7 +64,7 @@ export default function ProductPage({ data }: Props) {
 
   const onSuggestionClick = (id: string) => {}
   return (
-    <Layout>
+    <Layout init={init}>
       <Head>
         <title>{data.seo?.title || data.name}</title>
         <meta
@@ -108,14 +109,19 @@ export const getServerSideProps: GetServerSideProps = async function ({
   if (!params?.product_id) {
     throw new Error('id is not defined')
   }
-  const res = await fetch(`${API_HOST}/products/${params.product_id}`)
+
+  const [res, initRes] = await Promise.all([
+    fetch(`${API_HOST}/products/${params.product_id}`),
+    fetch(`${API_HOST}/init`),
+  ])
 
   const data = await res.json()
+  const init = await initRes.json()
 
   return {
     props: {
       data,
-      productId: params.product_id,
+      init,
     },
   }
 }

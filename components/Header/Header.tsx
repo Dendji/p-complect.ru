@@ -19,33 +19,27 @@ import CallWidget from '../CallWidget/CallWidget'
 import useSWR from 'swr'
 import SearchIcon from '../SearchIcon/SearchIcon'
 import { API_HOST } from '../../utils/const'
+import { IInit } from '../../@types/common'
 // import SpeechRecognition, {
 //   useSpeechRecognition,
 // } from 'react-speech-recognition'
 
 export interface HeaderProps {
   isNavigation: boolean
+  init?: IInit
   onSearch: () => void
   onToggleNavigation: () => void
   onModalCall: () => void
-}
-
-export interface Category {
-  id: number
-  name: string
-  meta: { title: string; description: string }
-  svg?: string
-  subcategories: Category[]
 }
 
 export default function Header(props: HeaderProps) {
   const [sticky, setSticky] = useState(false)
   const [isCatalog, setCatalog] = useState(false)
 
-  const {
-    data: categories,
-    // error
-  } = useSWR<Category[]>(`${API_HOST}/categories`, fetcher)
+  // const {
+  //   data: categories,
+  //   // error
+  // } = useSWR<Category[]>(`${API_HOST}/categories`, fetcher)
 
   const theme = useTheme()
 
@@ -80,7 +74,7 @@ export default function Header(props: HeaderProps) {
                 buttonProps={{ onClick: () => setCatalog(!isCatalog) }}
                 isOpen={isCatalog}
                 navs={
-                  categories?.map((c) => ({
+                  props.init?.categories?.map((c) => ({
                     text: c.name,
                     icon: c.svg ? (
                       <div dangerouslySetInnerHTML={{ __html: c.svg }}></div>
@@ -100,12 +94,11 @@ export default function Header(props: HeaderProps) {
                 buttonProps={{ onClick: () => setCatalog(!isCatalog) }}
                 isOpen={isCatalog}
                 navs={
-                  categories?.map((c) => ({
+                  props.init?.categories?.map((c) => ({
                     text: c.name,
                     icon: c.svg ? (
                       <div dangerouslySetInnerHTML={{ __html: c.svg }}></div>
                     ) : null,
-
                     url: `/categories/${c.id}`,
                   })) || []
                 }
@@ -167,7 +160,15 @@ export default function Header(props: HeaderProps) {
             <div>
               <Link href="/" as="/">
                 <a className={style.logo}>
-                  <Logo />
+                  {props.init?.logoDark ? (
+                    <img
+                      src={props.init?.logoDark}
+                      alt=""
+                      className={style.logo}
+                    />
+                  ) : (
+                    <Logo />
+                  )}
                 </a>
               </Link>
             </div>
@@ -181,9 +182,9 @@ export default function Header(props: HeaderProps) {
                 ref={searchRef}
               />
             </div>
-            <HoursWidget />
-            <AddressWidget />
-            <CallWidget onCall={props.onModalCall} />
+            <HoursWidget init={props.init} />
+            <AddressWidget init={props.init} />
+            <CallWidget onCall={props.onModalCall} init={props.init} />
           </div>
         </Container>
       )}

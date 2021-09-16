@@ -6,8 +6,7 @@ import Container from '@material-ui/core/Container'
 import Section from '../../components/Section/Section'
 import CatalogSidebar from '../../components/CatalogSidebar/CatalogSidebar'
 import ProductCard, { IProduct } from '../../components/ProductCard/ProductCard'
-import { Category } from '../../components/Header/Header'
-import { IFilter } from '../../@types/common'
+import { IFilter, IInit } from '../../@types/common'
 import classnames from 'classnames'
 import Empty from '../../components/Empty/Empty'
 import CatalogHeader from '../../components/CatalogHeader/CatalogHeader'
@@ -23,7 +22,7 @@ interface PageProps {
     products: { items: IProduct[]; total: number }
   }
   categoryId: string
-  categories: Category[]
+  init: IInit
 }
 
 export const AMOUNT_PER_PAGE = 20
@@ -38,10 +37,10 @@ const getPaginationParams = (page: number): URLSearchParams => {
 
 const Catalog: NextPage<PageProps> = ({
   data,
-  categories,
+  init,
   categoryId,
 }: PageProps) => {
-  const currentCategory = categories.find((c) => c.id + '' === categoryId)
+  const currentCategory = init.categories?.find((c) => c.id + '' === categoryId)
 
   const r = useRouter()
 
@@ -148,7 +147,7 @@ const Catalog: NextPage<PageProps> = ({
             {emptyFilters && currentCategory && (
               <CatalogSidebar
                 currentCategory={currentCategory}
-                categories={categories}
+                categories={init.categories || []}
                 filters={data.filters}
                 onFilterChange={onFilterChange}
                 isSubmitLoading={isLoading}
@@ -181,17 +180,16 @@ export const getServerSideProps: GetServerSideProps = async function ({
   if (!params?.category_id) {
     throw new Error('id is not defined')
   }
-  // const res =
 
   const paginationParams = getPaginationParams(1)
 
-  const [res, categoriesRes] = await Promise.all([
+  const [res, initRes] = await Promise.all([
     fetch(
       `${API_HOST}/categories/${
         params.category_id
       }?${paginationParams.toString()}`
     ),
-    fetch(`${API_HOST}/categories`),
+    fetch(`${API_HOST}/init`),
   ])
 
   // const categoriesRes = await fetch(
@@ -199,12 +197,12 @@ export const getServerSideProps: GetServerSideProps = async function ({
   // )
 
   const data = await res.json()
-  const categories = await categoriesRes.json()
+  const init = await initRes.json()
 
   return {
     props: {
       data,
-      categories,
+      init,
       categoryId: params.category_id,
     },
   }

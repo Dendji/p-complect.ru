@@ -13,6 +13,7 @@ import useTheme from '@material-ui/core/styles/useTheme'
 import ImageLightbox from '../../components/ImageLightbox/ImageLightbox'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST } from '../../utils/const'
+import { IInit } from '../../@types/common'
 
 export interface MultiImage {
   thumbnail: string
@@ -24,6 +25,7 @@ export interface MultiImage {
 }
 
 interface PageProps {
+  init: IInit
   data: {
     title: string
     about: {
@@ -53,13 +55,13 @@ interface PageProps {
   }
 }
 
-const About: NextPage<PageProps> = ({ data }: PageProps) => {
+const About: NextPage<PageProps> = ({ data, init }: PageProps) => {
   const theme = useTheme()
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   return (
-    <Layout>
+    <Layout init={init}>
       <Head>
         <title>{data.seo_title || 'ПРОФКОМПЛЕКТАЦИЯ'}</title>
         {data.seo_description && (
@@ -190,13 +192,17 @@ const About: NextPage<PageProps> = ({ data }: PageProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async function ({}) {
-  const res = await fetch(`${API_HOST}/pages/about`)
+  const [res, initRes] = await Promise.all([
+    fetch(`${API_HOST}/pages/about`),
+    fetch(`${API_HOST}/init`),
+  ])
 
   const data = await res.json()
-
+  const init = await initRes.json()
   return {
     props: {
       data,
+      init,
     },
   }
 }

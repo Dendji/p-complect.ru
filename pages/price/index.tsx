@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import style from './index.module.css'
@@ -8,14 +8,18 @@ import Typography from '../../components/Typography/Typography'
 import Section from '../../components/Section/Section'
 import Button, { ButtonSize, ButtonTheme } from '../../components/Button/Button'
 import Layout from '../../components/Layout/Layout'
+import { API_HOST } from '../../utils/const'
+import { IInit } from '../../@types/common'
 
-interface PageProps {}
+interface PageProps {
+  init: IInit
+}
 
-const Price: NextPage<PageProps> = ({}: PageProps) => {
+const Price: NextPage<PageProps> = ({ init }: PageProps) => {
   return (
-    <Layout>
+    <Layout init={init}>
       <Head>
-        <title>Прайс-лист на строительные материалы ПРОФКОМПОЛЕКТАЦИЯ</title>
+        <title>Прайс-лист на строительные материалы ПРОФКОМПЛЕКТАЦИЯ</title>
         <meta
           property="description"
           name="Description"
@@ -68,6 +72,29 @@ const Price: NextPage<PageProps> = ({}: PageProps) => {
       </Section>
     </Layout>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async function ({
+  params,
+}) {
+  if (!params?.product_id) {
+    throw new Error('id is not defined')
+  }
+
+  const [res, initRes] = await Promise.all([
+    fetch(`${API_HOST}/init`),
+    fetch(`${API_HOST}/init`),
+  ])
+
+  const data = await res.json()
+  const init = await initRes.json()
+
+  return {
+    props: {
+      data,
+      init,
+    },
+  }
 }
 
 export default Price

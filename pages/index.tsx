@@ -15,9 +15,11 @@ import Layout from '../components/Layout/Layout'
 import SlidersSection from '../components/SlidersSection/SlidersSection'
 import { MultiImage } from './about'
 import { API_HOST } from '../utils/const'
+import { IInit } from '../@types/common'
 // import SlidersSection from '../components/SlidersSection/SlidersSection'
 
 interface PageProps {
+  init: IInit
   data: {
     reviews: IReview[]
     seo_description: string | null
@@ -64,9 +66,10 @@ const articles = [
   },
 ]
 
-const HomePage: NextPage<PageProps> = ({ data }: PageProps) => {
+const HomePage: NextPage<PageProps> = ({ data, init }: PageProps) => {
+  console.log('🚀 ~ file: index.tsx ~ line 69 ~ init', init)
   return (
-    <Layout>
+    <Layout init={init}>
       <Head>
         <title>ПрофКомплектация | Строительные материалы</title>
         <meta
@@ -94,13 +97,17 @@ const HomePage: NextPage<PageProps> = ({ data }: PageProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async function () {
-  const res = await fetch(`${API_HOST}/pages/home`)
-
+  const [res, initRes] = await Promise.all([
+    fetch(`${API_HOST}/pages/home`),
+    fetch(`${API_HOST}/init`),
+  ])
   const data = await res.json()
+  const init = await initRes.json()
 
   return {
     props: {
       data,
+      init,
     },
   }
 }

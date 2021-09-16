@@ -3,19 +3,15 @@ import Head from 'next/head'
 import React from 'react'
 import style from './index.module.css'
 import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
 import Section from '../../components/Section/Section'
-import StandardImage from '../../components/StandardImage/StandardImage'
-import RoundedCard from '../../components/RoundedCard/RoundedCard'
 import Heading from '../../components/Heading/Heading'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import useTheme from '@material-ui/core/styles/useTheme'
-import ImageLightbox from '../../components/ImageLightbox/ImageLightbox'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST, WP_API_HOST } from '../../utils/const'
 import { MultiImage } from '../about'
+import { IInit } from '../../@types/common'
 
 interface PageProps {
+  init: IInit
   data: {
     title: {
       rendered: string
@@ -32,13 +28,9 @@ interface PageProps {
   }
 }
 
-const About: NextPage<PageProps> = ({ data }: PageProps) => {
-  const theme = useTheme()
-
-  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-
+const About: NextPage<PageProps> = ({ data, init }: PageProps) => {
   return (
-    <Layout>
+    <Layout init={init}>
       <Head>
         <title>{data.acf.seo_title || 'ПРОФКОМПЛЕКТАЦИЯ'}</title>
         {data.acf.seo_description && (
@@ -71,13 +63,17 @@ const About: NextPage<PageProps> = ({ data }: PageProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async function ({}) {
-  const res = await fetch(`${WP_API_HOST}/pages/442`)
+  const [res, initRes] = await Promise.all([
+    fetch(`${WP_API_HOST}/pages/442`),
+    fetch(`${API_HOST}/init`),
+  ])
 
   const data = await res.json()
-
+  const init = await initRes.json()
   return {
     props: {
       data,
+      init,
     },
   }
 }

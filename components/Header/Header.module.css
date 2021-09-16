@@ -116,6 +116,11 @@
   border: 2px solid var(--orange);
 }
 
+.logo {
+  max-width: 100%;
+  width: 100%;
+}
+
 .searchButton path {
   fill: var(--orange);
 }

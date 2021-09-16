@@ -27,3 +27,44 @@ export interface IFilter {
     values: string[] | FilterMinMax
   }
 }
+
+export interface IInit {
+  logoLight: string | null
+  logoDark: string | null
+  categories: Category[] | null
+  search: string[] | null
+  contacts: {
+    title: string | null
+    items: {
+      type: 'text' | 'tel' | 'map'
+      title: string
+      items: {
+        текст: string
+      }[]
+      link: string
+    }[]
+    map: string | null
+    seo_description: string | null
+    seo_title: string | null
+  }
+  headerNav:
+    | {
+        title: string
+        href: string
+      }[]
+    | null
+  footerNav:
+    | {
+        title: string
+        href: string
+      }[]
+    | null
+}
+
+export interface Category {
+  id: number
+  name: string
+  meta: { title: string; description: string }
+  svg?: string
+  subcategories: Category[]
+}

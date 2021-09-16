@@ -4,13 +4,13 @@ import React, { useRef } from 'react'
 import style from './index.module.css'
 import Container from '@material-ui/core/Container'
 import Heading from '../../components/Heading/Heading'
-import Typography from '../../components/Typography/Typography'
 import Section from '../../components/Section/Section'
 import ClientCard from '../../components/ClientCard/ClientCard'
 import Objects from '../../components/Objects/Objects'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST } from '../../utils/const'
 import { MultiImage } from '../about'
+import { IInit } from '../../@types/common'
 
 interface PageProps {
   data: {
@@ -28,87 +28,10 @@ interface PageProps {
       name?: string
     }[]
   }
+  init: IInit
 }
 
-const tabs = [
-  {
-    image: '/images/client1.jpg',
-    text: 'Жилые коплексы',
-    value: 'live',
-  },
-  {
-    image: '/images/client2.jpg',
-    text: 'Торговые центры',
-    value: 'commercial',
-  },
-  {
-    image: '/images/client3.jpg',
-    text: 'Школы',
-    value: 'school',
-  },
-  {
-    image: '/images/client4.jpg',
-    text: 'Детские сады',
-    value: 'kindergarten',
-  },
-  {
-    image: '/images/client5.jpg',
-    text: 'Тендеры',
-    value: 'tenders',
-  },
-  {
-    image: '/images/client6.jpeg',
-    text: 'Промышленно-производственные предприятия (ГРЭС, ТЭЦ)',
-    value: 'industry',
-  },
-]
-
-const objects = [
-  {
-    category: 'live',
-    images: [
-      '/images/objects/IMG_4978.JPG',
-      '/images/objects/IMG_4979.JPG',
-      '/images/objects/IMG_5365.JPG',
-      '/images/objects/IMG_5366.JPG',
-      '/images/objects/IMG_5367.JPG',
-    ],
-    heading: 'г. Люберцы ул. Попова 19',
-    content: (
-      <>
-        <Typography>
-          Начали монтаж вентилируемого фасада г. Люберцы, ул. Попова 19, по
-          програме ФКР
-        </Typography>
-        <Typography>
-          На объекте смонтирована подсистема и выполнено утепление фасада,
-          ведётся монтаж керамогранита. Используемые материалы: подсистема
-          Doksal, утепление Baswool ВЕНТ ФАСАД т. 50+50 мм, керамогранит Грани
-          Таганая.
-        </Typography>
-      </>
-    ),
-  },
-  {
-    category: 'tenders',
-    images: ['/images/objects/IMG_5348.jpeg', '/images/objects/IMG_5347.jpeg'],
-    heading: 'г. Люберцы Ул. Юбилейная 5а ЖЭУ №1',
-    content: (
-      <>
-        <Typography>
-          Завершены работы по монтажу вентилируемого фасада по адресу г.
-          Люберцы, ул. Юбилейная 5а, ЖЭУ №1
-        </Typography>
-        <Typography>
-          При монтаже вентилируемого фасада, использовали материалы: утепление
-          Baswool ВЕНТ ФАСАД т. 100 мм, керамогранит Эстима.
-        </Typography>
-      </>
-    ),
-  },
-]
-
-const Portfolio: NextPage<PageProps> = ({ data }: PageProps) => {
+const Portfolio: NextPage<PageProps> = ({ data, init }: PageProps) => {
   const ref = useRef<HTMLDivElement>(null)
   const onScroll = () => {
     ref.current?.scrollIntoView({
@@ -116,7 +39,7 @@ const Portfolio: NextPage<PageProps> = ({ data }: PageProps) => {
     })
   }
   return (
-    <Layout>
+    <Layout init={init}>
       <Head>
         <title>Клиенты и объекты – ПрофКомплектация</title>
         <meta
@@ -162,13 +85,18 @@ const Portfolio: NextPage<PageProps> = ({ data }: PageProps) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async function () {
-  const res = await fetch(`${API_HOST}/objects`)
+  const [res, initRes] = await Promise.all([
+    fetch(`${API_HOST}/objects`),
+    fetch(`${API_HOST}/init`),
+  ])
 
   const data = await res.json()
+  const init = await initRes.json()
 
   return {
     props: {
       data,
+      init,
     },
   }
 }
