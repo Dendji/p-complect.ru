@@ -85,15 +85,17 @@ const About: NextPage<PageProps> = ({ data, init }: PageProps) => {
                 }}
               ></div>
               <div className={style.text}>
-                {/* <Heading
-                  weight={1}
-                  size="medium"
-                  theme="orange"
-                  noMt
-                  className={style.h1}
-                >
-                  ООО «ПРОФКОМПЛЕКТАЦИЯ»
-                </Heading> */}
+                {data.about.title && (
+                  <Heading
+                    weight={1}
+                    size="medium"
+                    theme="orange"
+                    noMt
+                    className={style.h1}
+                  >
+                    {data.about.title}
+                  </Heading>
+                )}
                 <div
                   dangerouslySetInnerHTML={{ __html: data.about.content }}
                 ></div>
