@@ -13,6 +13,7 @@ import { SearchScreen } from '../SearchScreen/SearchScreen'
 import SuccessPopup from '../SuccessPopup/SuccessPopup'
 import ErrorPopup from '../ErrorPopup/ErrorPopup'
 import { IInit } from '../../@types/common'
+import ScrollToTop from '../ScrollToTop/ScrollToTop'
 
 export interface LayoutProps {
   init?: IInit
@@ -111,6 +112,7 @@ export default function Layout({ children, init }: LayoutProps) {
 
   return (
     <div className={style.root}>
+      <ScrollToTop></ScrollToTop>
       <Head>
         <title>
           API для распознавание документов. Распознавание паспорта,
@@ -139,7 +141,12 @@ export default function Layout({ children, init }: LayoutProps) {
           content="Строительные материалы"
         />
       </Head>
-      <Navigation isOpen={isNavigation} onClose={closeNavigation} navs={Navs} />
+      <Navigation
+        isOpen={isNavigation}
+        onClose={closeNavigation}
+        navs={Navs}
+        init={init}
+      />
       <ContactUs
         isOpen={isContactUs}
         onClose={closeContactUs}
@@ -159,7 +166,10 @@ export default function Layout({ children, init }: LayoutProps) {
       )}
       <SearchScreen isModal={isSearch} onClose={() => setSearch(false)} />
       {children}
-      <Footer headingColor={getFooterFontColorByRoute(router.route)} />
+      <Footer
+        headingColor={getFooterFontColorByRoute(router.route)}
+        init={init}
+      />
     </div>
   )
 }

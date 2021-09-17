@@ -8,10 +8,12 @@ import AddressWidget from '../AddressWidget/AddressWidget'
 import HoursWidget from '../HoursWidget/HoursWidget'
 import CallWidget from '../CallWidget/CallWidget'
 import { useDispatch } from 'react-redux'
+import { IInit } from '../../@types/common'
 
 export interface NavigationProps {
   isOpen: boolean
   navs: Nav[]
+  init?: IInit
   onClose: () => void
 }
 const drawerWidth = 280
@@ -63,7 +65,12 @@ const mapNav = (nav: Nav, index: number): React.ReactNode => {
   )
 }
 
-export default function Navigation({ isOpen, navs, onClose }: NavigationProps) {
+export default function Navigation({
+  isOpen,
+  navs,
+  init,
+  onClose,
+}: NavigationProps) {
   const container =
     typeof window !== 'undefined' ? () => window.document.body : undefined
   const classes = useStyles()
@@ -92,12 +99,11 @@ export default function Navigation({ isOpen, navs, onClose }: NavigationProps) {
       }}
     >
       <div className={style.root}>
-        <nav className={style.nav}>{navs.map(mapNav)}</nav>
+        <nav className={style.nav}>{init?.headerNav?.map(mapNav)}</nav>
         <div className={style.widgets}>
-          <HoursWidget />
-          <AddressWidget isMobile />
-
-          <CallWidget onCall={openContactUs} />
+          <HoursWidget init={init} />
+          <AddressWidget isMobile init={init} />
+          <CallWidget onCall={openContactUs} init={init} />
         </div>
       </div>
     </Drawer>

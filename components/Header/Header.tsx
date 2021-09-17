@@ -2,23 +2,20 @@ import style from './Header.module.css'
 import Link from 'next/link'
 import { useRouter, NextRouter } from 'next/router'
 import React, { useRef, useState } from 'react'
-import { fetcher, useVisibility } from '../../utils/utils'
+import { useVisibility } from '../../utils/utils'
 import Slide from '@material-ui/core/Slide'
 import classnames from 'classnames'
 import Container from '@material-ui/core/Container'
 import TextInput from '../TextInput/TextInput'
 import Logo from '../Logo/Logo'
 import CatalogButton from '../CatalogButton/CatalogButton'
-import { Navs } from '../../utils/nav'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import { useTheme } from '@material-ui/core'
 import Hamburger from '../Hamburger/Hamburger'
 import AddressWidget from '../AddressWidget/AddressWidget'
 import HoursWidget from '../HoursWidget/HoursWidget'
 import CallWidget from '../CallWidget/CallWidget'
-import useSWR from 'swr'
 import SearchIcon from '../SearchIcon/SearchIcon'
-import { API_HOST } from '../../utils/const'
 import { IInit } from '../../@types/common'
 // import SpeechRecognition, {
 //   useSpeechRecognition,
@@ -104,7 +101,7 @@ export default function Header(props: HeaderProps) {
                 }
               />
               <nav className={style.nav}>
-                {Navs.map((nav, index) => (
+                {props.init?.headerNav?.map((nav, index) => (
                   <Link href={nav.href} key={nav.href + index}>
                     <a
                       className={[
@@ -131,9 +128,19 @@ export default function Header(props: HeaderProps) {
       <Container>
         <div className={style.mobile}>
           <Link href="/" as="/">
-            <a className={style.logo}>
-              <Logo />
-            </a>
+            <Link href="/" as="/">
+              <a className={style.logo}>
+                {props.init?.logoDark ? (
+                  <img
+                    src={props.init?.logoDark}
+                    alt=""
+                    className={style.logo}
+                  />
+                ) : (
+                  <Logo />
+                )}
+              </a>
+            </Link>
           </Link>
           <Hamburger
             isOpen={isNavigation}

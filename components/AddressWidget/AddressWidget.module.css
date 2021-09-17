@@ -11,6 +11,13 @@
   color: #8e8e8e;
 }
 
+.mobile {
+  display: flex;
+}
+
+.mobile .pin {
+}
+
 @media screen and (max-width: 640px) {
   .addressLink {
     font-size: 18px;

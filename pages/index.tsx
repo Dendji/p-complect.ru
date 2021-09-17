@@ -16,7 +16,6 @@ import SlidersSection from '../components/SlidersSection/SlidersSection'
 import { MultiImage } from './about'
 import { API_HOST } from '../utils/const'
 import { IInit } from '../@types/common'
-// import SlidersSection from '../components/SlidersSection/SlidersSection'
 
 interface PageProps {
   init: IInit
@@ -67,7 +66,6 @@ const articles = [
 ]
 
 const HomePage: NextPage<PageProps> = ({ data, init }: PageProps) => {
-  console.log('🚀 ~ file: index.tsx ~ line 69 ~ init', init)
   return (
     <Layout init={init}>
       <Head>

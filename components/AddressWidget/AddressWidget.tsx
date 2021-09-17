@@ -1,3 +1,4 @@
+import classnames from 'classnames'
 import React from 'react'
 import { IInit } from '../../@types/common'
 import PinIcon from '../PinIcon/PinIcon'
@@ -11,7 +12,7 @@ interface Props {
 export default function AddressWidget({ isMobile, init }: Props) {
   const info = init?.contacts?.items.find((i) => i.type === 'map')
   return (
-    <div className={style.address}>
+    <div className={classnames(style.address, { [style.mobile]: isMobile })}>
       {!isMobile && <PinIcon />}
       {info ? (
         <RLink
@@ -34,7 +35,11 @@ export default function AddressWidget({ isMobile, init }: Props) {
         </RLink>
       )}
 
-      {isMobile && <PinIcon />}
+      {isMobile && (
+        <div className={style.pin}>
+          <PinIcon isMobile />
+        </div>
+      )}
     </div>
   )
 }

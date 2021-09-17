@@ -12,6 +12,9 @@
   .title {
     font-size: 40px;
   }
+  .brand {
+    text-align: center;
+  }
   .grid {
     gap: 32px;
     justify-content: center;

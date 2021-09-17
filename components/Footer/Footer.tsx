@@ -5,12 +5,14 @@ import Grid from '@material-ui/core/Grid'
 import Link from 'next/link'
 import { FooterNavs } from '../../utils/nav'
 import Logo from '../Logo/Logo'
+import { IInit } from '../../@types/common'
 
 interface FooterProps {
   headingColor?: string
+  init?: IInit
 }
 
-export default function Footer(props: FooterProps) {
+export default function Footer({ init }: FooterProps) {
   return (
     <div className={style.root}>
       <Container>
@@ -18,15 +20,17 @@ export default function Footer(props: FooterProps) {
           <Grid item xs={12} sm={12} md={4} lg={4}>
             <div className={style.logoContainer}>
               <Link href="/" as="/">
-                <a className={style.logo}>
-                  <Logo light />
-                </a>
+                {init?.logoLight ? (
+                  <img src={init?.logoLight} alt="" className={style.logo} />
+                ) : (
+                  <Logo />
+                )}
               </Link>
             </div>
             <div className={style.navs}>
-              {FooterNavs.map((nav, index) => (
-                <Link href={nav.href} key={index}>
-                  <a className={style.link}>{nav.title}</a>
+              {init?.categories?.map((nav, index) => (
+                <Link href={`/categories/${nav.id}`} key={index}>
+                  <a className={style.link}>{nav.name}</a>
                 </Link>
               ))}
             </div>

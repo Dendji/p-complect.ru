@@ -1,5 +1,5 @@
 .content {
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   color: var(--white);
   display: flex;
   /* align-items: center; */
@@ -26,7 +26,7 @@
   flex-direction: column;
   gap: 24px;
   text-align: center;
-  margin-top: 10%;
+  margin-top: 20%;
 }
 
 .container {
