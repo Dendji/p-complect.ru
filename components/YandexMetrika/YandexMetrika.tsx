@@ -1,23 +1,12 @@
 import React from 'react'
 
-/* Original
-
- ym(57871489, "init", {
-                clickmap:true,
-                trackLinks:true,
-                accurateTrackBounce:true,
-                webvisor:true
-          });
-
-          */
-
 export default function YandexMetrika() {
   return (
     <>
       <noscript
         dangerouslySetInnerHTML={{
           __html: `
-        <div><img src="https://mc.yandex.ru/watch/57871489" style="position:absolute; left:-9999px;" alt="" /></div>
+        <div><img src="https://mc.yandex.ru/watch/85324150" style="position:absolute; left:-9999px;" alt="" /></div>
         `,
         }}
       ></noscript>
@@ -28,7 +17,7 @@ export default function YandexMetrika() {
           m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
           (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-          ym(57871489, "init", {
+          ym(85324150, "init", {
                 trackLinks:true,
                 accurateTrackBounce:true,
           });
