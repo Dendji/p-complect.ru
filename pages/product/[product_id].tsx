@@ -12,6 +12,7 @@ import { IImage, IInit } from '../../@types/common'
 import { useDispatch } from 'react-redux'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST } from '../../utils/const'
+import { useRouter } from 'next/router'
 
 export interface IFullProduct {
   id: number
@@ -23,6 +24,7 @@ export interface IFullProduct {
   }[]
   description?: string
   in_stock: boolean
+  tech: string | null
   brand?: string
   images?: IImage[]
   attributes?: {
@@ -62,7 +64,12 @@ export default function ProductPage({ data, init }: Props) {
     })
   }
 
-  const onSuggestionClick = (id: string) => {}
+  const router = useRouter()
+
+  const onSuggestionClick = (id: string) => {
+    router.push(`/product/${id}`)
+  }
+
   return (
     <Layout init={init}>
       <Head>

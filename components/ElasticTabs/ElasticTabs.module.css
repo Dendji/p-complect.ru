@@ -26,6 +26,26 @@
   font-weight: 500;
 }
 
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.slider {
+  margin-bottom: 32px;
+}
+
+.beforeSlides {
+  min-width: 20px;
+  display: block;
+}
+
+.slide {
+  width: auto;
+}
+
 @media screen and (max-width: 640px) {
   .tab {
     width: 100%;

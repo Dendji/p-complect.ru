@@ -21,7 +21,6 @@ interface Props {
   }[]
 }
 export default function Objects({ tabs, objects }: Props) {
-  console.log('🚀 ~ file: Objects.tsx ~ line 24 ~ Objects ~ objects', objects)
   tabs = [{ value: '', text: 'Все' }, ...tabs]
   const [activeTab, setActiveTab] = useState(tabs[0].value)
 
