@@ -1,4 +1,4 @@
-import { NextPage } from 'next'
+import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import style from './index.module.css'
@@ -9,25 +9,42 @@ import Article from '../../components/Article/Article'
 import Text, { TypographyTheme } from '../../components/Typography/Typography'
 import { mockPosts } from '../../mocks/blog'
 import Layout from '../../components/Layout/Layout'
+import { API_HOST, WP_API_HOST } from '../../utils/const'
+import { IInit } from '../../@types/common'
+import { MultiImage } from '../about'
 
 export type IArticlePreview = Omit<IArticle, 'body'>
 
 export interface IArticle {
   id: string
-  url: string
-  cover: string
-  title: string
-  preview: string
-  body?: React.ReactNode
+  url: string | null
+  cover: string | null
+  title: string | null
+  preview: string | null
+  body?: string | null
 }
 
 interface PageProps {
-  posts: IArticlePreview[]
+  init: IInit
+  data: {
+    id: string
+    title: {
+      rendered: string | null
+    }
+    acf: {
+      short: string | null
+      image: {
+        sizes: MultiImage | null
+      } | null
+    }
+  }[]
 }
 
-const Blog: NextPage<PageProps> = ({ posts }: PageProps) => {
+const Blog: NextPage<PageProps> = ({ init, data }: PageProps) => {
+  console.log('🚀 ~ file: index.tsx ~ line 34 ~ data', data)
+  const posts = mockPosts
   return (
-    <Layout>
+    <Layout init={init}>
       <div className={style.root}>
         <Head>
           <title>Блог ПрофКомплектация</title>
@@ -53,14 +70,27 @@ const Blog: NextPage<PageProps> = ({ posts }: PageProps) => {
             </Grid>
           </Grid>
           <div className={style.headliner}>
-            {posts.slice(0, 1).map((a) => (
-              <Article {...a} headliner />
+            {data.slice(0, 1).map((a) => (
+              <Article
+                url={`/blog/${a.id}`}
+                id={a.id}
+                cover={a.acf.image?.sizes?.large || null}
+                title={a.title.rendered}
+                preview={a.acf.short}
+                headliner
+              />
             ))}
           </div>
           {posts.length > 1 && (
             <div className={style.articles}>
-              {posts.slice(1).map((a) => (
-                <Article {...a} />
+              {data.slice(1).map((a) => (
+                <Article
+                  url={`/blog/${a.id}`}
+                  id={a.id}
+                  cover={a.acf.image?.sizes?.large || null}
+                  title={a.title.rendered}
+                  preview={a.acf.short}
+                />
               ))}
             </div>
           )}
@@ -70,10 +100,19 @@ const Blog: NextPage<PageProps> = ({ posts }: PageProps) => {
   )
 }
 
-export async function getStaticProps({ preview = false, previewData }: any) {
-  // const allPosts = await getAllPostsForHome(previewData)
+export const getServerSideProps: GetServerSideProps = async function () {
+  const [res, initRes] = await Promise.all([
+    fetch(`${WP_API_HOST}/posts`),
+    fetch(`${API_HOST}/init`),
+  ])
+  const data = await res.json()
+  const init = await initRes.json()
+
   return {
-    props: { posts: mockPosts },
+    props: {
+      data,
+      init,
+    },
   }
 }
 

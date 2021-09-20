@@ -42,6 +42,12 @@ interface PageProps {
       title: string | null
       items: MultiImage[]
     }
+    posts: {
+      id: string
+      short: string | null
+      image: MultiImage | null
+      name: string | null
+    }[]
   }
 }
 
@@ -60,7 +66,7 @@ const articles = [
   },
   {
     heading: 'Труба зовет',
-    description: 'Что нужно знать о монтаже системы водоснабжения',
+    description: '  ',
     img: '/images/blog/blog3.jpeg',
   },
 ]
@@ -88,7 +94,7 @@ const HomePage: NextPage<PageProps> = ({ data, init }: PageProps) => {
       <FeedbackSection items={data.reviews} />
       <DistributorSection />
       <BrandsSection />
-      <BlogSection items={articles} />
+      <BlogSection items={data.posts} />
       <AuthorizedSection />
     </Layout>
   )

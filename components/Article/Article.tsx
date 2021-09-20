@@ -39,7 +39,12 @@ export default function Article({
         <Heading weight={2} className={style.heading}>
           {title}
         </Heading>
-        <Paragraph size={20}>{preview}</Paragraph>
+        {preview && (
+          <div
+            dangerouslySetInnerHTML={{ __html: preview }}
+            className={style.short}
+          ></div>
+        )}
         <Button theme={ButtonTheme.OrangeBordered} className={style.button}>
           Читать
         </Button>

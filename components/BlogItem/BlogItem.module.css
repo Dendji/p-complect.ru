@@ -40,10 +40,16 @@
 }
 
 .description {
+  height: 40%;
+  overflow: hidden;
+}
+
+.description,
+.description > p {
+  margin: 0;
   font-size: 20px;
   line-height: 1.3;
   color: #ffffff;
-  height: 40%;
 }
 
 @media screen and (max-width: 640px) {

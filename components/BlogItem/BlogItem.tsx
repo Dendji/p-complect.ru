@@ -1,25 +1,31 @@
 import React from 'react'
+import { MultiImage } from '../../pages/about'
 import style from './BlogItem.module.css'
 
 export interface IBlogItem {
-  heading: string
-  description: string
-  img: string
+  name: string | null
+  short: string | null
+  image: MultiImage | null
 }
 
 interface Props extends IBlogItem {}
 
-export default function BlogItem({ heading, description, img }: Props) {
+export default function BlogItem({ name, short, image }: Props) {
   return (
     <div
       className={style.root}
       style={{
-        backgroundImage: `url(${img})`,
+        backgroundImage: image ? `url(${image.large})` : 'none',
       }}
     >
       <div className={style.content}>
-        <h4 className={style.heading}>{heading}</h4>
-        <p className={style.description}>{description}</p>
+        {name && <h4 className={style.heading}>{name}</h4>}
+        {short && (
+          <div
+            className={style.description}
+            dangerouslySetInnerHTML={{ __html: short }}
+          ></div>
+        )}
       </div>
     </div>
   )

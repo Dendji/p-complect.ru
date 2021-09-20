@@ -3,18 +3,18 @@
   padding-bottom: 100px;
 }
 
-.intro {
-  margin-bottom: 64px;
-}
+.image {
+  height: 300px;
+  background-size: cover;
 
-.headliner {
+  background-repeat: no-repeat;
   margin-bottom: 48px;
+  background-position: center center;
 }
 
-.articles {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px 32px;
+.content {
+  font-size: 20px;
+  line-height: 1.5;
 }
 
 @media (max-width: 600px) {

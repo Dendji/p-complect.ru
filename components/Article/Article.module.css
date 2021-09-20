@@ -16,6 +16,13 @@
   margin-top: 16px;
 }
 
+.short {
+  margin: 20px 0;
+  font-size: 24px;
+  line-height: 1.5;
+  color: #111111;
+}
+
 .headliner {
   grid-template-columns: 1.4fr 1fr;
   grid-template-rows: auto;
