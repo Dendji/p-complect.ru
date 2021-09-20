@@ -21,6 +21,7 @@ interface Props {
   }[]
 }
 export default function Objects({ tabs, objects }: Props) {
+  console.log('🚀 ~ file: Objects.tsx ~ line 24 ~ Objects ~ objects', objects)
   tabs = [{ value: '', text: 'Все' }, ...tabs]
   const [activeTab, setActiveTab] = useState(tabs[0].value)
 
@@ -59,7 +60,7 @@ export default function Objects({ tabs, objects }: Props) {
   const filteredObjects = objects
     .filter((o) => (activeTab.length ? o.category.includes(activeTab) : true))
     .map((o, index) => (
-      <RoundedCard key={index}>
+      <RoundedCard key={index} className={style.card}>
         <div className={style.object}>
           <Carousel>
             {o.images.map((im) => (
