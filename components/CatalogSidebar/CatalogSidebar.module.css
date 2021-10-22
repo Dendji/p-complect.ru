@@ -104,4 +104,10 @@
 }
 
 @media (max-width: 600px) {
+  .filterItem {
+    margin-bottom: 24px;
+  }
+  .filterLabel {
+    margin-bottom: 0;
+  }
 }

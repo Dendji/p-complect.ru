@@ -169,6 +169,20 @@ export default function CatalogSidebar({
           <CloseButton onClose={() => setOpen(false)} />
         </div>
         <div className={style.heading}>Товары</div>
+        <div className={style.filterItem}>
+          <div className={style.filterLabel}>Категории</div>
+          <Select
+            instanceId={'4123'}
+            isClearable
+            onChange={(option) => onSubChange(option)}
+            placeholder="Все"
+            value={sub}
+            options={currentCategory.subcategories.map((s: any) => ({
+              label: s.name,
+              value: s.id + '',
+            }))}
+          />
+        </div>
         <div className={style.filter}>{renderFilter()}</div>
         {renderControls()}
       </div>
@@ -186,7 +200,7 @@ export default function CatalogSidebar({
             onChange={(option) => onSubChange(option)}
             placeholder="Все"
             value={sub}
-            options={currentCategory.subcategories.map((s) => ({
+            options={currentCategory.subcategories.map((s: any) => ({
               label: s.name,
               value: s.id + '',
             }))}

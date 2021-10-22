@@ -123,7 +123,7 @@ const Catalog: NextPage<PageProps> = ({
   }
 
   return (
-    <Layout>
+    <Layout init={init}>
       <Head>
         <title>Каталог ПРОФКОМПЛЕКТАЦИИ</title>
         <meta
