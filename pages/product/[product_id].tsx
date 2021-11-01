@@ -56,6 +56,10 @@ interface Props {
 }
 
 export default function ProductPage({ data, init }: Props) {
+  console.log(
+    '🚀 ~ file: [product_id].tsx ~ line 59 ~ ProductPage ~ data',
+    data
+  )
   const dispatch = useDispatch()
 
   const onBuyClick = () => {
@@ -90,6 +94,7 @@ export default function ProductPage({ data, init }: Props) {
           <ProductInfo
             description={data.description}
             attributes={data.attributes}
+            tech={data.tech}
           />
         </Container>
         {data.recommended && data.recommended.length > 0 && (

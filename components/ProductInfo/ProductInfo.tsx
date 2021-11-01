@@ -22,6 +22,7 @@ interface Props {
 }
 
 export default function ProductInfo({ description, attributes, tech }: Props) {
+  console.log('🚀 ~ file: ProductInfo.tsx ~ line 25 ~ ProductInfo ~ tech', tech)
   const theme = useTheme()
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
