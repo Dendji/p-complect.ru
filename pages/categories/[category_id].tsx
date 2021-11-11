@@ -35,6 +35,11 @@ const getPaginationParams = (page: number): URLSearchParams => {
   return params
 }
 
+interface FilterValue {
+  value: string
+  label: string
+}
+
 const Catalog: NextPage<PageProps> = ({
   data,
   init,
@@ -52,7 +57,12 @@ const Catalog: NextPage<PageProps> = ({
 
   const [products, setProducts] = useState(data.products)
   const [isLoading, setLoading] = useState(false)
-  const [filter, setFilter] = useState<any[]>([])
+  const [filter, setFilter] = useState<
+    {
+      name: string
+      value: FilterValue
+    }[]
+  >([])
   const [sub, setSub] = useState<string | null>(null)
   const [page, setPage] = useState(1)
 
@@ -61,7 +71,7 @@ const Catalog: NextPage<PageProps> = ({
   }
 
   const onFilterChange = async (filter: any[], sub: string | null) => {
-    setFilter(filter)
+    setFilter(filter.filter((f) => f.value !== null))
     if (sub) {
       setSub(sub)
     }
@@ -73,15 +83,20 @@ const Catalog: NextPage<PageProps> = ({
 
   const onGetProducts = async () => {
     setLoading(true)
+    console.log(
+      '🚀 ~ file: [category_id].tsx ~ line 78 ~ onGetProducts ~ filter',
+      filter
+    )
 
     const query = filter.map((f) => `filters[${f.name}][]=${f.value.value}`)
     let url = `${API_HOST}/categories/${sub ? sub : categoryId}`
+    const params = new URLSearchParams()
 
     if (query.length > 0) {
-      url += `?${query.join('&')}`
+      for (let f of filter) {
+        params.set(`filters[${f.name}][]`, f.value.value)
+      }
     }
-
-    const params = new URLSearchParams()
 
     params.set('amount', AMOUNT_PER_PAGE + '')
     params.set('start', AMOUNT_PER_PAGE * (page - 1) + 1 + '')
