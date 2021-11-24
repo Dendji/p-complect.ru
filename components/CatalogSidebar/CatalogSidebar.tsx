@@ -1,14 +1,13 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import style from './CatalogSidebar.module.css'
 import Button, { ButtonSize, ButtonTheme } from '../Button/Button'
-import { FilterMinMax, IFilter } from '../../@types/common'
+import { Category, FilterMinMax, IFilter } from '../../@types/common'
 import { useMediaQuery, useTheme } from '@material-ui/core'
 
 import Popup from '../Popup/Popup'
 import CloseButton from '../CloseButton/CloseButton'
-import TextInput, { InputTheme } from '../TextInput/TextInput'
+// import TextInput, { InputTheme } from '../TextInput/TextInput'
 import Select from '../Select/Select'
-import { Category } from '../Header/Header'
 
 interface Props {
   filters: IFilter
@@ -28,7 +27,8 @@ export default function CatalogSidebar({
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
-  // const [price, setPrice] = useState<number | number[]>([5000, 80000])
+  // const [priceFrom, setPriceFrom] = useState<number | number[]>([5000, 80000])
+  // const [priceTo, setPriceTo] = useState<number | number[]>([5000, 80000])
   const [isOpen, setOpen] = useState<boolean>(false)
 
   const [filter, setFilter] = useState<any[]>([])
@@ -88,34 +88,35 @@ export default function CatalogSidebar({
     return Object.values(filters).map((f, key) => {
       switch (f.type) {
         case 'range':
-          const min = Number.parseInt((f.values as FilterMinMax).min)
-          const max = Number.parseInt((f.values as FilterMinMax).max)
-          return min !== max ? (
-            <div className={style.rangeContainer} key={key}>
-              <div className={style.filterLabel}>{f.name}, ₽</div>
-              <div className={style.range}>
-                <span>от</span>
-                <TextInput
-                  placeholder="От"
-                  value={min}
-                  theme={InputTheme.Box}
-                  // onChange={handleChange}
-                  // error={errors.name}
-                  // isError={!!errors.name && touched.name}
-                  autoComplete="no"
-                />
-                <span>до</span>
-                <TextInput
-                  value={max}
-                  placeholder="От"
-                  theme={InputTheme.Box}
-                  // onChange={handleChange}
-                  // error={errors.name}
-                  autoComplete="no"
-                />
-              </div>
-            </div>
-          ) : null
+          // const min = Number.parseInt((f.values as FilterMinMax).min)
+          // const max = Number.parseInt((f.values as FilterMinMax).max)
+          return null
+        // return min !== max ? (
+        //   <div className={style.rangeContainer} key={key}>
+        //     <div className={style.filterLabel}>{f.name}, ₽</div>
+        //     <div className={style.range}>
+        //       <span>от</span>
+        //       <TextInput
+        //         placeholder="От"
+        //         value={min}
+        //         theme={InputTheme.Box}
+        //         // onChange={handleChange}
+        //         // error={errors.name}
+        //         // isError={!!errors.name && touched.name}
+        //         autoComplete="no"
+        //       />
+        //       <span>до</span>
+        //       <TextInput
+        //         value={max}
+        //         placeholder="От"
+        //         theme={InputTheme.Box}
+        //         // onChange={handleChange}
+        //         // error={errors.name}
+        //         autoComplete="no"
+        //       />
+        //     </div>
+        //   </div>
+        // ) : null
         case 'checkbox':
         case 'dropdown':
         default:
