@@ -2,11 +2,8 @@ import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import style from './index.module.css'
-import Grid from '@material-ui/core/Grid'
 import Container from '@material-ui/core/Container'
-import Heading from '../../components/Heading/Heading'
 import Article from '../../components/Article/Article'
-import Text, { TypographyTheme } from '../../components/Typography/Typography'
 import { mockPosts } from '../../mocks/blog'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST, WP_API_HOST } from '../../utils/const'
@@ -58,17 +55,6 @@ const Blog: NextPage<PageProps> = ({ init, data }: PageProps) => {
           <meta property="og:type" content="page" />
         </Head>
         <Container>
-          <Grid container justify="center">
-            <Grid item xs={12} md={8}>
-              <div className={style.intro}>
-                <Heading weight={1}>Статьи</Heading>
-                <Text theme={TypographyTheme.Standard} size={24}>
-                  Здесь мы делимся новостями нашей компании и знаниями из
-                  строительной сферы
-                </Text>
-              </div>
-            </Grid>
-          </Grid>
           <div className={style.headliner}>
             {data.slice(0, 1).map((a) => (
               <Article

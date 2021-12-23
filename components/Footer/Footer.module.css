@@ -80,15 +80,26 @@
   font-size: 10px;
   line-height: 12px;
   letter-spacing: 0.05em;
-  color: var(--dark-gray);
+  color: var(--white);
+}
+
+.thirdColumn {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 @media screen and (max-width: 960px) {
+  .thirdColumn {
+    margin-top: 32px;
+  }
+
   .copyright {
     position: static;
-    margin-top: 0;
     text-align: left;
     width: 100%;
+    margin-top: 48px;
   }
 
   .location {
