@@ -9,7 +9,7 @@ export const formatPrice = (price: number) => {
   let rubleRU = Intl.NumberFormat('ru-RU', {
     style: 'currency',
     currency: 'RUB',
-    maximumFractionDigits: 0,
+    maximumFractionDigits: 2,
   })
   return rubleRU.format(price)
 }
