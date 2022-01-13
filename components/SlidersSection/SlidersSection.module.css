@@ -18,6 +18,7 @@
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  position: relative;
 }
 
 .left {
@@ -35,6 +36,7 @@
   background-repeat: no-repeat;
   background-color: #f3f3f3;
   box-sizing: border-box;
+  background-position: center center;
 }
 
 .swiperContainer {
@@ -65,5 +67,37 @@
   .heading {
     font-size: 24px;
     line-height: 1.2;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .left {
+    left: 4px;
+  }
+  .right {
+    right: 4px;
+  }
+  .link {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+  .swiperContainer {
+    border-radius: 10px;
+  }
+  .root {
+    padding-bottom: 0;
+    padding-top: 100px;
+  }
+
+  .slideContent {
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-color: #f3f3f3;
+    box-sizing: border-box;
   }
 }

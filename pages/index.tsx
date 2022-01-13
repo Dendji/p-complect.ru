@@ -16,6 +16,7 @@ import SlidersSection from '../components/SlidersSection/SlidersSection'
 import { MultiImage } from './about'
 import { API_HOST } from '../utils/const'
 import { IInit } from '../@types/common'
+import { useTheme, useMediaQuery } from '@material-ui/core'
 
 interface PageProps {
   init: IInit
@@ -30,7 +31,10 @@ interface PageProps {
       heading: string | null
       href: string | null
       id: number
-      image: MultiImage
+      image: string | null
+      image_tablet: string | null
+      image_mobile: string | null
+      button: 'solid' | 'outlined' | null
     }[]
     distribution: {
       certificate: MultiImage
@@ -51,27 +55,11 @@ interface PageProps {
   }
 }
 
-const articles = [
-  {
-    heading: 'Мастики как использовать',
-    description:
-      'Если вы сейчас ищете простой и надежный способ справиться с подобными проблемами, сделайте ремонт кровли битумной мастикой.',
-    img: '/images/blog/blog1.jpeg',
-  },
-  {
-    heading: 'Монтаж теплоизоляции',
-    description:
-      'Если остались материалы от ремонта, их можно превратить в настольную игру — не скучную плоскую карту.',
-    img: '/images/blog/blog2.jpeg',
-  },
-  {
-    heading: 'Труба зовет',
-    description: '  ',
-    img: '/images/blog/blog3.jpeg',
-  },
-]
-
 const HomePage: NextPage<PageProps> = ({ data, init }: PageProps) => {
+  const theme = useTheme()
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
   return (
     <Layout init={init}>
       <Head>
@@ -84,13 +72,6 @@ const HomePage: NextPage<PageProps> = ({ data, init }: PageProps) => {
         />
       </Head>
       <SlidersSection mainSlides={data.slides} />
-      <Section>
-        <Container>
-          <Grid container justify="center">
-            <Grid item xs={12} md={12}></Grid>
-          </Grid>
-        </Container>
-      </Section>
       <FeedbackSection items={data.reviews} />
       <DistributorSection />
       <BrandsSection />
