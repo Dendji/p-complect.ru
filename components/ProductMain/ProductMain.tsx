@@ -53,7 +53,7 @@ export default function ProductMain({ product, onBuyClick }: Props) {
               <div className={style.priceListItem} key={key}>
                 {p.value && (
                   <div className={style.price}>
-                    {formatPrice(Number.parseInt(p.value))}
+                    {formatPrice(Number.parseFloat(p.value.replace(',', '.')))}
                   </div>
                 )}{' '}
                 <div className={style.for}>при покупке {p.при_покупке_от}</div>
