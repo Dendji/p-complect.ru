@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import Link from 'next/link'
 import ImagePlaceholder from '../ImagePlaceholder/ImagePlaceholder'
 import Truncated from '../Truncated/Truncated'
+import { formatPrice } from '../../utils/utils'
 
 export interface IProduct {
   id: number | string
@@ -56,7 +57,11 @@ export default function ProductCard({ product, onProductClick, small }: Props) {
       <div className={style.name}>
         <Truncated text={product.name} limit={36} />
       </div>
-      {product.price && <div className={style.price}>{product.price}₽</div>}
+      {product.price && (
+        <div className={style.price}>
+          {formatPrice(Number.parseFloat(product.price.replace(',', '.')))}
+        </div>
+      )}
       <div className={style.button}>
         <Link href={`/product/${product.id}`}>
           <Button theme={ButtonTheme.Orange} className={style.btn}>

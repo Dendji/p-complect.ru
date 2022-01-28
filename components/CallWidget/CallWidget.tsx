@@ -15,8 +15,8 @@ export default function CallWidget({ onCall, init }: Props) {
     <div className={style.call}>
       {info ? (
         <div>
-          {info.items.map((i) => (
-            <div>
+          {info.items.map((i, idx) => (
+            <div key={idx}>
               <RLink href={`tel: ${i['текст']}`} className={style.tel}>
                 {i['текст']}
               </RLink>

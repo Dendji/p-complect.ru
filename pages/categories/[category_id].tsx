@@ -56,6 +56,7 @@ const Catalog: NextPage<PageProps> = ({
   const emptyFilters = Object.keys(data.filters).length > 0
 
   const [products, setProducts] = useState(data.products)
+  console.log('🚀 ~ file: [category_id].tsx ~ line 59 ~ products', products)
   const [isLoading, setLoading] = useState(false)
   const [filter, setFilter] = useState<
     {
@@ -83,10 +84,6 @@ const Catalog: NextPage<PageProps> = ({
 
   const onGetProducts = async () => {
     setLoading(true)
-    console.log(
-      '🚀 ~ file: [category_id].tsx ~ line 78 ~ onGetProducts ~ filter',
-      filter
-    )
 
     const query = filter.map((f) => `filters[${f.name}][]=${f.value.value}`)
     let url = `${API_HOST}/categories/${sub ? sub : categoryId}`

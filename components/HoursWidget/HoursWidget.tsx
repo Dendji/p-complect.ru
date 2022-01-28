@@ -11,8 +11,11 @@ export default function HoursWidget({ init }: Props) {
       <div className={style.hoursTitle}>Время работы</div>
       {init?.contacts?.items
         .find((i) => i.type === 'text')
-        ?.items.map((item) => (
-          <div dangerouslySetInnerHTML={{ __html: item['текст'] }}></div>
+        ?.items.map((item, i) => (
+          <div
+            dangerouslySetInnerHTML={{ __html: item['текст'] }}
+            key={i}
+          ></div>
         )) || (
         <>
           <div>
