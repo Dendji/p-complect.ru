@@ -1,8 +1,8 @@
 import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import Section from '../components/Section/Section'
 import DistributorSection from '../components/DistributorSection/DistributorSection'
 import BrandsSection from '../components/BrandsSection/BrandsSection'
@@ -16,7 +16,7 @@ import SlidersSection from '../components/SlidersSection/SlidersSection'
 import { MultiImage } from './about'
 import { API_HOST } from '../utils/const'
 import { IInit } from '../@types/common'
-import { useTheme, useMediaQuery } from '@material-ui/core'
+import { useTheme, useMediaQuery } from '@mui/material'
 
 interface PageProps {
   init: IInit

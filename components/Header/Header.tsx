@@ -3,14 +3,14 @@ import Link from 'next/link'
 import { useRouter, NextRouter } from 'next/router'
 import React, { useRef, useState } from 'react'
 import { useVisibility } from '../../utils/utils'
-import Slide from '@material-ui/core/Slide'
+import Slide from '@mui/material/Slide'
 import classnames from 'classnames'
-import Container from '@material-ui/core/Container'
+import Container from '@mui/material/Container'
 import TextInput from '../TextInput/TextInput'
 import Logo from '../Logo/Logo'
 import CatalogButton from '../CatalogButton/CatalogButton'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
-import { useTheme } from '@material-ui/core'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material'
 import Hamburger from '../Hamburger/Hamburger'
 import AddressWidget from '../AddressWidget/AddressWidget'
 import HoursWidget from '../HoursWidget/HoursWidget'
@@ -32,12 +32,6 @@ export interface HeaderProps {
 export default function Header(props: HeaderProps) {
   const [sticky, setSticky] = useState(false)
   const [isCatalog, setCatalog] = useState(false)
-
-  // const {
-  //   data: categories,
-  //   // error
-  // } = useSWR<Category[]>(`${API_HOST}/categories`, fetcher)
-
   const theme = useTheme()
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import style from './CatalogSidebar.module.css'
 import Button, { ButtonSize, ButtonTheme } from '../Button/Button'
 import { Category, FilterMinMax, IFilter } from '../../@types/common'
-import { useMediaQuery, useTheme } from '@material-ui/core'
+import { useMediaQuery, useTheme } from '@mui/material'
 
 import Popup from '../Popup/Popup'
 import CloseButton from '../CloseButton/CloseButton'

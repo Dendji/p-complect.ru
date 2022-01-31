@@ -64,7 +64,7 @@
   margin-right: 24px;
   cursor: pointer;
   transition: 0.3s ease all;
-  font-size: 20px;
+  font-size: 18px;
   line-height: 24px;
   color: #8e8e8e;
   font-weight: 500;
@@ -134,12 +134,19 @@
   }
 }
 
-@media screen and (max-width: 1070px) {
+@media screen and (max-width: 1140px) {
   .link {
     font-size: 16px;
   }
   .headerBottom {
     grid-template-columns: 160px auto;
+  }
+}
+
+@media screen and (max-width: 1070px) {
+  .link {
+    font-size: 16px;
+    margin-right: 10px;
   }
 }
 

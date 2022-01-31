@@ -1,8 +1,8 @@
 import React from 'react'
 import style from './Opening.module.css'
 import Heading from '../../Heading/Heading'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import Button, { ButtonSize, ButtonTheme } from '../../Button/Button'
 import StandardImage from '../../StandardImage/StandardImage'
 

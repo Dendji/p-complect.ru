@@ -3,6 +3,7 @@ import Head from 'next/head'
 import React from 'react'
 import { IInit } from '../../@types/common'
 import Layout from '../../components/Layout/Layout'
+import Section from '../../components/Section/Section'
 import Shipping from '../../components/Shipping/Shipping'
 import { API_HOST } from '../../utils/const'
 
@@ -33,7 +34,9 @@ const ShippingAndPayments: NextPage<PageProps> = ({
           content={title}
         />
       </Head>
-      <Shipping items={items} />
+      <Section>
+        <Shipping items={items} />
+      </Section>
     </Layout>
   )
 }

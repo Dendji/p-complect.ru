@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import style from './SlidersSection.module.css'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import Section from '../Section/Section'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import SwiperCore, { SwiperOptions } from 'swiper'
 import Button, { ButtonTheme } from '../Button/Button'
 import SliderControl from '../SliderControl/SliderControl'
-import { useTheme, useMediaQuery } from '@material-ui/core'
+import { useTheme, useMediaQuery } from '@mui/material'
 import classnames from 'classnames'
 
 export interface ISlide {
@@ -27,19 +27,11 @@ interface Props {
 }
 
 export default function SlidersSection({ mainSlides }: Props) {
-  console.log(
-    '🚀 ~ file: SlidersSection.tsx ~ line 29 ~ SlidersSection ~ mainSlides',
-    mainSlides
-  )
   const [swiperInstance, setSwiperInstance] = useState<SwiperCore | null>(null)
   const theme = useTheme()
 
   const isMobile = useMediaQuery(theme.breakpoints.down('xs'))
   const isTablet = useMediaQuery(theme.breakpoints.between('xs', 'sm'))
-  console.log(
-    '🚀 ~ file: SlidersSection.tsx ~ line 34 ~ SlidersSection ~ isTablet',
-    isTablet
-  )
 
   const swiperParams: SwiperOptions = {
     breakpoints: {

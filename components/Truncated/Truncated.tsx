@@ -1,4 +1,4 @@
-import Tooltip from '@material-ui/core/Tooltip'
+import Tooltip from '@mui/material/Tooltip'
 import React, { Ref } from 'react'
 import { truncate } from '../../utils/utils'
 // import style from './Truncated.module.css'

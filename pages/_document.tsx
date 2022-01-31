@@ -1,8 +1,8 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { isProduction } from '../utils/utils'
 import YandexMetrika from '../components/YandexMetrika/YandexMetrika'
-import { ServerStyleSheets } from '@material-ui/core/styles'
 import React from 'react'
+import ServerStyleSheets from '@mui/styles/ServerStyleSheets'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: any) {

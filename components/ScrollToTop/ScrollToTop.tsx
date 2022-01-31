@@ -1,5 +1,5 @@
-import Fade from '@material-ui/core/Fade'
-import { debounce } from '@material-ui/core/utils'
+import Fade from '@mui/material/Fade'
+import { debounce } from '@mui/material/utils'
 import React, { useEffect, useState } from 'react'
 import style from './ScrollToTop.module.css'
 

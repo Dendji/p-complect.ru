@@ -1,4 +1,4 @@
-import { Container, useMediaQuery, useTheme } from '@material-ui/core'
+import { Container, useMediaQuery, useTheme } from '@mui/material'
 import React, { RefObject, useRef, useState } from 'react'
 import Button, { ButtonTheme } from '../Button/Button'
 import Heading from '../Heading/Heading'

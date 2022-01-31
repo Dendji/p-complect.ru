@@ -1,12 +1,12 @@
 import React from 'react'
 import style from './Footer.module.css'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import Link from 'next/link'
 import Logo from '../Logo/Logo'
 import { IInit } from '../../@types/common'
-import { useTheme } from '@material-ui/core/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { useTheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 interface FooterProps {
   headingColor?: string
@@ -32,7 +32,7 @@ export default function Footer({ init }: FooterProps) {
             </Link>
           </div>
         </Grid>
-        <Grid container justify="center">
+        <Grid container justifyContent="center">
           <Grid item xs={12} sm={12} md={4} lg={4}>
             <div className={style.navs}>
               {init?.categories?.map((nav, index) => (

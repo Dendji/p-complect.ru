@@ -44,6 +44,13 @@
   overflow: hidden;
 }
 
+.description > p {
+  /* max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; */
+}
+
 .description,
 .description > p {
   margin: 0;

@@ -1,14 +1,14 @@
 import React from 'react'
 import style from './BlogSection.module.css'
 import Heading from '../Heading/Heading'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import Section from '../Section/Section'
 import BlogItem, { IBlogItem } from '../BlogItem/BlogItem'
 import Button, { ButtonSize, ButtonTheme } from '../Button/Button'
 import Link from 'next/link'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { useMediaQuery, useTheme } from '@material-ui/core'
+import { useMediaQuery, useTheme } from '@mui/material'
 
 interface Props {
   items: IBlogItem[]

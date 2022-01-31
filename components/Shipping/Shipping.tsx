@@ -1,4 +1,4 @@
-import { Container } from '@material-ui/core'
+import { Container } from '@mui/material'
 import React, { useState } from 'react'
 import Heading from '../Heading/Heading'
 import Section from '../Section/Section'

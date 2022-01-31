@@ -1,6 +1,6 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import Section from '../Section/Section'
 import SimpleText from '../SimpleText/SimpleText'
 import style from './CallToAction.module.css'
@@ -27,7 +27,7 @@ export default function CallToAction(props: CallToActionProps) {
   return (
     <Section className={[style.root, props.className].join(' ')}>
       <Container>
-        <Grid container spacing={6} justify="center">
+        <Grid container spacing={6} justifyContent="center">
           <Grid item xs={12} sm={5} md={5} lg={5} container alignItems="center">
             <div className={style.text}>
               <Subheading subheading="Свяжитесь с нами">

@@ -2,13 +2,13 @@ import 'normalize.css'
 import './index.css'
 import React from 'react'
 import { PageTransition } from 'next-page-transitions'
-import { ThemeProvider } from '@material-ui/core'
+import { ThemeProvider } from '@mui/material'
 import App, { AppContext, AppProps } from 'next/app'
 import { useStore } from '../store/store'
 import { Provider } from 'react-redux'
 import 'swiper/swiper-bundle.css'
 import 'swiper/components/navigation/navigation.scss'
-import { createTheme } from '@material-ui/core/styles'
+import { createTheme } from '@mui/material/styles'
 
 export const theme = createTheme({
   spacing: (factor) => [4, 8, 16, 36, 64][factor],

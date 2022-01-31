@@ -1,5 +1,5 @@
 import React, { FC, useState } from 'react'
-import { Modal } from '@material-ui/core'
+import { Modal } from '@mui/material'
 
 import s from './SearchScreen.module.css'
 import Button from '../Button/Button'

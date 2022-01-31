@@ -22,14 +22,6 @@ export interface LayoutProps {
 
 export default function Layout({ children, init }: LayoutProps) {
   const router = useRouter()
-
-  useEffect(() => {
-    // if location includes /#ask-for-demo then open contact us form
-    if (router.asPath.split('#').slice(-1)[0] === 'ask-for-demo') {
-      openContactUs()
-    }
-  }, [])
-
   const dispatch = useDispatch()
   const isContactUs = useSelector((state: AppState) => state.isContactUs)
   const isFormSucceeded = useSelector(
@@ -99,10 +91,6 @@ export default function Layout({ children, init }: LayoutProps) {
     isNavigation ? closeNavigation() : openNavigation()
   }
 
-  // const theme = useTheme()
-
-  // const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
-
   const getFooterFontColorByRoute = (route: string) => {
     switch (route) {
       default:
@@ -115,8 +103,8 @@ export default function Layout({ children, init }: LayoutProps) {
       <ScrollToTop></ScrollToTop>
       <Head>
         <title>
-          API для распознавание документов. Распознавание паспорта,
-          водительского удостоверения и других. Автоматизация документооборота.
+          Купить Гидроизоляция ТехноНИКОЛЬ - оптом, цена в Москве -
+          ПРОФКОМПЛЕКТАЦИЯ
         </title>
         <meta
           name="viewport"
@@ -132,13 +120,13 @@ export default function Layout({ children, init }: LayoutProps) {
           property="description"
           name="Description"
           key="description"
-          content="АСтроительные материалы"
+          content="Строительные материалы ПРОФКОМПЛЕКТАЦИЯ"
         />
         <meta
           name="Keywords"
           property="keywords"
           key="keywords"
-          content="Строительные материалы"
+          content="Строительные материалы ПРОФКОМПЛЕКТАЦИЯ"
         />
       </Head>
       <Navigation

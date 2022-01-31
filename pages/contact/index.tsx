@@ -2,8 +2,6 @@ import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import style from './index.module.css'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
 import Heading from '../../components/Heading/Heading'
 import Section from '../../components/Section/Section'
 // import { useDispatch } from 'react-redux'
@@ -12,13 +10,15 @@ import YandexMap from '../../components/YandexMap/YandexMap'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST } from '../../utils/const'
 import { IInit } from '../../@types/common'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 
 interface PageProps {
   data: {
     title: string
     map: string | null
     items: {
-      type: 'text' | 'tel' | 'map'
+      type: 'text' | 'tel' | 'map' | 'email'
       title: string
       items: {
         текст: string
@@ -45,7 +45,7 @@ const ContactPage: NextPage<PageProps> = ({ data, init }: PageProps) => {
 
         <Section className={style.intro}>
           <Container>
-            <Grid container justify="center">
+            <Grid container justifyContent="center">
               <Grid item xs={12} md={12}>
                 <Heading weight={2}>{data.title}</Heading>
                 {data.map && data.map.length > 0 && (
@@ -59,9 +59,9 @@ const ContactPage: NextPage<PageProps> = ({ data, init }: PageProps) => {
         </Section>
         <Section>
           <Container>
-            <Grid container justify="center">
-              {data.items.map((d) => (
-                <Grid item xs={12} md={4}>
+            <Grid container justifyContent="center" rowGap={4}>
+              {data.items.map((d, i) => (
+                <Grid item xs={12} md={3} key={i}>
                   <Heading weight={4} size="small" className={style.blockTitle}>
                     {d.title}
                   </Heading>
@@ -84,6 +84,18 @@ const ContactPage: NextPage<PageProps> = ({ data, init }: PageProps) => {
                               className={style.link}
                               target="_blank"
                               rel="noreferrer"
+                            >
+                              {item['текст']}
+                            </RLink>
+                          </div>
+                        )
+                      }
+                      if (d.type === 'email') {
+                        return (
+                          <div>
+                            <RLink
+                              href={`mailto: ${item['текст']}`}
+                              className={style.link}
                             >
                               {item['текст']}
                             </RLink>

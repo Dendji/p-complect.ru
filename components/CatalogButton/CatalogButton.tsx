@@ -1,4 +1,4 @@
-import Zoom from '@material-ui/core/Zoom'
+import Zoom from '@mui/material/Zoom'
 import classnames from 'classnames'
 import React from 'react'
 import style from './CatalogButton.module.css'

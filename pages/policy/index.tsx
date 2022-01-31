@@ -2,7 +2,7 @@ import { NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import style from './index.module.css'
-import { Container, Grid } from '@material-ui/core'
+import { Container, Grid } from '@mui/material'
 import Layout from '../../components/Layout/Layout'
 
 interface PageProps {}
@@ -15,7 +15,7 @@ const PrivacyPolicy: NextPage<PageProps> = (props: PageProps) => {
           <title>ПрофКомплектация – Политика конфиденциальности</title>
         </Head>
         <Container>
-          <Grid container justify="center">
+          <Grid container justifyContent="center">
             <Grid item xs={12} sm={12} md={8} lg={8}>
               <div id="inputResult">
                 <div className="row mb-4">

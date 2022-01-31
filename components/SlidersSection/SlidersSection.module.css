@@ -57,12 +57,14 @@
 .root {
   background-color: #fff;
 }
+
 @media screen and (max-width: 640px) {
   .slideContent {
     padding: 48px 16px;
   }
   .root {
     padding-bottom: 0px;
+    padding-top: 0;
   }
   .heading {
     font-size: 24px;
@@ -87,7 +89,7 @@
   }
   .root {
     padding-bottom: 0;
-    padding-top: 100px;
+    padding-top: 0;
   }
 
   .slideContent {

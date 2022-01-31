@@ -1,6 +1,6 @@
 import React from 'react'
 import FormResult, { FormResultTheme } from '../FormResult/FormResult'
-import { Dialog, DialogContent } from '@material-ui/core'
+import { Dialog, DialogContent } from '@mui/material'
 
 export interface ErrorPopupProps {
   isOpen: boolean

@@ -1,6 +1,6 @@
 import React from 'react'
-import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
+import Container from '@mui/material/Container'
+import Grid from '@mui/material/Grid'
 import style from './TrustedBy.module.css'
 import Section from '../Section/Section'
 import CustomizedCarousel from '../Carousel/Carousel'
@@ -45,7 +45,7 @@ export default function TrustedBy() {
   return (
     <Section className={style.root}>
       <Container>
-        <Grid container justify="center" className={style.container}>
+        <Grid container justifyContent="center" className={style.container}>
           <Grid item xs={12} sm={12} md={12} lg={10}>
             <CustomizedCarousel>
               {trustedByDivided.map((items, index) => (

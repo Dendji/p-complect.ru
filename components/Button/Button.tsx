@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './Button.module.css'
 import classnames from 'classnames'
-import CircularProgress from '@material-ui/core/CircularProgress'
+import CircularProgress from '@mui/material/CircularProgress'
 
 export enum ButtonSize {
   L = 'L',

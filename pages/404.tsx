@@ -3,7 +3,7 @@ import Head from 'next/head'
 import React from 'react'
 import style from './404.module.css'
 import Layout from '../components/Layout/Layout'
-import { Container } from '@material-ui/core'
+import { Container } from '@mui/material'
 
 interface PageProps {}
 

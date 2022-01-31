@@ -2,8 +2,8 @@ import { GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import React from 'react'
 import style from './Post.module.css'
-import Grid from '@material-ui/core/Grid'
-import Container from '@material-ui/core/Container'
+import Grid from '@mui/material/Grid'
+import Container from '@mui/material/Container'
 import Heading from '../../components/Heading/Heading'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST, WP_API_HOST } from '../../utils/const'
@@ -57,7 +57,7 @@ const Post: NextPage<PageProps> = ({
           <meta property="og:type" content="page" />
         </Head>
         <Container>
-          <Grid container justify="center">
+          <Grid container justifyContent="center">
             <Grid item xs={12} md={8}>
               {title.rendered && <Heading weight={1}>{title.rendered}</Heading>}
               {acf.image?.sizes?.large && (

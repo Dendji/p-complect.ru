@@ -1,4 +1,4 @@
-import { useTheme, useMediaQuery } from '@material-ui/core'
+import { useTheme, useMediaQuery } from '@mui/material'
 import React from 'react'
 import FilterIcon from '../FilterIcon/FilterIcon'
 import Heading from '../Heading/Heading'

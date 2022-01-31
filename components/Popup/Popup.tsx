@@ -1,6 +1,6 @@
 import React from 'react'
-import Grow from '@material-ui/core/Grow'
-import Fade from '@material-ui/core/Fade'
+import Grow from '@mui/material/Grow'
+import Fade from '@mui/material/Fade'
 import ScrollLock from 'react-scrolllock'
 
 export enum PopupEffect {
