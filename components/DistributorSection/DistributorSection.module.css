@@ -21,6 +21,10 @@
   height: 100%;
 }
 
+.heading {
+  padding-top: 20px;
+}
+
 @media screen and (max-width: 640px) {
   .root .heading {
     font-size: 32px;

@@ -46,6 +46,11 @@ interface PageProps {
       title: string | null
       items: MultiImage[]
     }
+    brands: {
+      title: string | null
+      desc: string | null
+      items: MultiImage[]
+    }
     posts: {
       id: string
       short: string | null
@@ -56,6 +61,7 @@ interface PageProps {
 }
 
 const HomePage: NextPage<PageProps> = ({ data, init }: PageProps) => {
+  console.log('🚀 ~ file: index.tsx ~ line 59 ~ data', data)
   const theme = useTheme()
 
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
@@ -73,10 +79,10 @@ const HomePage: NextPage<PageProps> = ({ data, init }: PageProps) => {
       </Head>
       <SlidersSection mainSlides={data.slides} />
       <FeedbackSection items={data.reviews} />
-      <DistributorSection />
-      <BrandsSection />
+      <DistributorSection {...data.distribution} />
+      <BrandsSection {...data.brands} />
       <BlogSection items={data.posts} />
-      <AuthorizedSection />
+      <AuthorizedSection {...data.tenders} />
     </Layout>
   )
 }

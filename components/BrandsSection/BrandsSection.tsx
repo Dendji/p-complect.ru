@@ -7,6 +7,8 @@ import Typography from '../Typography/Typography'
 import StandardImage from '../StandardImage/StandardImage'
 import Hidden from '@mui/material/Hidden'
 import Section from '../Section/Section'
+import { MultiImage } from '../../pages/about'
+
 const items = [
   { url: '#', image: '/images/brands/baswool.png' },
   { url: '#', image: '/images/brands/fobos.png' },
@@ -16,40 +18,35 @@ const items = [
   { url: '#', image: '/images/brands/termoclip.png' },
 ]
 
-interface Props {}
-export default function BrandsSection(props: Props) {
+interface Props {
+  title: string | null
+  desc: string | null
+  items: MultiImage[]
+}
+
+export default function BrandsSection({ title, desc, items }: Props) {
   return (
     <Section className={style.root} dark>
       <Container>
         <Grid container justifyContent="flex-end">
           <Grid item xs={12} md={6}>
             <Heading weight={2} className={style.heading}>
-              Также дистрибьюторы следующих брендов
+              {title}
             </Heading>
             <Hidden smDown>
-              <Typography>
-                Так же можем предложить материалы для внутренней отделки,
-                следующих производителей: Кнауф, Юнис, Волма, Седрус, Вебер
-                Ветонит и другие... За более подробной информацией, просим
-                обращаться в отдел продаж по телефонам.
-              </Typography>
+              {desc && <div dangerouslySetInnerHTML={{ __html: desc }}></div>}
             </Hidden>
           </Grid>
 
           <Grid item xs={12} md={6}>
             <div className={style.grid}>
               {items.map((b, key) => (
-                <StandardImage src={b.image} key={key} />
+                <StandardImage src={b.large} key={key} />
               ))}
             </div>
           </Grid>
           <Hidden smUp>
-            <Typography>
-              Можем предложить материалы для внутренней отделки, следующих
-              производителей: Кнауф, Юнис, Волма, Седрус, Вебер Ветонит и
-              другие... За более подробной информацией, просим обращаться в
-              отдел продаж по телефонам.
-            </Typography>
+            {desc && <div dangerouslySetInnerHTML={{ __html: desc }}></div>}
           </Hidden>
         </Grid>
       </Container>
