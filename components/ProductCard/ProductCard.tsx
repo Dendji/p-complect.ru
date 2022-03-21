@@ -7,6 +7,8 @@ import Link from 'next/link'
 import ImagePlaceholder from '../ImagePlaceholder/ImagePlaceholder'
 import Truncated from '../Truncated/Truncated'
 import { formatPrice } from '../../utils/utils'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material'
 
 export interface IProduct {
   id: number | string
@@ -38,6 +40,10 @@ interface Props {
 }
 
 export default function ProductCard({ product, onProductClick, small }: Props) {
+  const theme = useTheme()
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
+
   return (
     <RoundedCard
       className={classnames(style.root, { [style.small]: !!small })}
@@ -55,7 +61,7 @@ export default function ProductCard({ product, onProductClick, small }: Props) {
         )}
       </div>
       <div className={style.name}>
-        <Truncated text={product.name} limit={36} />
+        <Truncated text={product.name} limit={isMobile ? 36 : 36} />
       </div>
       {product.price && (
         <div className={style.price}>

@@ -56,7 +56,6 @@ const Catalog: NextPage<PageProps> = ({
   const emptyFilters = Object.keys(data.filters).length > 0
 
   const [products, setProducts] = useState(data.products)
-  console.log('🚀 ~ file: [category_id].tsx ~ line 59 ~ products', products)
   const [isLoading, setLoading] = useState(false)
   const [filter, setFilter] = useState<
     {
@@ -119,7 +118,9 @@ const Catalog: NextPage<PageProps> = ({
           <ProductCard
             small
             key={p.id}
-            product={p}
+            product={{
+              ...p,
+            }}
             onProductClick={() => handleProductClick(p.id)}
           />
         ))}

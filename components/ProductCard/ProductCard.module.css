@@ -59,19 +59,32 @@
 .name {
   font-weight: 500;
   margin-bottom: 24px;
+  height: 32px;
 }
 
+@media screen and (max-width: 1180px) {
+  .name {
+    font-size: 14px;
+  }
+}
 @media (max-width: 640px) {
   .root:hover {
     transform: none;
   }
 
+  .root {
+    height: 100%;
+  }
+
   .name {
     margin-bottom: 24px;
+    font-size: 18px;
+    height: auto;
   }
+
   .price {
     margin-bottom: 24px;
-    font-size: 32px;
+    font-size: 24px;
   }
 
   .button {
