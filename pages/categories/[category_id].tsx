@@ -15,6 +15,8 @@ import CircularProgress from '@mui/material/CircularProgress'
 import Layout from '../../components/Layout/Layout'
 import { API_HOST } from '../../utils/const'
 import Pagination from '@mui/material/Pagination'
+import useMediaQuery from '@mui/material/useMediaQuery'
+import { useTheme } from '@mui/material'
 
 interface PageProps {
   data: {
@@ -25,7 +27,7 @@ interface PageProps {
   init: IInit
 }
 
-export const AMOUNT_PER_PAGE = 20
+export const AMOUNT_PER_PAGE = 21
 
 const getPaginationParams = (page: number): URLSearchParams => {
   const params = new URLSearchParams()
@@ -45,7 +47,10 @@ const Catalog: NextPage<PageProps> = ({
   init,
   categoryId,
 }: PageProps) => {
+  const theme = useTheme()
+
   const currentCategory = init.categories?.find((c) => c.id + '' === categoryId)
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'))
 
   const r = useRouter()
 
@@ -71,10 +76,9 @@ const Catalog: NextPage<PageProps> = ({
   }
 
   const onFilterChange = async (filter: any[], sub: string | null) => {
+    setPage(1)
     setFilter(filter.filter((f) => f.value !== null))
-    if (sub) {
-      setSub(sub)
-    }
+    setSub(sub ? sub : null)
   }
 
   useEffect(() => {
@@ -101,6 +105,15 @@ const Catalog: NextPage<PageProps> = ({
     const data = await res.json()
 
     setProducts(data.products)
+    const pos = document.documentElement.scrollTop || document.body.scrollTop
+
+    if (pos > 280 || isMobile) {
+      window.scrollTo({
+        top: isMobile ? 0 : 280,
+        behavior: 'smooth',
+      })
+    }
+
     setLoading(false)
   }
 
